@@ -35,8 +35,6 @@
   
   
   
-    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
-  
   <script>
     function loadScript(url, cb) {
       var script = document.createElement('script');
@@ -118,15 +116,15 @@
   
   
   
-    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
-    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
-  
   
     <link rel="preload" href="/js/lib/lozad.min.js" as="script">
   
   
   
   
+  
+    
+    <link rel="prefetch" href="//unpkg.com/valine/dist/Valine.min.js" as="script">
   
   
 <meta name="generator" content="Hexo 6.3.0"></head>
@@ -154,7 +152,7 @@
         href="/" 
         class="navbar-menu-item">
         
-          Home
+          主页
         
       </a>
     
@@ -162,7 +160,7 @@
         href="/archives" 
         class="navbar-menu-item">
         
-          Archive
+          文章
         
       </a>
     
@@ -170,7 +168,7 @@
         href="/tags" 
         class="navbar-menu-item">
         
-          Tags
+          标签
         
       </a>
     
@@ -178,7 +176,7 @@
         href="/categories" 
         class="navbar-menu-item">
         
-          Categories
+          分类
         
       </a>
     
@@ -194,7 +192,7 @@
         href="/links" 
         class="navbar-menu-item">
         
-          Friends
+          友链
         
       </a>
     
@@ -267,7 +265,7 @@
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>1</span>
+    <span>2</span>
     <span>Tags</span>
   </a>
 </div>
@@ -294,7 +292,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E7%B5%AE%E7%B5%AE%E5%BF%B5"><span class="toc-text">三. 一些絮絮念</span></a></li></ol>
       </div>
     </article>
   
@@ -329,6 +327,12 @@
         <div class="tags-list-item">博客</div>
       </a>
     
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" 
+        title="博客美化">
+        <div class="tags-list-item">博客美化</div>
+      </a>
+    
   </div>
 </div>
   </article>
@@ -355,7 +359,7 @@
     
     
       <span class="dot"></span>
-      <span>832 words</span>
+      <span>1.4k words</span>
     
   </div>
   
@@ -370,9 +374,9 @@
         
           
           <a 
-            href="/tags/%E5%8D%9A%E5%AE%A2/" 
+            href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" 
             class="post-meta-link">
-            博客
+            博客美化
           </a>
         
       </div>
@@ -411,13 +415,34 @@
 <pre class="highlight"><span class="line"><span class="comment">#------------------------</span></span><br><span class="line"><span class="comment"># Header config</span></span><br><span class="line">title: 无知呦的博客 - wuzhiyou<span class="string">&#x27;s blog</span></span><br><span class="line"><span class="string">author: 无知呦</span></span><br><span class="line"><span class="string"># put the logo on the $&#123;blog_path&#125;/source/img/$&#123;picname&#125;.png or use urls</span></span><br><span class="line"><span class="string">logo_img: https://s1.ax1x.com/2022/11/14/zAQwge.png</span></span><br><span class="line"><span class="string">author_img: https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg</span></span><br><span class="line"><span class="string">author_description: 承认无知，怀揣敬畏</span></span><br><span class="line"><span class="string">#------------------------</span></span><br><span class="line"><span class="string"># Navbar config</span></span><br><span class="line"><span class="string">#------------------------</span></span><br><span class="line"><span class="string">menus:</span></span><br><span class="line"><span class="string">  home: /</span></span><br><span class="line"><span class="string">  archive: /archives</span></span><br><span class="line"><span class="string">  tags: /tags</span></span><br><span class="line"><span class="string">  categories: /categories</span></span><br><span class="line"><span class="string">  about: /about</span></span><br><span class="line"><span class="string">  friends: /links</span></span><br><span class="line"><span class="string">  # artitalk: /shuoshuo # You can uncomment to add this route</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">about:</span></span><br><span class="line"><span class="string">  description: description</span></span><br><span class="line"><span class="string">  social_links:</span></span><br><span class="line"><span class="string">    # - &#123; icon: icon, link: your link &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//以上为该文件的前半部分</span></span><br></pre>
 
 <p>tittle是网站标题，author是作者，logo_img是网站logo，下边两个是头像和个人描述。</p>
-<p>之后的话就是菜单栏，（待）</p>
+<p>menus里边的设置是菜单栏导航，下边几个为具体的设置，拿其中两个举下例子：</p>
+<ul>
+<li>冒号前边的是你显示在菜单栏上的内容，如<code>home</code>可以改成<code>首页</code>，改变后并不影响点击后的跳转功能，<strong>只做显示使用</strong>。</li>
+<li>冒号后边的是你点击相应的文字后进入的目录。如点击<code>about</code>就进入<code>source/about</code>文件夹，当然默认是没有的，需要自己创建这个文件夹。当然也可以把<code>/about</code>改为<code>/123456</code>，这时候需要在source文件夹下创建名为<code>123456</code>的文件夹。其他设置项同理。</li>
+</ul>
+<p>创建完成后如何在about里显示自己的内容呢？需要新建一个名为<code>index</code>的markdown格式的文件，然后在<strong>源代码模式</strong>下将下边代码复制到文章开头：</p>
+<pre class="highlight"><span class="line">---</span><br><span class="line">title: Hexo博客基础使用教程及美化</span><br><span class="line"><span class="built_in">date</span>: 2022-11-14 15:32:31</span><br><span class="line">tags: 博客</span><br><span class="line">---</span><br></pre>
+
+<p>下边就可以写关于自己的个人介绍页面啦，当然也不是一定只能写个人介绍，<del>改个标题写征婚启事也不是不可以。</del></p>
+<p>其他菜单栏导航的设置项也是一样。</p>
+<p>往下翻还有很多很多的设置，有些我也还没搞明白有什么用，就留作日后的自己和正在阅读此文的你，一起慢慢探索。</p>
+<h2 id="三-一些絮絮念"><a href="#三-一些絮絮念" class="headerlink" title="三. 一些絮絮念"></a>三. 一些絮絮念</h2><ul>
+<li>当网站加载速度比较慢时，设置一张预加载的图片就显得非常必要了。</li>
+</ul>
+<pre class="highlight"><span class="line">lazyload:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  loadingImg: </span><br><span class="line"><span class="comment">#一般在配置文件里边搜索loading就能找到，在网上找一张转圈圈的动图的链接，会在图片加载的时候显示。</span></span><br></pre>
+
+
+
+<ul>
+<li>另外调试本地博客的话使用<code>hexo s</code>更快捷，直接运行本地的文件夹展示在4000端口上，无延迟。当此次调试完后再使用三步命令推到仓库即可。</li>
+<li>搭建这个博客到github的仓库后才知道原来还有一个gitee的平台，服务器是基于国内的，也有github pages的功能，访问速度比在github快不少。emmm….下次再说吧（逃</li>
+</ul>
 
   </div>
   <div>
     
       <div 
-        class="post-note note-warning copyright" 
+        class="post-note note-primary copyright" 
         style="margin-top: 42px">
         <p>
           <span style="font-weight: bold;">作者：</span><a 
@@ -459,6 +484,13 @@
   
 </div>
 
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  </div>
+
 <div 
   class="card card-content toc-card" 
   id="mobiletoc">
@@ -468,7 +500,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E7%B5%AE%E7%B5%AE%E5%BF%B5"><span class="toc-text">三. 一些絮絮念</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -482,7 +514,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E7%B5%AE%E7%B5%AE%E5%BF%B5"><span class="toc-text">三. 一些絮絮念</span></a></li></ol>
     </article>
   
   
@@ -525,7 +557,7 @@
         <span>
           Copyright ©
           
-            2020
+            2021
           
           
                 - 
@@ -541,32 +573,6 @@
       </div>
     </div>
 
-    
-      <div class="footer-dsc">
-        
-          Powered by
-          <a 
-            href="https://hexo.io/" 
-            class="footer-link" 
-            target="_blank" 
-            rel="nofollow noopener noreferrer">
-            &nbsp;Hexo
-          </a>
-        
-        
-          <span>&nbsp;|&nbsp;</span>
-        
-        
-          Theme -
-          <a 
-            href="https://github.com/theme-kaze" 
-            class="footer-link" 
-            target="_blank"
-            rel="nofollow noopener noreferrer">
-            &nbsp;Kaze
-          </a>
-        
-      </div>
     
     
     
@@ -612,36 +618,6 @@
 </a> 
      
      
-     
-      <script>
-  var addImgLayout = function () {
-    var img = document.querySelectorAll('.post-content img')
-    var i
-    for (i = 0; i < img.length; i++) {
-      var wrapper = document.createElement('a')
-      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
-      wrapper.setAttribute('aria-label', 'illustration')
-      wrapper.style.cssText =
-        'width: 100%; display: flex; justify-content: center;'
-      if (img[i].alt) wrapper.dataset.caption = img[i].alt
-      wrapper.dataset.nolink = true
-      img[i].before(wrapper)
-      wrapper.append(img[i])
-      var divWrap = document.createElement('div')
-      divWrap.classList.add('gallery')
-      wrapper.before(divWrap)
-      divWrap.append(wrapper)
-    }
-    baguetteBox.run('.gallery')
-  }
-</script>
-<script>
-  loadScript(
-    "/js/lib/lightbox/baguetteBox.min.js",
-    addImgLayout
-  )
-</script>
- 
      
      
     <script src="/js/main.js"></script> 
