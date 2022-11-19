@@ -18,7 +18,7 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>无知呦的博客 - wuzhiyou's blog</title>
+  <title>能ping通网址且dns无问题情况下浏览器无法访问</title>
   
   
   <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
@@ -284,6 +284,18 @@
                <div class="sticky-tablet">
   
   
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+
+      </div>
+    </article>
+  
   
   <article class="card card-content categories-widget">
     <div class="categories-card">
@@ -332,44 +344,6 @@
   </article>
   
   
-    <article class="card card-content widescreen-archive archive-widget">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>Archive
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">3</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
-  
 </div>
             </aside>
             <main class="main-column">
@@ -377,30 +351,58 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      
+      能ping通网址且dns无问题情况下浏览器无法访问
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-11-16T04:03:33.345Z">
+    <time datetime="2022-11-19T15:42:00.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-11-16</span>
+      <span>2022-11-19</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>19 words</span>
+      <span>363 words</span>
     
   </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C/" 
+            class="post-meta-link">
+            网络故障
+          </a>
+        
+      </div>
+    </div>
   
   </header>
   <div 
     id="section" 
     class="post-content">
-    <h1 id="软件开发的过程"><a href="#软件开发的过程" class="headerlink" title="软件开发的过程"></a>软件开发的过程</h1><p>​																		软件21-4   第三组</p>
-<p>​																		展示人：刘硕</p>
+    <p>前言：</p>
+<p>今晚回来发现电脑又出现了浏览器不能访问的问题，测试了一下依旧能ping通，且dns无问题。就想起来用别人教的办法尝试了一下，果然回复了正常。</p>
+<p>解决办法：打开IE浏览器，在设置里把<code>为LAN使用代理服务器</code>选项给关掉。</p>
+<p><img src="/../../.deploy_git/images/image-20221119234458368.png" alt="image-20221119234458368" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../../.deploy_git/images/image-20221119234458368.png" class="lozad post-image"></p>
+<p>猜测可能是由于使用了梯子的缘故，不过挺好奇为什么会这样。个人以为使用代理后的的服务器节点或者说ip，应该是已经被这个选项给记录下来了，虽然本机的ip已经改变了，但是用代理后的ip应该还能上网不是？</p>
+<p>遂在网上搜了，不过几乎没有找到关于原因的比较好的解释。有一个我觉得比较合理，但还是从技术上有点不太理解是如何实现的：</p>
+<blockquote>
+<p>现在使用代理IP大都要先进行授权，常见的有“终端IP授权”，也就是绑定IP白名单。这种授权出现问题一般有三种原因：一是绑定的IP白名单不是“使用代理的终端的公网IP”，二是绑定的IP白名单不是固定出口IP，实时在变，三是绑定的IP白名单发生了改变。</p>
+</blockquote>
+<p>先挖个坑，希望以后能填上。</p>
+<p>——2022年11月19日 23:55   记于帘子后的小天地</p>
 
   </div>
   <div>
@@ -420,8 +422,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="http://example.com/images/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E8%BF%87%E7%A8%8B.html">
-            http://example.com/images/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E8%BF%87%E7%A8%8B.html
+            href="http://example.com/2022/11/19/%E8%83%BDping%E9%80%9A%E7%BD%91%E5%9D%80%E4%B8%94dns%E6%97%A0%E9%97%AE%E9%A2%98%E6%83%85%E5%86%B5%E4%B8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/">
+            http://example.com/2022/11/19/%E8%83%BDping%E9%80%9A%E7%BD%91%E5%9D%80%E4%B8%94dns%E6%97%A0%E9%97%AE%E9%A2%98%E6%83%85%E5%86%B5%E4%B8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
@@ -431,6 +433,20 @@
 </article>
 <div class="nav">
   
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/11/14/Hexo%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E5%8F%8A%E7%BE%8E%E5%8C%96/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">Next</div>
+          
+            <div class="nav-title">Hexo博客基础使用教程及美化 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
   
 </div>
 
@@ -450,12 +466,22 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">软件开发的过程</span></a></li></ol>
+
 </div>
             </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+
+    </article>
   
   
   <article class="card card-content">
@@ -487,44 +513,6 @@
 </div>
   </article>
   
-  
-    <article class="card card-content">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>Archive
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">3</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
   
 </div>
             </aside>
