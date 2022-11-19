@@ -322,15 +322,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E5%8D%9A%E5%AE%A2/" 
-        title="博客">
-        <div class="tags-list-item">博客</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C/" 
         title="网络故障">
         <div class="tags-list-item">网络故障</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
       </a>
     
       <a 
@@ -392,10 +392,11 @@
   <div 
     id="section" 
     class="post-content">
-    <p>前言：</p>
+    <p><strong>前言：</strong></p>
 <p>今晚回来发现电脑又出现了浏览器不能访问的问题，测试了一下依旧能ping通，且dns无问题。就想起来用别人教的办法尝试了一下，果然回复了正常。</p>
-<p>解决办法：打开IE浏览器，在设置里把<code>为LAN使用代理服务器</code>选项给关掉。</p>
-<p><img src="/../../.deploy_git/images/image-20221119234458368.png" alt="image-20221119234458368" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../../.deploy_git/images/image-20221119234458368.png" class="lozad post-image"></p>
+<p><strong>解决办法：</strong></p>
+<p>打开IE浏览器，在设置里把<code>为LAN使用代理服务器</code>选项给关掉。</p>
+<p><img src="/../images/image-20221120000016098.png" alt="image-20221120000016098" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221120000016098.png" class="lozad post-image"></p>
 <p>猜测可能是由于使用了梯子的缘故，不过挺好奇为什么会这样。个人以为使用代理后的的服务器节点或者说ip，应该是已经被这个选项给记录下来了，虽然本机的ip已经改变了，但是用代理后的ip应该还能上网不是？</p>
 <p>遂在网上搜了，不过几乎没有找到关于原因的比较好的解释。有一个我觉得比较合理，但还是从技术上有点不太理解是如何实现的：</p>
 <blockquote>
