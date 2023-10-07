@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>SQL操作学习笔记</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="SQL操作学习笔记">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-09-22">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-10-06">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="sql">
+        
+          <meta 
+            property="og:article:tag" 
+            content="数据库">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E8%AF%A2"><span class="toc-text">一、查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%BB%E9%87%8D"><span class="toc-text">二、去重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%92%E5%BA%8F"><span class="toc-text">三、排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%88%AA%E6%96%AD%E5%92%8C%E5%81%8F%E7%A7%BB"><span class="toc-text">四、截断和偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF"><span class="toc-text">五、条件分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-text">六、函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%88%86%E7%BB%84%E8%81%9A%E5%90%88"><span class="toc-text">七、分组聚合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%9F%A5%E8%AF%A2%E8%BF%9B%E9%98%B6"><span class="toc-text">八、查询进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2"><span class="toc-text">1、关联查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">2、子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">3、组合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0"><span class="toc-text">4、开窗函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">九、其他注意事项</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      SQL操作学习笔记
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-09-22T01:27:51.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-09-22</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
+          class="post-meta-link">
+          日常随笔
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>5k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/sql/" 
+            class="post-meta-link">
+            sql
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+            class="post-meta-link">
+            数据库
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：才发现下学期的课表上是《数据库系统<strong>原理</strong>》，而不是数据库应用，遂趁假期抽出一周来把基础的应用操作给学习了。关于为什么要学原理而不是直接应用，知乎上有篇回答的很好：</p>
+<blockquote>
+<p>计算机系为什么要学数据库原理和设计？ - 南慕伦的回答 - 知乎 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/273489729/answer/382181550">https://www.zhihu.com/question/273489729/answer/382181550</a></p>
+</blockquote>
+<h2 id="一、查询"><a href="#一、查询" class="headerlink" title="一、查询"></a>一、查询</h2><ul>
+<li><p>全表查询：<code>select * from 数据表name</code></p>
+</li>
+<li><p>选择查询：<code>select name,age from student</code>  从数据表student中选择name age列查看</p>
+</li>
+<li><p>查询改名：<code>select name as 学生姓名,age as 学生年龄 from student</code> 从student表中查询name列取别名为学生姓名</p>
+</li>
+<li><p>常量和运算：<code>select name,score,score*2 as double_score from student</code>  从student的数据表中选择出所有学生的姓名（name）和分数（score），并且额外计算出分数的 2 倍（double_score）。汉字字符加单引号。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="left">score</th>
+<th align="left">double_score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">鸡哥</td>
+<td align="left">2.5</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left">鱼皮</td>
+<td align="left">400</td>
+<td align="left">800</td>
+</tr>
+<tr>
+<td align="left">热dog</td>
+<td align="left">600</td>
+<td align="left">1200</td>
+</tr>
+<tr>
+<td align="left">摸FISH</td>
+<td align="left">360</td>
+<td align="left">720</td>
+</tr>
+<tr>
+<td align="left">李阿巴</td>
+<td align="left">120</td>
+<td align="left">240</td>
+</tr>
+<tr>
+<td align="left">老李</td>
+<td align="left">500</td>
+<td align="left">1000</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>条件查询：</p>
+<p><code>select name,score from student where name=&#39;鱼皮&#39;</code>从student 的数据表中选择出所有学生的姓名（name）和成绩（score），学生姓名为 ‘鱼皮’。</p>
+<p><code>select name,age from student where name!=&#39;热dog&#39;</code>从student的数据表中选择出所有学生的姓名（name）和年龄（age），学生姓名不等于 ‘热dog’ 。</p>
+<blockquote>
+<p>在MySQL中，单等号和双等号都用于条件判断语句中，但是它们的语义不同。</p>
+<ul>
+<li>单等号（&#x3D;）用于赋值，将右侧的值赋给左侧的变量。例如：<code>SET name = &#39;John&#39;</code>。</li>
+<li>双等号（&#x3D;&#x3D;）或等于号（&#x3D;）用于条件判断，测试两个表达式是否相等。例如： <code>SELECT * FROM student WHERE id = 100</code> 表示筛选出id值为100的学生信息。</li>
+</ul>
+<p>需要注意的是，在MySQL中，双等号（&#x3D;&#x3D;）和等于号（&#x3D;）有相同的语义，即用于测试两个表达式是否相等。但是在其他编程语言中，这两个符号可能具有不同的含义，应根据具体情况使用。</p>
+</blockquote>
+<p><code>select name,age,score from student where age is not null</code>从 student 的数据表中选择出所有学生的姓名（name）、年龄（age）和成绩（score），学生年龄不为空值。（查询空值 <code>is null</code>)</p>
+<p><code>select name,score from studen where name not like &#39;%李%&#39;;</code>从 student 的数据表中选择出所有学生的姓名（name）、年龄（age）和成绩（score），学生姓名不包含李。(查询包含 <code>like</code>)</p>
+<blockquote>
+<ul>
+<li><p>%张：以”张”结尾的字符串。 例如，”李张”、”王张”、”赵张” 等都会被匹配到，因为它们都以”张”结尾。</p>
+</li>
+<li><p>%张%：包含”张”的字符串。 例如，”张三”、”李张四”、”王张五”等都会被匹配到，因为它们中都包含了”张”这个字符。</p>
+</li>
+<li><p>张%：以”张”开头的字符串。 例如，”张三”、”张四光”、”张五风”等都会被匹配到，因为它们都以”张”开头。</p>
+</li>
+</ul>
+</blockquote>
+<p><code>select name,score from student where name like &#39;%李%&#39; or score&gt;500</code>学生的姓名包含 “李”，或者成绩（score）大于 500。</p>
+</li>
+</ul>
+<h2 id="二、去重"><a href="#二、去重" class="headerlink" title="二、去重"></a>二、去重</h2><ul>
+<li><p>distinct去重：</p>
+<p><code>select distinct class_id,exam_num from student</code>从student的数据表中选择出所有不重复的班级 ID（class_id）和考试编号（exam_num）的组合。（剔除掉有相同数值的组合）</p>
+</li>
+</ul>
+<h2 id="三、排序"><a href="#三、排序" class="headerlink" title="三、排序"></a>三、排序</h2><ul>
+<li><p>order by排序：</p>
+<p><code>select name,age,score from student order by score desc,age asc</code>按照成绩从大到小排序，如果成绩相同，则按照年龄从小到大排序。</p>
+</li>
+</ul>
+<blockquote>
+<p>order by也可用于自定义排序，使用when…then…语法。如<code>ORDER BY CASE category   WHEN &#39;电子产品&#39; THEN 1   WHEN &#39;家居用品&#39; THEN 2   WHEN &#39;食品&#39; THEN 3   ELSE 4</code>，自定义的排序规则，按照’电子产品’、’家居用品’、’食品’的顺序排序结果，并对其他类别赋予排序值4。</p>
+</blockquote>
+<h2 id="四、截断和偏移"><a href="#四、截断和偏移" class="headerlink" title="四、截断和偏移"></a>四、截断和偏移</h2><p>假设你有一张待办事项清单，上面有很多任务。当你每次只想查看其中的几个任务时，会怎么办呢？</p>
+<p>1）你可以使用手指挡住不需要看的部分（即截断）</p>
+<p>2）根据任务的编号，直接翻到需要查看的位置（即偏移）</p>
+<p>在 SQL 中，我们使用 <code>LIMIT</code> 关键字来实现数据的截断和偏移。截断和偏移的一个典型的应用场景是分页，即网站内容很多时，用户可以根据页号每次只看部分数据。</p>
+<ul>
+<li>limit截断偏移：</li>
+</ul>
+<pre class="highlight"><span class="line"><span class="comment">#按照年龄从小到大排序，从第 2 条数据开始、截取 3 个学生的信息。</span></span><br><span class="line">select name,age from student </span><br><span class="line">order by age asc </span><br><span class="line"><span class="built_in">limit</span> 1,3</span><br></pre>
+
+<h2 id="五、条件分支"><a href="#五、条件分支" class="headerlink" title="五、条件分支"></a>五、条件分支</h2><p>case when 判断条件：一种条件表达式，用于在 SQL 查询中根据不同的条件返回不同的结果。case…end是其实语句和结束语句，when …then…相当于if 。</p>
+<ul>
+<li>将学生按照年龄划分为三个年龄等级（age_level）：60 岁以上为 “老同学”，20 岁以上（不包括 60 岁以上）为 “年轻”，20 岁及以下、以及没有年龄信息为 “小同学”。返回结果应包含学生的姓名（name）和年龄等级（age_level），并按姓名升序排序：</li>
+</ul>
+<pre class="highlight"><span class="line"></span><br><span class="line">select name, 										<span class="comment">#根据返回结果要求，这里不能加上age</span></span><br><span class="line">    <span class="keyword">case</span> </span><br><span class="line">        when (age&gt;60) <span class="keyword">then</span> <span class="string">&quot;老同学&quot;</span></span><br><span class="line">        when (age&gt;20 and age &lt;=60) <span class="keyword">then</span> <span class="string">&quot;年轻&quot;</span></span><br><span class="line">        <span class="keyword">else</span> <span class="string">&quot;小同学&quot;</span> </span><br><span class="line">    end as age_level								<span class="comment">#end as 作为新列的别名</span></span><br><span class="line">from student order by name asc</span><br></pre>
+
+<h2 id="六、函数"><a href="#六、函数" class="headerlink" title="六、函数"></a>六、函数</h2><ul>
+<li><p>时间函数:<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/sql_dates.asp">SQL Date 函数 (w3school.com.cn)</a>,部分函数如下：</p>
+<ul>
+<li><p><code>select date() as 列表名</code> 获取 日期 并对日期新取列名	</p>
+</li>
+<li><p><code>select datetime() as 列表名</code>获取 日期时间 并对日期新取列名</p>
+</li>
+<li><p><code>select time()  as 列表名</code>获取 时间 并对时间取列名</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>eg：<code>select name,date() as 当前日期 from student</code> 展示所有学生的姓名（name）和当前日期（列名为 “当前日期”）</p>
+<blockquote>
+<ol>
+<li><code>CURRENT_DATE</code>：返回当前的日期。</li>
+<li><code>CURRENT_TIME</code>：返回当前的时间。</li>
+<li><code>CURRENT_TIMESTAMP</code>：返回当前的日期和时间。</li>
+<li><code>DATE</code>：从日期时间值中提取日期部分。</li>
+<li><code>TIME</code>：从日期时间值中提取时间部分。</li>
+<li><code>YEAR</code>：从日期或日期时间值中提取年份。</li>
+<li><code>MONTH</code>：从日期或日期时间值中提取月份。</li>
+<li><code>DAY</code>：从日期或日期时间值中提取天数。</li>
+<li><code>HOUR</code>：从时间或日期时间值中提取小时。</li>
+<li><code>MINUTE</code>：从时间或日期时间值中提取分钟。</li>
+<li><code>SECOND</code>：从时间或日期时间值中提取秒数。</li>
+<li><code>DATEDIFF</code>：计算两个日期之间的差值（以天为单位）。</li>
+<li><code>DATE_ADD</code>：将指定的时间间隔添加到日期或日期时间值。</li>
+<li><code>DATE_SUB</code>：从日期或日期时间值中减去指定的时间间隔。</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>字符串处理：字符串处理是一类用于处理文本数据的函数。它们允许我们对字符串进行各种操作。</p>
+<pre class="highlight"><span class="line"><span class="comment">#筛选出姓名为 &#x27;热dog&#x27; 的学生，展示其学号（id）、姓名（name）及其大写姓名（upper_name）</span></span><br><span class="line">select <span class="built_in">id</span>,name,upper(name) as upper_name</span><br><span class="line">from student</span><br><span class="line"><span class="built_in">where</span> name=<span class="string">&#x27;热dog&#x27;</span></span><br></pre>
+
+<blockquote>
+<ol>
+<li><code>CONCAT</code>：连接两个或多个字符串。</li>
+<li><code>LENGTH</code>：返回字符串的长度。</li>
+<li><code>SUBSTRING</code>：从字符串中提取子字符串。</li>
+<li><code>UPPER</code>：将字符串转换为大写。</li>
+<li><code>LOWER</code>：将字符串转换为小写。</li>
+<li><code>TRIM</code>：去除字符串两端的空格或指定的字符。</li>
+<li><code>LEFT</code>：从左侧截取字符串指定数量的字符。</li>
+<li><code>RIGHT</code>：从右侧截取字符串指定数量的字符。</li>
+<li><code>REPLACE</code>：替换字符串中的指定部分。</li>
+<li><code>CHARINDEX</code>：查找子字符串在字符串中第一次出现的位置。</li>
+<li><code>SUBSTRING_INDEX</code>：根据指定的分隔符，返回字符串中的一部分。</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="七、分组聚合"><a href="#七、分组聚合" class="headerlink" title="七、分组聚合"></a>七、分组聚合</h2><p>聚合函数：聚合函数是一类用于对数据集进行 <strong>汇总计算</strong> 的特殊函数。它们可以对一组数据执行诸如计数、求和、平均值、最大值和最小值等操作。</p>
+<p>eg1：</p>
+<table>
+<thead>
+<tr>
+<th>order_id</th>
+<th>customer_id</th>
+<th>amount</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>A001</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A002</td>
+<td>200</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A001</td>
+<td>150</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A003</td>
+<td>50</td>
+</tr>
+</tbody></table>
+<p><code>SELECT COUNT(*) AS order_num FROM orders;</code>使用count函数计算orders表总数（即行数）并展示order_num的数值</p>
+<p><code>SELECT COUNT(DISTINCT customer_id) AS customer_num FROM orders;</code>使用count（distinct 列名）函数计算orders表中不同客户的数量并展示total_amount的数值</p>
+<p><code>SELECT SUM(amount) AS total_amount FROM orders;</code>使用sum函数计算orders表订单总金额</p>
+<p>eg2：</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、class_id（班级编号）、score（成绩）。请你编写一个 SQL 查询，汇总学生表中所有学生的总成绩（total_score）、平均成绩（avg_score）、最高成绩（max_score）和最低成绩（min_score）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    <span class="built_in">sum</span>(score) as total_score, </span><br><span class="line">    avg(score) as avg_score,</span><br><span class="line">    max(score) as max_score,</span><br><span class="line">    min(score) as min_score</span><br><span class="line">from </span><br><span class="line">    student;</span><br></pre>
+
+
+
+<ul>
+<li><p>分组聚合：按照group by中的关键字进行分组，可以用来合并重复关键字项。</p>
+<p>单字段分组：</p>
+</li>
+</ul>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、class_id（班级编号）、score（成绩）。请你编写一个 SQL 查询，统计学生表中的班级编号（class_id）和每个班级的平均成绩（avg_score）。</span></span><br><span class="line"></span><br><span class="line">select</span><br><span class="line">    class_id,</span><br><span class="line">    avg(score) as avg_score</span><br><span class="line">from</span><br><span class="line">    student</span><br><span class="line">group by</span><br><span class="line">    class_id;</span><br></pre>
+
+<p>​		多字段分组：		</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、class_id（班级编号）、exam_num（考试次数）、score（成绩）。请你编写一个 SQL 查询，统计学生表中每个班级每次考试的总学生人数（total_num）。</span></span><br><span class="line"></span><br><span class="line">select</span><br><span class="line">    class_id,</span><br><span class="line">    exam_num,</span><br><span class="line">    count(*) as total_num</span><br><span class="line">from</span><br><span class="line">    student</span><br><span class="line">group by</span><br><span class="line">    class_id,</span><br><span class="line">    exam_num;</span><br></pre>
+
+<blockquote>
+<p>COUNT( * )：表示计算指定表中所有记录的数量，无论具体列的值是什么。它不考虑NULL值，只关注行的存在与否。因此，COUNT( * ) 返回的是表中的总行数。</p>
+</blockquote>
+<ul>
+<li>having子句：HAVING 子句用于在分组聚合后对分组进行过滤。它允许我们对分组后的结果进行条件筛选，只保留满足特定条件的分组。与条件查询 WHERE 子句的区别在于，WHERE 子句用于在 <strong>分组之前</strong> 进行过滤，而 HAVING 子句用于在 <strong>分组之后</strong> 进行过滤。</li>
+</ul>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、class_id（班级编号）、score（成绩）。请你编写一个 SQL 查询，统计学生表中班级的总成绩超过 150 分的班级编号（class_id）和总成绩（total_score）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    class_id,</span><br><span class="line">    <span class="built_in">sum</span>(score) as total_score</span><br><span class="line">from student</span><br><span class="line">group by class_id</span><br><span class="line">having <span class="built_in">sum</span>(score)&gt;150;</span><br><span class="line"></span><br></pre>
+
+
+
+<h2 id="八、查询进阶"><a href="#八、查询进阶" class="headerlink" title="八、查询进阶"></a>八、查询进阶</h2><h3 id="1、关联查询"><a href="#1、关联查询" class="headerlink" title="1、关联查询"></a>1、关联查询</h3><p>在 SQL 中，关联查询是一种用于联合多个数据表中的数据的查询方式。</p>
+<ul>
+<li>cross join：是一种简单的关联查询，不需要任何条件来匹配行，它直接将左表的 <strong>每一行</strong> 与右表的 <strong>每一行</strong> 进行组合，返回的结果是两个表的笛卡尔积（两个集合的所有可能有序对的集合）。</li>
+</ul>
+<pre class="highlight"><span class="line"><span class="comment">#将员工表和部门表的所有行组合在一起，获取员工姓名、工资、部门名称和部门经理，示例 SQL 代码如下：</span></span><br><span class="line">SELECT e.emp_name, e.salary, e.department, d.manager</span><br><span class="line">FROM employees e</span><br><span class="line">CROSS JOIN departments d;</span><br></pre>
+
+<ul>
+<li>inner join：返回两个表中满足关联条件的交集部分，即在两个表中都存在的匹配行。</li>
+</ul>
+<blockquote>
+<p>多表关联查询的 SQL 中，我们最好在选择字段时指定字段所属表的名称（比如 e.emp_name），还可以通过给表起别名（比如 employees e）来简化 SQL 语句。</p>
+</blockquote>
+<p>eg1:</p>
+<pre class="highlight"><span class="line"><span class="comment">#将学生表和班级表的所有行组合在一起，并返回学生姓名（student_name）、学生年龄（student_age）、班级编号（class_id）以及班级名称（class_name）。</span></span><br><span class="line">SELECT s.name AS student_name, s.age AS student_age, s.class_id, c.name AS class_name</span><br><span class="line">FROM student s</span><br><span class="line">JOIN class c ON s.class_id = c.id;</span><br></pre>
+
+<p>eg2:</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、class_id（班级编号）。还有一个班级表 class，包含以下字段：id（班级编号）、name（班级名称）、level（班级级别）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，根据学生表和班级表之间的班级编号进行匹配，返回学生姓名（student_name）、学生年龄（student_age）、班级编号（class_id）、班级名称（class_name）、班级级别（class_level）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    s.name as student_name,</span><br><span class="line">    s.age as student_age,</span><br><span class="line">    s.class_id as class_id,</span><br><span class="line">    c.name as class_name,</span><br><span class="line">    c.level as class_level</span><br><span class="line">from student s</span><br><span class="line"><span class="built_in">join</span> class c on  s.class_id = c.id;</span><br></pre>
+
+<ul>
+<li>outer join:  根据指定的关联条件，将两个表中满足条件的行组合在一起，并 <strong>包含没有匹配的行</strong> 。在 OUTER JOIN 中，包括 LEFT OUTER JOIN 和 RIGHT OUTER JOIN 两种类型，它们分别表示查询左表和右表的所有行（即使没有被匹配），再加上满足条件的交集部分。</li>
+</ul>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、class_id（班级编号）。还有一个班级表 class，包含以下字段：id（班级编号）、name（班级名称）、level（班级级别）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，根据学生表和班级表之间的班级编号进行匹配，返回学生姓名（student_name）、学生年龄（student_age）、班级编号（class_id）、班级名称（class_name）、班级级别（class_level），要求必须返回所有学生的信息（即使对应的班级编号不存在）。</span></span><br><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">    s.name AS student_name,</span><br><span class="line">    s.age AS student_age, </span><br><span class="line">    c.id AS class_id,</span><br><span class="line">    c.name AS class_name,</span><br><span class="line">    c.level AS class_level</span><br><span class="line">FROM</span><br><span class="line">    student s</span><br><span class="line">LEFT JOIN class c ON s.class_id = c.id;</span><br><span class="line"></span><br></pre>
+
+<h3 id="2、子查询"><a href="#2、子查询" class="headerlink" title="2、子查询"></a>2、子查询</h3><p>子查询就像是在一个盒子中的盒子，外层查询是大盒子，内层查询是小盒子。执行查询时，我们首先打开小盒子获取结果，然后将小盒子的结果放到大盒子中继续处理。</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。还有一个班级表 class，包含以下字段：id（班级编号）、name（班级名称）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，使用子查询的方式来获取存在对应班级的学生的所有数据，返回学生姓名（name）、分数（score）、班级编号（class_id）字段。</span></span><br><span class="line"></span><br><span class="line">select name,score,class_id</span><br><span class="line">from student</span><br><span class="line"><span class="built_in">where</span> class_id <span class="keyword">in</span>(</span><br><span class="line">    select distinct <span class="built_in">id</span></span><br><span class="line">    from class</span><br><span class="line">);</span><br></pre>
+
+<p>子查询——exists：子查询中的一种特殊类型是 “exists” 子查询，用于检查主查询的结果集是否存在满足条件的记录，它返回布尔值（True 或 False），而不返回实际的数据。</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。还有一个班级表 class，包含以下字段：id（班级编号）、name（班级名称）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，使用 exists 子查询的方式来获取 不存在对应班级的 学生的所有数据，返回学生姓名（name）、年龄（age）、班级编号（class_id）字段。</span></span><br><span class="line"></span><br><span class="line">select name,age,class_id</span><br><span class="line">from student</span><br><span class="line"><span class="built_in">where</span> not exists(</span><br><span class="line">    select 1</span><br><span class="line">    from class</span><br><span class="line">    <span class="built_in">where</span> student.class_id = class.id</span><br><span class="line">);</span><br></pre>
+
+<h3 id="3、组合查询"><a href="#3、组合查询" class="headerlink" title="3、组合查询"></a>3、组合查询</h3><p>组合查询是一种将多个 SELECT 查询结果合并在一起的查询操作。其中<code>union</code>操作用于将两个或多个查询的结果集合并， <strong>并去除重复的行</strong> 。即如果两个查询的结果有相同的行，则只保留一行。<code>union all</code>操作也用于将两个或多个查询的结果集合并， <strong>但不去除重复的行</strong> 。即如果两个查询的结果有相同的行，则全部保留。</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。还有一个新学生表 student_new，包含的字段和学生表完全一致。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请编写一条 SQL 语句，获取所有学生表和新学生表的学生姓名（name）、年龄（age）、分数（score）、班级编号（class_id）字段，要求保留重复的学生记录。</span></span><br><span class="line"></span><br><span class="line">select name,age,score,class_id</span><br><span class="line">from student</span><br><span class="line">union all</span><br><span class="line">select name,age,score,class_id</span><br><span class="line">from student_new</span><br></pre>
+
+<h3 id="4、开窗函数"><a href="#4、开窗函数" class="headerlink" title="4、开窗函数"></a>4、开窗函数</h3><p>开窗函数是一种强大的查询工具，它允许我们在查询中进行对分组数据进行计算、 <strong>同时保留原始行的详细信息</strong> 。</p>
+<p>开窗函数可以与聚合函数（如 SUM、AVG、COUNT 等）结合使用，但与普通聚合函数不同，开窗函数不会导致结果集的行数减少。</p>
+<ul>
+<li><p>sum  over：按照一定规则聚合函数</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并计算每个班级的学生平均分（class_avg_score）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    <span class="built_in">id</span>,name,age,score,class_id,</span><br><span class="line">    avg(score) over (partition by class_id) as class_avg_score</span><br><span class="line">from</span><br><span class="line">    student;</span><br></pre>
+</li>
+<li><p>sum over order by：按照一定规则聚合函数后并进行一定排序</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数升序的方式累加计算每个班级的学生总分（class_sum_score）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    <span class="built_in">id</span>,name,age,score,class_id,</span><br><span class="line">    <span class="built_in">sum</span>(score) over(partition by class_id order by score asc) as class_sum_score</span><br><span class="line">from</span><br><span class="line">    student;</span><br></pre>
+</li>
+<li><p>rank：根据指定列的结果或表达式对行进行排序，可产生相同排名</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数降序的方式计算每个班级内的学生的分数排名（ranking）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    <span class="built_in">id</span>,name,age,score,class_id,</span><br><span class="line">    rank () over(</span><br><span class="line">        partition by class_id</span><br><span class="line">        order by score desc</span><br><span class="line">    )</span><br><span class="line">    as ranking</span><br><span class="line">from</span><br><span class="line">    student</span><br></pre>
+</li>
+<li><p>row_number：根据指定列的结果或表达式对行进行排序，不可产生相同排名</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数降序的方式给每个班级内的学生分配一个编号（row_number）。</span></span><br><span class="line"></span><br><span class="line">select</span><br><span class="line">    <span class="built_in">id</span>,name,age,score,class_id,</span><br><span class="line">    row_number() over (</span><br><span class="line">        partition by class_id</span><br><span class="line">        order by score desc</span><br><span class="line">    )</span><br><span class="line">    as row_number</span><br><span class="line">from</span><br><span class="line">    student;</span><br></pre></li>
+</ul>
+<blockquote>
+<ol>
+<li><code>RANK()</code>函数：<code>RANK()</code>函数计算并返回每行的排名，如果有相同的值，则会跳过相同的排名并产生连续的排名，下一个排名将会增加与前面相同值的数量相等的步长。例如，如果有两个学生得分相同，他们的排名将是相同的，下一个学生的排名将增加2。如果两个学生得分不同，他们将获得不同的排名。如果两个学生得分相同，则他们将获得相同的排名，而下一个学生将获得跳过相同分数数量的排名。</li>
+<li><code>ROW_NUMBER()</code>函数：<code>ROW_NUMBER()</code>函数计算并返回每行的唯一排名，它不考虑相同值的情况。即使有多行具有相同的值，它们也会分配不同的排名。这意味着对于具有相同分数的学生，他们将获得不同的排名。</li>
+</ol>
+<p>因此，主要区别在于<code>RANK()</code>函数处理相同值时可能会跳过排名，而<code>ROW_NUMBER()</code>函数始终产生唯一的排名。具体使用哪个函数取决于您的需求和对排名逻辑的理解。</p>
+</blockquote>
+<ul>
+<li><p>lag&#x2F;lead：根据一定规则获取当前行之前&#x2F;之后数据</p>
+<pre class="highlight"><span class="line"><span class="comment">#假设有一个学生表 student，包含以下字段：id（学号）、name（姓名）、age（年龄）、score（分数）、class_id（班级编号）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数降序的方式获取每个班级内的学生的前一名学生姓名（prev_name）、后一名学生姓名（next_name）。</span></span><br><span class="line"></span><br><span class="line">select </span><br><span class="line">    <span class="built_in">id</span>,name,age,score,class_id,</span><br><span class="line">    lag(name,1,null) over(</span><br><span class="line">        partition by class_id order by score desc</span><br><span class="line">    )as  prev_name,</span><br><span class="line">    lead(name,1,null) over(</span><br><span class="line">        partition by class_id order by score desc</span><br><span class="line">    )as next_name</span><br><span class="line">from </span><br><span class="line">    student</span><br></pre></li>
+</ul>
+<h2 id="九、其他注意事项"><a href="#九、其他注意事项" class="headerlink" title="九、其他注意事项"></a>九、其他注意事项</h2><ul>
+<li>SQL下标也从0开始</li>
+<li>SQL不区分大小写</li>
+<li>SQL查询一个表只用一个select from</li>
+<li>一段SQL语句只有最结尾使用分号</li>
+<li>查询不同的内容之间使用逗号隔开</li>
+</ul>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            https://www.wuzhiyou.top/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">旧的时光告一段落 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/08/12/%E5%B8%A6www%E5%92%8C%E4%B8%8D%E5%B8%A6www%E7%9A%84%E5%9F%9F%E5%90%8D%E8%B7%B3%E8%BD%AC/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">带www和不带www的域名跳转 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E8%AF%A2"><span class="toc-text">一、查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%BB%E9%87%8D"><span class="toc-text">二、去重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%92%E5%BA%8F"><span class="toc-text">三、排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%88%AA%E6%96%AD%E5%92%8C%E5%81%8F%E7%A7%BB"><span class="toc-text">四、截断和偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF"><span class="toc-text">五、条件分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-text">六、函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%88%86%E7%BB%84%E8%81%9A%E5%90%88"><span class="toc-text">七、分组聚合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%9F%A5%E8%AF%A2%E8%BF%9B%E9%98%B6"><span class="toc-text">八、查询进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2"><span class="toc-text">1、关联查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">2、子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">3、组合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0"><span class="toc-text">4、开窗函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">九、其他注意事项</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E8%AF%A2"><span class="toc-text">一、查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%BB%E9%87%8D"><span class="toc-text">二、去重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%92%E5%BA%8F"><span class="toc-text">三、排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%88%AA%E6%96%AD%E5%92%8C%E5%81%8F%E7%A7%BB"><span class="toc-text">四、截断和偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF"><span class="toc-text">五、条件分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-text">六、函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%88%86%E7%BB%84%E8%81%9A%E5%90%88"><span class="toc-text">七、分组聚合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%9F%A5%E8%AF%A2%E8%BF%9B%E9%98%B6"><span class="toc-text">八、查询进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2"><span class="toc-text">1、关联查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">2、子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">3、组合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0"><span class="toc-text">4、开窗函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">九、其他注意事项</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

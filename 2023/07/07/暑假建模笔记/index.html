@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>暑假数学建模笔记</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="暑假数学建模笔记">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/07/07/%E6%9A%91%E5%81%87%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-07-07">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-19">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="数学建模">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A1%A5"><span class="toc-text">一、补</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%80%BC%E6%8B%9F%E5%90%88"><span class="toc-text">插值拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%817-6%E6%97%A5-%E7%BA%BF%E6%80%A7%E7%9B%AE%E6%A0%87"><span class="toc-text">二、7.6日 线性目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E7%9B%AE%E6%A0%87%E6%A8%A1%E5%9E%8B%E2%80%94%E2%80%94%E7%94%9F%E4%BA%A7%E7%9B%88%E5%88%A9%E9%97%AE%E9%A2%98"><span class="toc-text">1.线性规划目标模型——生产盈利问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#eg1%EF%BC%9A"><span class="toc-text">eg1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eg2%EF%BC%9A"><span class="toc-text">eg2：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%90%E8%BE%93%E9%97%AE%E9%A2%98"><span class="toc-text">2.运输问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Lingo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-text">3.Lingo使用教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%817-7%E6%97%A5-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">三、7.7日 微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.定义模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Matlab%E6%B1%82%E8%A7%A3"><span class="toc-text">2.Matlab求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%A0%E6%9F%93%E7%97%85%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">3.传染病预测模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A7%8D%E7%BE%A4%E4%BD%9C%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="toc-text">4.种群作用模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%817-8%E6%97%A5-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">四、7.8日 动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A9%E7%94%A8Lingo%E8%A7%A3%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BA%BF%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">1.利用Lingo解最短路线的动态规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E5%88%A9%E6%B6%A6%E9%97%AE%E9%A2%98"><span class="toc-text">2.动态规划解决利润问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%817-9%E6%97%A5%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%B5%9B%E7%AE%80%E4%BB%8B"><span class="toc-text">五、7.9日建模比赛简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%817-10%E6%97%A5-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">六、7.10日 灰色预测模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%BA%A6"><span class="toc-text">1.灰色关联度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.灰色预测模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%817-11-Matlab%E4%BD%BF%E7%94%A8"><span class="toc-text">七、7.11 Matlab使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%817-12-Lingo%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%A0%BC%E5%BC%8F"><span class="toc-text">八、7.12 Lingo和数学公式格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%817-13%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88"><span class="toc-text">九、7.13最小二乘曲线拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%817-14%E5%9B%BE%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90"><span class="toc-text">十、7.14图与网络分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%817-15"><span class="toc-text">十一、7.15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%817-16-%E6%A8%A1%E7%B3%8A%E6%95%B0%E5%AD%A6"><span class="toc-text">十二、7.16 模糊数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%817-17-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">十三、7.17 数据处理与分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%817-19-%E5%BB%BA%E6%A8%A1%E6%80%BB%E8%A7%88"><span class="toc-text">十四、7.19 建模总览</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      暑假数学建模笔记
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-07-07T06:53:56.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-07-07</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/" 
+          class="post-meta-link">
+          数学相关
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>6.3k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+            class="post-meta-link">
+            数学建模
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/458492549">数学建模：历年优秀论文+入门+进阶+美赛（国赛待更新） - 知乎 (zhihu.com)</a></p>
+<p>核心：关键是要搞清楚什么样的问题用什么样的方法，然后现学现卖。</p>
+<pre class="highlight"><span class="line">//常用模型</span><br><span class="line">规划类：线性规划、非线性规划、动态规划、多目标优化模型</span><br><span class="line">模拟类：线性回归、多元线性回归、BOX-COX变换、残差分析</span><br><span class="line">预测类：时间序列、灰度、logistics、SEIR、微分差分方程、马尔科夫链</span><br><span class="line">权重确定类：AHP、主成分分析、因子分析法、熵权法、模糊评价法</span><br><span class="line">其他常用类：图、排队论、社会力模型、决策树、博弈论</span><br><span class="line"></span><br><span class="line">//常用方法</span><br><span class="line">蒙特卡洛法、Dijkstra、Floyd、穷举法、元胞自动机</span><br><span class="line"></span><br><span class="line">//常用学习思路</span><br><span class="line">先学习模型的公式，再了解模型的使用情境、可应用的问题类型，最后将公式推</span><br><span class="line">导和原理推导手动完成一遍。</span><br><span class="line"></span><br><span class="line">//常见子问题</span><br><span class="line">1.已知x1,x2,x3,...，单位盈利为w1,w2,w3,...，多个目的地与起点的距离是d1,d2,d3,...，对应的单位距离的运费为z1,z2,z3,...，试求一个盈利最大运费最小的方案。</span><br><span class="line">2.已知路口的车流流入量lamdba，红绿灯n秒且忽略黄灯，在车流量稳定的情况下试分析车辆在路口的平均等待时间。</span><br><span class="line">3.结合第a学期b门课程的成绩，评估某年级某院某班级的每个学生的学习能力。</span><br><span class="line">4.结合历年来五一长假期间西安机场的航班情况，试预测今年五一期间机场在何时达到客流量的高峰，客流量大致为多少。</span><br><span class="line">5.TSP问题。</span><br><span class="line">6.试画出各种数据已知的气球在穿越n层风速为vi（i=1,2,3,...,n）的气流层时的轨迹。</span><br><span class="line">7.试给出方案确定学校应该新增座椅的数量和位置，学校地形、椅子成本已知。</span><br><span class="line">8.商场拟定根据历年来顾客的购买数据进行分析，调整促销商品的种类和价格，试给出方案。</span><br><span class="line">9.请根据雪崩的物理原理建立模型模拟雪崩随时间的变化。</span><br><span class="line">10.根据每日治愈人数、感染人数以及其他数据建立传染病模型。</span><br></pre>
+
+
+
+
+
+<h2 id="一、补"><a href="#一、补" class="headerlink" title="一、补"></a>一、补</h2><h3 id="插值拟合"><a href="#插值拟合" class="headerlink" title="插值拟合"></a>插值拟合</h3><p>插值与拟合是数学建模中的一种基本的数据分析手段，被公认为建模中常用的算法之一。 </p>
+<p><strong>插值</strong>算法是在现有的数据是极少的，不足以支撑分析的进行，需要“模拟产生”一些新的但又比较靠谱的值来满足需 求，这就是插值的作用。（根据现有的数据点，构造过这些个数据点的近似函数）</p>
+<blockquote>
+<p>什么是插值？牛顿插值的几何解释是怎么样的？ - 马同学的回答 - 知乎 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22320408/answer/141973314">https://www.zhihu.com/question/22320408/answer/141973314</a></p>
+</blockquote>
+<p><strong>拟合</strong>问题的目标是寻求一个函数（曲线），使得该曲线在某种准则下与所有的数据点最为接近，即曲线拟合的最 好（最小化损失函数）。（已知有限个数据点，求近似函数，不要求过已知数据点，只要求在某种意义下它在这 些点上的总偏差最小）</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709164156009.png" alt="image-20230709164156009" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709164156009.png" class="lozad post-image"></p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709172900050.png" alt="image-20230709172900050" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709172900050.png" class="lozad post-image"></p>
+<p>曲线拟合的思想：已知一组二维数据，即平面上的 n 个点寻求一个函数（曲线）f(x)，使得在某种准则下 f(x) 与所有数据点最为接近, 其中最常用的一种拟合方法就是线性最小二乘法. </p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709173534924.png" alt="image-20230709173534924" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709173534924.png" class="lozad post-image"></p>
+<p>（？）</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/134689084#:~:text=%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E6%98%AF%E4%B8%80%E7%A7%8D,%E7%B3%BB%E5%B9%B6%E7%BB%98%E5%88%B6%E6%88%90%E6%9B%B2%E7%BA%BF%E3%80%82">MATLAB最小二乘法拟合曲线公式 - 知乎 (zhihu.com)</a></p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709174028110.png" alt="image-20230709174028110" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709174028110.png" class="lozad post-image"></p>
+<p><code>Y = P(1)*X^N + P(2)*X^(N-1) + ... + P(N)*X + P(N+1)</code>拟合公式</p>
+<blockquote>
+<p>在 MATLAB 中，polyfit(x, y, n) 是一个用于多项式拟合的函数。以下是对此函数的解释：</p>
+<ul>
+<li>x：表示自变量（或横轴）数据的向量或矩阵。</li>
+<li>y：表示因变量（或纵轴）数据的向量或矩阵。它的大小应与 x 相匹配。</li>
+<li>n：表示所需拟合的多项式的次数。</li>
+</ul>
+<p>当调用 polyfit(x, y, n) 函数时，MATLAB 会对给定的数据点进行多项式拟合，并返回拟合多项式的系数。在你的问题中，你使用了 n&#x3D;1，即一次多项式（线性拟合）。</p>
+<p>polyfit(x, y, 1) 的返回值 coefficient 是一个包含两个元素的向量，其中第一个元素是拟合多项式的斜率（即直线的斜率），第二个元素是拟合多项式的截距（即直线的截距）。</p>
+<p>通过使用 polyfit(x, y, 1) 进行线性拟合，你可以得到一条最佳拟合线，该线通过数据点集(x, y)，使得拟合线与数据点的残差平方和最小化。</p>
+<p>此外，polyfit 函数还可以用于高阶多项式拟合（增加 n 的值）。但请注意，在进行多项式拟合时，需要谨慎选择多项式的阶数，以避免过度拟合或欠拟合的问题。</p>
+</blockquote>
+<blockquote>
+<p>在MATLAB中， <code>polyval(coefficient, x)</code> 函数用于计算通过多项式拟合的系数 <code>coefficient</code> 得到的自变量 <code>x</code> 对应的因变量 <code>yn</code> 的值。以下是对此函数的解释：</p>
+<ul>
+<li>coefficient：表示多项式拟合的系数的向量。这些系数通常是使用 <code>polyfit</code> 函数计算得到的。</li>
+<li>x：表示自变量的向量或矩阵。</li>
+<li>yn：表示通过多项式拟合计算得到的因变量的向量或矩阵。其大小与 <code>x</code> 相匹配。</li>
+</ul>
+<p>当调用 <code>polyval(coefficient, x)</code> 函数时，MATLAB会使用给定的多项式拟合系数 <code>coefficient</code> 来计算自变量 <code>x</code> 对应的因变量 <code>yn</code> 的值。这个过程涉及将 <code>x</code> 的每个值代入多项式中，并计算出相应的因变量值。</p>
+<p>使用 <code>polyval</code> 函数可以通过拟合多项式来估计未知数据点的因变量值。这对于在给定的自变量范围内进行插值或外推是非常有用的。</p>
+<p>需要注意的是，<code>polyval</code> 函数只能用于已经进行多项式拟合的情况，其中 <code>coefficient</code> 是由 <code>polyfit</code> 函数计算得到的多项式系数向量。</p>
+</blockquote>
+<blockquote>
+<p>假设我们有一组数据点，每个数据点包含了自变量 X 和因变量 Y 的取值。我们希望找到一个多项式函数，使得该函数能够很好地描述这些数据点的关系。</p>
+<p>公式 Y &#x3D; P(1)*X^N + P(2)*X^(N-1) + … + P(N)*X + P(N+1) 中的参数 P(1), P(2), …, P(N+1) 可以通过拟合的过程来确定。我们可以通过最小化拟合误差，即将每个数据点的实际值 Y 与多项式函数计算得到的值进行比较，并求得最优的参数值，使得两者之间的差异最小化。</p>
+<p>​	</p>
+</blockquote>
+<p>多项式拟合是一种常见的数据拟合技术，用于找到一个多项式函数来逼近给定的一组数据点。以下是使用公式 Y &#x3D; P(1)*X^N + P(2)*X^(N-1) + … + P(N)*X + P(N+1) 进行多项式拟合的详细步骤：</p>
+<ol>
+<li>收集数据：首先，收集包含自变量 X 和因变量 Y 的一组数据点。这些数据点可以来自实验观测、实际测量或其他来源。</li>
+<li>确定多项式次数：根据数据的特征和拟合需求，确定多项式的次数 N。次数越高，多项式的灵活性越大，但也可能导致过度拟合。</li>
+<li>构建矩阵：构建一个 (N+1)×(N+1) 的矩阵 X 和一个 (N+1)×1 的列向量 Y。其中，矩阵 X 的第 i 行第 j 列的元素为 X_i^(N-j)（即自变量 X 的幂次方），列向量 Y 的第 i 行表示对应的因变量 Y 的取值。</li>
+<li>解线性方程组：解线性方程组 X * P &#x3D; Y，其中矩阵 P 是一个 (N+1)×1 的列向量，表示多项式的系数。通过求解此线性方程组，可以得到最优的多项式系数 P。</li>
+<li>得到拟合函数：根据求解得到的多项式系数 P，构建拟合函数 Y_fit &#x3D; P(1)*X^N + P(2)*X^(N-1) + … + P(N)*X + P(N+1)。</li>
+<li>评估拟合效果：使用适当的指标（如均方误差、决定系数等）来评估拟合函数与原始数据之间的拟合效果。较小的误差和较高的决定系数表示拟合结果较好。</li>
+</ol>
+<p>请注意，多项式拟合可能会受到过度拟合的问题，特别是在多项式次数较高时。因此，在进行多项式拟合时，需要谨慎选择多项式次数，并使用合适的模型评估方法进行验证。</p>
+<blockquote>
+<p>总结一句话：到时候照着这步骤套公式即可，无需了解其原理。</p>
+</blockquote>
+<h2 id="二、7-6日-线性目标"><a href="#二、7-6日-线性目标" class="headerlink" title="二、7.6日 线性目标"></a>二、7.6日 线性目标</h2><p>​	</p>
+<h3 id="1-线性规划目标模型——生产盈利问题"><a href="#1-线性规划目标模型——生产盈利问题" class="headerlink" title="1.线性规划目标模型——生产盈利问题"></a>1.线性规划目标模型——生产盈利问题</h3><h4 id="eg1："><a href="#eg1：" class="headerlink" title="eg1："></a>eg1：</h4><p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706104841135.png" alt="image-20230706104841135" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706104841135.png" class="lozad post-image"></p>
+<h4 id="eg2："><a href="#eg2：" class="headerlink" title="eg2："></a>eg2：</h4><p>例6 某计算机公司生产三种型号的笔记本电脑 A, B,C 。这三种笔记本电脑需要 在复杂的装配线上生产，生产1台 A, B,C 型号的笔记本电脑分别需要5，8，12（h）。公 司装配线正常的生产时间是每月1700h。公司营业部门估计 A, B,C 三种笔记本电脑的利 润分别是每台1000，1440，2520（元），而公司预测这个月生产的笔记本电脑能够全部 售出。公司经理考虑以下目标：</p>
+<p> 第一目标：充分利用正常的生产能力，避免开工不足；</p>
+<p> 第二目标：优先满足老客户的需求， A, B,C 三种型号的电脑50，50，80（台）， 同时根据三种电脑的纯利润分配不同的权因子； </p>
+<p>第三目标：限制装配线加班时间，最好不要超过200h； </p>
+<p>第四目标：满足各种型号电脑的销售目标，A, B,C 型号分别为100，120，100（台）， 再根据三种电脑的纯利润分配不同的权因子；</p>
+<p> 第五目标：装配线的加班时间尽可能少。 请列出相应的目标规划模型，并用LINGO软件求解</p>
+<h3 id="2-运输问题"><a href="#2-运输问题" class="headerlink" title="2.运输问题"></a>2.运输问题</h3><p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706105117863.png" alt="image-20230706105117863" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706105117863.png" class="lozad post-image"></p>
+<h3 id="3-Lingo使用教程"><a href="#3-Lingo使用教程" class="headerlink" title="3.Lingo使用教程"></a>3.Lingo使用教程</h3><ul>
+<li>Global optimal solution found.<br>表示全局最优解找到</li>
+<li>Objective value:<br>表示最优目标值</li>
+<li>Total solver iterations:<br>表示用单纯行法进行了两次迭代</li>
+<li>Variable<br>表示变量，运行结果中有两个变量为x1,x2</li>
+<li>Value<br>给出最优解中个变量的值</li>
+<li>Reduced Cost<br>与最优单纯形表中的检验数相差一个符号的数。<br>为了使某个变量在解中的数值增加一个单位，目标函数必须付出的代价（增加或减少Reduced Cost的值）</li>
+<li>Slack or Surplus<br>表示接近等于的程度<br>在约束条件中是&lt;&#x3D;,叫做松弛变量<br>在约束条件中是&gt;&#x3D;,叫做过剩变量<br>在约束条件中是&#x3D;,值为0,该约束为一个紧约束（或有效约束）<br>如果一个约束条件错误，作为一个不可行约束，Slack or Surplus为负数<br>Slack or Surplus表示的是：约束离相等还差多少</li>
+<li>Dual Price<br>给出对偶价格的值<br>表示每增一个单位（约束右边的常数），目标值改变的数量（在最大化问题中目标函数是增加的，反之是减小的）<br>例如在本例中，c约束条件的Dual Price为1，表示2<em>x1+x2&lt;&#x3D;600增加一个单位到2</em>x1+x2&lt;&#x3D;601使目标值增加到-1(目标函数的Dual Price为-1），则Objective value就变为799</li>
+<li>对偶价格也叫影子价格，这是由于他们表示可以用多大的价格去购买单位资源</li>
+</ul>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706112921763.png" alt="image-20230706112921763" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706112921763.png" class="lozad post-image"></p>
+<p>直译</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706112951868.png" alt="image-20230706112951868" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706112951868.png" class="lozad post-image"></p>
+<pre class="highlight"><span class="line">!使用sets和endsets设置集</span><br><span class="line">sets:</span><br><span class="line">	student/stu1..stu100/: name, age;</span><br><span class="line">endsets</span><br><span class="line"></span><br><span class="line">!运行结果</span><br><span class="line"> Variable           Value</span><br><span class="line">                                                 NAME( STU1)        0.000000</span><br><span class="line">                                                 NAME( STU2)        0.000000</span><br><span class="line">                                                 NAME( STU3)        0.000000</span><br><span class="line">                                                 NAME( STU4)        0.000000</span><br><span class="line">                                                 NAME( STU5)        0.000000</span><br><span class="line">                                                 NAME( STU6)        0.000000</span><br><span class="line">                                                 NAME( STU7)        0.000000</span><br><span class="line">                                                 NAME( STU8)        0.000000</span><br><span class="line">                                                 NAME( STU9)        0.000000</span><br><span class="line">                                                NAME( STU10)        0.000000</span><br><span class="line">                                                NAME( STU11)        0.000000</span><br><span class="line">                                                ……					……</span><br><span class="line"></span><br></pre>
+
+
+
+<pre class="highlight"><span class="line">!设置集的集</span><br><span class="line"></span><br><span class="line">sets:</span><br><span class="line">! 原始集;</span><br><span class="line">worker:/worker1..worker3/: efficiency;    ! 工人效率;</span><br><span class="line">machine:/machine1..machine3/: quality;    ! 机器质量;</span><br><span class="line">product:/product1..product3/: value, cost; ! 产品价值和消耗;</span><br><span class="line"></span><br><span class="line">! 派生集;</span><br><span class="line">allowed_plan(worker, machine, product): evaluation;    ! 对可行方案的评价;</span><br><span class="line">endsets</span><br><span class="line"></span><br><span class="line">！设置完集后通过data和enddata赋值</span><br><span class="line">data:</span><br><span class="line">	efficiency = 4 3 2</span><br><span class="line">	quality = 3 2 1</span><br><span class="line">	value = 50 20 10</span><br><span class="line">enddata</span><br><span class="line"></span><br><span class="line">！当三个集的对象个数一样时候，简化写</span><br><span class="line">data:</span><br><span class="line">	efficiency, quality, value = 4 3 50</span><br><span class="line">      	                    	 3 2 20</span><br><span class="line">      	                         2 1 10;</span><br><span class="line">enddata</span><br></pre>
+
+
+
+<p>特殊输入处理方式</p>
+<blockquote>
+<p>将所有对象属性变量初始设置为一个值。eg：efficiency &#x3D; 3;</p>
+</blockquote>
+<blockquote>
+<p>某个对象的值为非定值，用？替代。eg：efficiency &#x3D; 2 ? 4;  运算时实时输入处理</p>
+</blockquote>
+<blockquote>
+<p>某个对象的值设为未知值，用，替代。eg：efficiency &#x3D; 2, , ;  后两个work的efficiency都是未知</p>
+</blockquote>
+<table data-draft-node="block" data-draft-type="table" data-size="normal" data-row-style="striped"><tbody><tr><th>运算符名称</th><th>运算符涵义</th></tr><tr><td>#not#</td><td>一元运算符，否定该操作数的逻辑值</td></tr><tr><td>#eq#</td><td>若两个运算数相等，则为 true ，否则为 false</td></tr><tr><td>#gt#</td><td>若左边的运算符严格大于右边的运算符，则为 true ，否则为 false</td></tr><tr><td>#ge#</td><td>若左边的运算符大于或等于右边的运算符，则为 true ，否则为 false</td></tr><tr><td>#lt#</td><td>若左边的运算符严格小于右边的运算符，则为 true ，否则为 false</td></tr><tr><td>#le#</td><td>若左边的运算符小于或等于右边的运算符，则为true，否则为false</td></tr><tr><td>#and#</td><td>仅当两个参数都为true时，结果为true，否则为false</td></tr><tr><td>#or#</td><td>仅当两个参数都为false时，结果为false，否则为true</td></tr></tbody></table>
+
+
+
+<p>eg1：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Hello-world-hello-lazy/p/15340971.html">多目标规划使用Lingo求解 </a></p>
+<p>eg2：求解两个方程组<img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706160956805.png" alt="image-20230706160956805" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230706160956805.png" class="lozad post-image"></p>
+<pre class="highlight"><span class="line">model:</span><br><span class="line">  submodel equation:</span><br><span class="line">  x^2+y^2=4;</span><br><span class="line">  x^2-y^2=1;</span><br><span class="line">  endsubmodel</span><br><span class="line"></span><br><span class="line">  submodel con1:</span><br><span class="line">  @free(x);x&lt;0;</span><br><span class="line">  endsubmodel</span><br><span class="line"></span><br><span class="line">  submodel con2:</span><br><span class="line">  @free(y);y&lt;0;</span><br><span class="line">  endsubmodel</span><br><span class="line"></span><br><span class="line">calc:</span><br><span class="line">  @solve(equation);</span><br><span class="line">  @solve(equation,con1);</span><br><span class="line">  @solve(equation,con2);</span><br><span class="line">  @solve(equation,con1,con2);</span><br><span class="line">endcalc</span><br><span class="line"></span><br><span class="line">end</span><br></pre>
+
+<h2 id="三、7-7日-微分方程"><a href="#三、7-7日-微分方程" class="headerlink" title="三、7.7日 微分方程"></a>三、7.7日 微分方程</h2><h3 id="1-定义模型"><a href="#1-定义模型" class="headerlink" title="1.定义模型"></a>1.定义模型</h3><p>eg1：<img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707085111452.png" alt="image-20230707085111452" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707085111452.png" class="lozad post-image"></p>
+<p>eg2：</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707092007684.png" alt="image-20230707092007684" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707092007684.png" class="lozad post-image"></p>
+<p>曲线弧长公式</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707092043992.png" alt="image-20230707092043992" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707092043992.png" class="lozad post-image"></p>
+<p>对于复合函数求导（？）</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707093922473.png" alt="image-20230707093922473" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707093922473.png" class="lozad post-image"></p>
+<p>二阶常微分降阶法，换元</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707094530698.png" alt="image-20230707094530698" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707094530698.png" class="lozad post-image"></p>
+<p>如何化简得（？）</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707094742581.png" alt="image-20230707094742581" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707094742581.png" class="lozad post-image"></p>
+<h3 id="2-Matlab求解"><a href="#2-Matlab求解" class="headerlink" title="2.Matlab求解"></a>2.Matlab求解</h3><p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707111310422.png" alt="image-20230707111310422" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707111310422.png" class="lozad post-image"></p>
+<p><code>clc</code>清空命令行窗口</p>
+<p><code>clear</code>清空工作区变量</p>
+<p><code>syms y(x)</code>定义y(x)，表示y是x的函数</p>
+<blockquote>
+<p>拓展:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_54186956/article/details/127274462">MATLAB中的sym函数、syms函数、symfun函数以及symvar函数的简单介绍_</a></p>
+</blockquote>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707113324070.png" alt="image-20230707113324070" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707113324070.png" class="lozad post-image"></p>
+<p><code>diff(y)</code>表示一阶导</p>
+<p><code>diff(y,2)</code>表示二阶导</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707152642668.png" alt="image-20230707152642668" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707152642668.png" class="lozad post-image"></p>
+<p> 多阶求导，且使用换元</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707153309605.png" alt="image-20230707153309605" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707153309605.png" class="lozad post-image"></p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707153344131.png" alt="image-20230707153344131" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707153344131.png" class="lozad post-image"></p>
+<p>求矩阵微分方程</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707154200091.png" alt="image-20230707154200091" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707154200091.png" class="lozad post-image"></p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707154211829.png" alt="image-20230707154211829" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707154211829.png" class="lozad post-image"></p>
+<p><code>ones(x,y)</code>产生x行y列的全为1的矩阵</p>
+<p><code>[s1,s2,s3]</code>分别矩阵的第一行第二行第三行，可用此表示整个矩阵</p>
+<p>这个是什么矩阵（？）<img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707154751928.png" alt="image-20230707154751928" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707154751928.png" class="lozad post-image"></p>
+<p>求解边界解<img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707155227240.png" alt="image-20230707155227240" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707155227240.png" class="lozad post-image"></p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707155531074.png" alt="image-20230707155531074" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230707155531074.png" class="lozad post-image"></p>
+<blockquote>
+<p>一阶微分线性方程组知识补充：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/537253058">一阶线性微分方程的通解 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<p>（？）PPT39页开始-PPT86页结束</p>
+<p><img src="/../images/%E4%B8%BA%E4%BB%80%E4%B9%88VMvare%E5%A4%9A%E7%BB%99%E6%88%91%E5%88%9B%E5%BB%BA%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%BB%9C/image-20230707172355898.png" alt="image-20230707172355898" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E4%B8%BA%E4%BB%80%E4%B9%88VMvare%E5%A4%9A%E7%BB%99%E6%88%91%E5%88%9B%E5%BB%BA%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%BB%9C/image-20230707172355898.png" class="lozad post-image"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36815313/article/details/109459892">【Matlab 控制】微分方程 ode45() 求解并绘制曲线_matlab画微分方程组曲线_Zhao-Jichao的博客-CSDN博客</a></p>
+<h3 id="3-传染病预测模型"><a href="#3-传染病预测模型" class="headerlink" title="3.传染病预测模型"></a>3.传染病预测模型</h3><p>指数型模型：一传十，十传百</p>
+<p><img src="/../images/%E4%B8%BA%E4%BB%80%E4%B9%88VMvare%E5%A4%9A%E7%BB%99%E6%88%91%E5%88%9B%E5%BB%BA%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%BB%9C/image-20230707173556516.png" alt="image-20230707173556516" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E4%B8%BA%E4%BB%80%E4%B9%88VMvare%E5%A4%9A%E7%BB%99%E6%88%91%E5%88%9B%E5%BB%BA%E4%BA%86%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%BB%9C/image-20230707173556516.png" class="lozad post-image"></p>
+<h3 id="4-种群作用模型"><a href="#4-种群作用模型" class="headerlink" title="4.种群作用模型"></a>4.种群作用模型</h3><h2 id="四、7-8日-动态规划"><a href="#四、7-8日-动态规划" class="headerlink" title="四、7.8日 动态规划"></a>四、7.8日 动态规划</h2><p>动态规划是现代企业管理中的一种重要决策方法，可用于解决最优路径、资源分配、生产计划与库存、投资、装载、排序等问题，还可用于生产过程的最优控制等。由于它有独特的解题思路，因而在处理某些优化问题时，比线性规划或非线性规划方法更有效。</p>
+<h3 id="1-利用Lingo解最短路线的动态规划"><a href="#1-利用Lingo解最短路线的动态规划" class="headerlink" title="1.利用Lingo解最短路线的动态规划"></a>1.利用Lingo解最短路线的动态规划</h3><pre class="highlight"><span class="line">model: Title Dynamic Programming; </span><br><span class="line">sets: vertex/A,B1,B2,C1,C2,C3,C4,D1,D2,D3,E1,E2,E3,F1,F2,G/:L; </span><br><span class="line">road(vertex,vertex)/A B1,A B2,B1 C1,B1 C2,B1 c3,B2 C2,B2 C3,B2 C4, </span><br><span class="line">C1 D1,C1 D2,C2 D1,C2 D2,C3 D2,C3 D3,</span><br><span class="line">C4 D2,C4 D3, D1 E1,D1 E2,D2 E2,D2 E3,</span><br><span class="line">D3 E2,D3 E3, E1 F1,E1 F2,E2 F1,E2 F2,</span><br><span class="line">E3 F1,E3 F2,F1 G,F2 G/:D; </span><br><span class="line">endsets </span><br><span class="line">data: </span><br><span class="line">D=5 3 1 3 6 8 7 6 </span><br><span class="line">6 8 3 5 3 3 8 4 </span><br><span class="line">2 2 1 2 3 3 </span><br><span class="line">3 5 5 2 6 6 4 3; </span><br><span class="line">L=0,,,,,,,,,,,,,,,; </span><br><span class="line">enddata </span><br><span class="line">@<span class="keyword">for</span>(vertex(i)|i<span class="comment">#GT#1:L(i)=@min(road(j,i):L(j)+D(j,i))); </span></span><br><span class="line">end</span><br><span class="line"></span><br></pre>
+
+<p>这段 Lingo 代码是一个动态规划问题的模型。让我们逐行进行分析：</p>
+<ol>
+<li>第一行指定了模型的名称为 “Title Dynamic Programming”。</li>
+<li>第二行使用 <code>sets</code> 关键字定义了一些集合，包括顶点集合（vertex）和道路集合（road），每个集合都有对应的元素。顶点集合包括 A, B1, B2, C1, C2, C3, C4, D1, D2, D3, E1, E2, E3, F1, F2 和 G；道路集合包括 A 到 B1, A 到 B2, B1 到 C1, B1 到 C2, B1 到 C3, B2 到 C2, B2 到 C3, B2 到 C4, C1 到 D1, C1 到 D2, C2 到 D1, C2 到 D2, C3 到 D2, C3 到 D3, C4 到 D2, C4 到 D3, D1 到 E1, D1 到 E2, D2 到 E2, D2 到 E3, D3 到 E2, D3 到 E3, E1 到 F1, E1 到 F2, E2 到 F1, E2 到 F2, E3 到 F1, E3 到 F2, F1 到 G 和 F2 到 G。</li>
+<li>第五行使用 <code>data</code> 关键字定义了数据。其中 D 矩阵表示从一个顶点到另一个顶点的距离，L 矩阵初始化为全零。</li>
+<li>第八行使用 <code>@for</code> 关键字开始一个循环，在每个顶点 i 上进行迭代。循环的目标是计算每个顶点 i 到其他顶点的最短路径。</li>
+<li>在循环中的第九行，<code>L(i)=@min(road(j,i):L(j)+D(j,i))</code> 是动态规划的关键部分。它表示对于当前的顶点 i，找到能够到达顶点 i 的所有道路 j，并计算 L(j) + D(j, i) 的最小值，并将结果赋值给 L(i)。</li>
+<li>最后一行表示循环结束。</li>
+</ol>
+<p>总体来说，这段 Lingo 代码使用动态规划方法计算了给定图中每个顶点到其他顶点的最短路径，并将结果存储在 L 矩阵中。</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709162335503.png" alt="image-20230709162335503" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709162335503.png" class="lozad post-image"></p>
+<h3 id="2-动态规划解决利润问题"><a href="#2-动态规划解决利润问题" class="headerlink" title="2.动态规划解决利润问题"></a>2.动态规划解决利润问题</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/616589104">数学建模（一）—动态规划 - 知乎 (zhihu.com)</a></p>
+<p>Q：某公司拟将某种设备5台分配给甲、乙、丙3个工厂，各工厂利润与设备数量之间的关系如下表所示，问这5台设备如何分配使3个工厂的总利润为最大?<img src="https://pic4.zhimg.com/80/v2-b76ba0e30598d6883b4309be66a22317_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-b76ba0e30598d6883b4309be66a22317_720w.webp" class="lozad post-image"></p>
+<p>套入函数</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709162918932.png" alt="image-20230709162918932" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709162918932.png" class="lozad post-image"></p>
+<p>A：仨工厂即将问题分为仨阶段，k&#x3D;1,2,3。给第k个工厂分配前拥有的设备台数，s1&#x3D;5。</p>
+<p>之后看懵了…</p>
+<p>（？）</p>
+<h2 id="五、7-9日建模比赛简介"><a href="#五、7-9日建模比赛简介" class="headerlink" title="五、7.9日建模比赛简介"></a>五、7.9日建模比赛简介</h2><p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709093037805.png" alt="image-20230709093037805" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230709093037805.png" class="lozad post-image"></p>
+<p>省一和省二差距很小，一定注意排版，另有些老师只认MATLAB做出的数学公式。</p>
+<h2 id="六、7-10日-灰色预测模型"><a href="#六、7-10日-灰色预测模型" class="headerlink" title="六、7.10日 灰色预测模型"></a>六、7.10日 灰色预测模型</h2><p><strong>灰色系统理论</strong>是1982年由邓聚龙创立的一门边缘性学科(interdisciplinary)灰色系统用颜芭深浅反映信息量的多少。说一个系统是黑色的，就是说这个系统是黑洞洞的，信息量太少;说一个系统是白色的，就是说这个系统是清楚的信息量充足。这种处于黑白之间的系统，或说信息不完全的系统，称为灰色系统或简称灰系统。</p>
+<h3 id="1-灰色关联度"><a href="#1-灰色关联度" class="headerlink" title="1.灰色关联度"></a>1.灰色关联度</h3><p>计算灰色关联度：</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710102131841.png" alt="image-20230710102131841" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710102131841.png" class="lozad post-image"></p>
+<pre class="highlight"><span class="line">shengchanzongzhi=[0.732,0.7588,0.8597,1.0125,1.2356,1.4013];</span><br><span class="line">diyichanye=[0.8361,0.8888,0.9141,1.044,1.1069,1.2152];</span><br><span class="line">dierchanye=[0.6828,0.6885,0.7812,1.0237,1.2833,1.5405];</span><br><span class="line">disnachanye=[0.7439,0.7878,0.9292,0.9847,1.2363,1.3182];</span><br><span class="line">x0=shengchanzongzhi;</span><br><span class="line">x1=diyichanye;</span><br><span class="line">x2=dierchanye;</span><br><span class="line">x3=disnachanye;</span><br><span class="line">plot(x0, <span class="string">&#x27;b*-&#x27;</span>)</span><br><span class="line">hold on</span><br><span class="line">plot(x1, <span class="string">&#x27;g*-&#x27;</span>)</span><br><span class="line">hold on</span><br><span class="line">plot(x2, <span class="string">&#x27;g*-&#x27;</span>)</span><br><span class="line">hold on</span><br><span class="line">plot(x3, <span class="string">&#x27;r*-&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;相关曲线图&#x27;</span>)</span><br><span class="line">legend(<span class="string">&#x27;总产值&#x27;</span>,<span class="string">&#x27;第一产业&#x27;</span>, <span class="string">&#x27;第二产业&#x27;</span>, <span class="string">&#x27;第三产业&#x27;</span>)</span><br><span class="line">% show</span><br><span class="line"></span><br><span class="line">global_min = min(min(abs([x1; x2; x3] - repmat(x0, [3, 1]))));</span><br><span class="line">global_max = max(max(abs([x1; x2; x3] - repmat(x0, [3, 1]))));</span><br><span class="line">rho = 0.5;</span><br><span class="line">zeta_1 = (global_min + rho * global_max) ./ (abs(x0 - x1) + rho * global_max);</span><br><span class="line">zeta_2 = (global_min + rho * global_max) ./ (abs(x0 - x2) + rho * global_max);</span><br><span class="line">zeta_3 = (global_min + rho * global_max) ./ (abs(x0 - x3) + rho * global_max);</span><br><span class="line">%点除 如果a、b是矩阵，a./b就是a、b中对应的每个元素相除</span><br><span class="line">r1=mean(zeta_1);</span><br><span class="line">r2=mean(zeta_2);</span><br><span class="line">r3=mean(zeta_3);</span><br><span class="line"></span><br><span class="line">% r越大，关联度越大</span><br><span class="line"></span><br></pre>
+
+
+
+
+
+
+
+
+
+<h3 id="2-灰色预测模型"><a href="#2-灰色预测模型" class="headerlink" title="2.灰色预测模型"></a>2.灰色预测模型</h3><p>所谓<strong>灰色预测模型</strong>，就是对既含有已知信息又含有不确定信息的系统进行预测，就是对在一定范围内变化的、与时间有关的灰色过程进行预测。</p>
+<p>适用情况：</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710091619440.png" alt="image-20230710091619440" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710091619440.png" class="lozad post-image"></p>
+<p><em>GM（1,1）：</em>Grey Model灰色模型  （1，1）只含有一个变量的一阶微分方程模型</p>
+<p>步骤：</p>
+<ol>
+<li>根据原始的离散非负数据列，通过累加等方式削弱随机性、获得有规律的离散数据列</li>
+<li>建立相应的微分方程模型得到离散点处的解</li>
+<li>再通过累减求得的原始数据的估计值,从而对原始数据预测</li>
+</ol>
+<p>eg：长江水质污染预测</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710092157828.png" alt="image-20230710092157828" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710092157828.png" class="lozad post-image"></p>
+<blockquote>
+<p>规律不明显的可以制造规律，得到累加数列S（n）观察</p>
+</blockquote>
+<p>构建一节常微分方程</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710092611517.png" alt="image-20230710092611517" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710092611517.png" class="lozad post-image"></p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710093414738.png" alt="image-20230710093414738" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230710093414738.png" class="lozad post-image"></p>
+<h2 id="七、7-11-Matlab使用"><a href="#七、7-11-Matlab使用" class="headerlink" title="七、7.11 Matlab使用"></a>七、7.11 Matlab使用</h2><pre class="highlight"><span class="line">A = [2,1;1,1];  % 不等式约束的系数矩阵 A</span><br><span class="line">b = [10;8];     % 不等式约束的右侧向量 b</span><br><span class="line">Aeq = [];       % 等式约束的系数矩阵 Aeq</span><br><span class="line">beq = [];       % 等式约束的右侧向量 beq</span><br><span class="line">lb = [0,0];     % 变量的下界向量 lb </span><br><span class="line">ub = [inf,7];   % 变量的上界向量 ub</span><br><span class="line">f = [-4,-3];    % 目标函数的系数向量 f</span><br><span class="line"></span><br><span class="line">[x, fval, exitflag] = linprog(f, A, b);</span><br><span class="line">% 使用 linprog 函数求解线性规划问题</span><br><span class="line">% 输出结果包括最优解向量 x、最优值 fval 和求解器的退出状态 exitflag</span><br></pre>
+
+
+
+<p>这段代码描述了一个如何使用Matlab线性规划问题，并使用 linprog 函数求解。让我们逐行解释每一步：</p>
+<ul>
+<li><code>A = [2,1;1,1];</code>：不等式约束的系数矩阵 A，它表示两个不等式约束。在这个例子中，<code>A</code> 是一个 2x2 的矩阵，第一行表示约束 <code>2x1 + x2 ≤ 10</code>，第二行表示约束 <code>x1 + x2 ≤ 8</code>。</li>
+<li><code>b = [10;8];</code>：不等式约束的右侧向量 b，包含了两个不等式约束的常数。在这个例子中，<code>b</code> 是一个 2x1 的列向量，第一个元素是 10，第二个元素是 8，分别对应着两个不等式约束的右侧常数。</li>
+<li><code>Aeq = [];</code>：等式约束的系数矩阵 Aeq。在这个例子中，没有等式约束，因此 Aeq 是一个空矩阵。</li>
+<li><code>beq = [];</code>：等式约束的右侧向量 beq。在这个例子中，没有等式约束，因此 beq 是一个空矩阵。</li>
+<li><code>lb = [0,0];</code>：变量的下界向量 lb。在这个例子中，lb 是一个 1x2 的行向量，表示变量 x1 和 x2 的下界。这里的下界分别为 0，表示两个变量必须大于等于 0。</li>
+<li><code>ub = [inf,7];</code>：变量的上界向量 ub。在这个例子中，ub 是一个 1x2 的行向量，表示变量 x1 和 x2 的上界。这里的上界分别为无穷大和 7，表示 x1 没有上界限制，而 x2 的上界为 7。</li>
+<li><code>f = [-4,-3];</code>：目标函数的系数向量 f。这个向量指定了目标函数的各个变量的系数。在这个例子中，目标函数为 <code>-4x1 - 3x2</code>。</li>
+<li><code>[x, fval, exitflag] = linprog(f, A, b);</code>：使用 linprog 函数来求解线性规划问题。该函数的输出结果包括最优解向量 x、最优值 fval 和求解器的退出状态 exitflag。</li>
+</ul>
+<blockquote>
+<p>以后直接让gpt来干哈哈哈</p>
+</blockquote>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230711095147793.png" alt="image-20230711095147793" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230711095147793.png" class="lozad post-image"></p>
+<h2 id="八、7-12-Lingo和数学公式格式"><a href="#八、7-12-Lingo和数学公式格式" class="headerlink" title="八、7.12 Lingo和数学公式格式"></a>八、7.12 Lingo和数学公式格式</h2><p>练习1</p>
+<p><img src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20230712111828103.png" alt="image-20230712111828103" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20230712111828103.png" class="lozad post-image"></p>
+<pre class="highlight"><span class="line">设 x1 为每天甲类设备上加工的 A1 的数量（kg）</span><br><span class="line">设 x2 为每天乙类设备上加工的 A2 的数量（kg）</span><br><span class="line">设 x3 为每天深加工设备上加工的 A1 转化为 B1 的数量（kg）</span><br><span class="line">设 x4 为每天深加工设备上加工的 A2 转化为 B2 的数量（kg）</span><br><span class="line"></span><br><span class="line">如果x3<span class="string">&#x27;是A1中转换B1时消耗A1的量，x4&#x27;</span>是A2中转换成B2时候消耗B2的量，那</span><br></pre>
+
+
+
+<pre class="highlight"><span class="line">//使用lingo求解</span><br><span class="line"></span><br><span class="line">SETS:</span><br><span class="line">    PRODUCTS / A1, A2, B1, B2 /;</span><br><span class="line"></span><br><span class="line">DATA:</span><br><span class="line">    MAX_SUPPLY = 50;</span><br><span class="line">    MAX_LABOR = 480;</span><br><span class="line">    MAX_A1_PROCESSING = 100;</span><br><span class="line">    PROFIT(PRODUCTS) = [12, 8, 22, 16];</span><br><span class="line">    PROCESSING_TIME(PRODUCTS) = [12, 8, 2, 2];</span><br><span class="line">    PROCESSING_COST(PRODUCTS) = [0, 0, 1.5, 1.5];</span><br><span class="line">    YIELD(PRODUCTS) = [0, 0, 0.8, 0.75];</span><br><span class="line"></span><br><span class="line">VARIABLES:</span><br><span class="line">    Supply(PRODUCTS) &gt;= 0;</span><br><span class="line">    Labor &gt;= 0;</span><br><span class="line"></span><br><span class="line">EQUATIONS:</span><br><span class="line">    Obj;</span><br><span class="line">    MilkSupply;</span><br><span class="line">    LaborHours;</span><br><span class="line">    A1Processing;</span><br><span class="line">    Sales(PRODUCTS);</span><br><span class="line"></span><br><span class="line">Obj: MAX = SUM(PRODUCTS, PROFIT(PRODUCTS) * Sales(PRODUCTS));</span><br><span class="line"></span><br><span class="line">MilkSupply: SUM(PRODUCTS, PROCESSING_TIME(PRODUCTS) * Supply(PRODUCTS)) &lt;= MAX_SUPPLY;</span><br><span class="line"></span><br><span class="line">LaborHours: Labor &lt;= MAX_LABOR;</span><br><span class="line"></span><br><span class="line">A1Processing: Supply(<span class="string">&quot;A1&quot;</span>) &lt;= MAX_A1_PROCESSING;</span><br><span class="line"></span><br><span class="line">Sales(PRODUCTS): Supply(PRODUCTS) = SUM(p$(PRODUCTS), YIELD(PRODUCTS) * Supply(p) - PROCESSING_COST(PRODUCTS) * Supply(p));</span><br><span class="line"></span><br></pre>
+
+
+
+
+
+
+
+
+
+<p>练习2</p>
+<p><img src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20230712111849478.png" alt="image-20230712111849478" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20230712111849478.png" class="lozad post-image"></p>
+<p>使用文献 五篇论文与文献</p>
+<h2 id="九、7-13最小二乘曲线拟合"><a href="#九、7-13最小二乘曲线拟合" class="headerlink" title="九、7.13最小二乘曲线拟合"></a>九、7.13最小二乘曲线拟合</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/llittleSun/article/details/115045660"> 曲线拟合——最小二乘法（ Ordinary Least Square，OLS）_最小二乘法求拟合曲线_阿慧吖的博客-CSDN博客</a></p>
+<h2 id="十、7-14图与网络分析"><a href="#十、7-14图与网络分析" class="headerlink" title="十、7.14图与网络分析"></a>十、7.14图与网络分析</h2><p>离散数学相关</p>
+<p>最短路径：</p>
+<ul>
+<li>单源最短路径：DFS</li>
+<li>多源最短路径：FLoyed  可以解决负边权问题</li>
+<li>赋权无向图最短路径：二叉树的遍历</li>
+</ul>
+<p>最短路径算法-[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/129373740">最短路径问题]—Dijkstra 算法最详解 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46201444/article/details/109774082">(27条消息) 图论算法之最短路径（Dijkstra、Floyd、Bellman-ford和SPFA）_图论最短路径算法_HX_2022的博客-CSDN博客</a></p>
+<h2 id="十一、7-15"><a href="#十一、7-15" class="headerlink" title="十一、7.15"></a>十一、7.15</h2><h2 id="十二、7-16-模糊数学"><a href="#十二、7-16-模糊数学" class="headerlink" title="十二、7.16 模糊数学"></a>十二、7.16 模糊数学</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/188669774">模糊数学笔记：一、模糊集及其运算性质 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/404554380">模糊数学的思想及应用 - 知乎 (zhihu.com)</a></p>
+<p>模糊集 隶属度 分解定理  模糊度</p>
+<p><img src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230716093509324.png" alt="image-20230716093509324" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%9A%91%E6%9C%9F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9F%B9%E8%AE%AD/image-20230716093509324.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716093745132.png" alt="image-20230716093745132" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716093745132.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716093937866.png" alt="image-20230716093937866" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716093937866.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716094653857.png" alt="image-20230716094653857" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716094653857.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716095118018.png" alt="image-20230716095118018" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716095118018.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716095413529.png" alt="image-20230716095413529" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716095413529.png" class="lozad post-image"><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716095423973.png" alt="image-20230716095423973" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230716095423973.png" class="lozad post-image"></p>
+<h2 id="十三、7-17-数据处理与分析"><a href="#十三、7-17-数据处理与分析" class="headerlink" title="十三、7.17 数据处理与分析"></a>十三、7.17 数据处理与分析</h2><p>​	<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230717084559423.png" alt="image-20230717084559423" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230717084559423.png" class="lozad post-image"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-3c1d2bf7cf64ecff28bfd4c577dcd9df_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-3c1d2bf7cf64ecff28bfd4c577dcd9df_720w.webp" class="lozad post-image"></p>
+<p><img src="https://picx.zhimg.com/v2-c664206ac96fdf26774806e3fdcd46d6_720w.jpg?source=172ae18b" alt="spss-偏度和峰度" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://picx.zhimg.com/v2-c664206ac96fdf26774806e3fdcd46d6_720w.jpg?source=172ae18b" class="lozad post-image"></p>
+<h2 id="十四、7-19-建模总览"><a href="#十四、7-19-建模总览" class="headerlink" title="十四、7.19 建模总览"></a>十四、7.19 建模总览</h2><p>组队分工</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230719090300746.png" alt="image-20230719090300746" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230719090300746.png" class="lozad post-image"></p>
+<blockquote>
+<p>进度：第一天完成第一题，第二天完成剩下题，第三天论文排版</p>
+</blockquote>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230719093245811.png" alt="image-20230719093245811" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230719093245811.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230719105504273.png" alt="image-20230719105504273" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230719105504273.png" class="lozad post-image"></p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/07/07/%E6%9A%91%E5%81%87%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">
+            https://www.wuzhiyou.top/2023/07/07/%E6%9A%91%E5%81%87%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/07/07/%E8%AE%A1%E7%BD%91%E6%9C%9F%E6%9C%AB%E4%B8%83%E7%A7%8D%E5%A4%A7%E9%A2%98/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">计网期末七种大题 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/06/21/%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">信道复用技术简单分类 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A1%A5"><span class="toc-text">一、补</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%80%BC%E6%8B%9F%E5%90%88"><span class="toc-text">插值拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%817-6%E6%97%A5-%E7%BA%BF%E6%80%A7%E7%9B%AE%E6%A0%87"><span class="toc-text">二、7.6日 线性目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E7%9B%AE%E6%A0%87%E6%A8%A1%E5%9E%8B%E2%80%94%E2%80%94%E7%94%9F%E4%BA%A7%E7%9B%88%E5%88%A9%E9%97%AE%E9%A2%98"><span class="toc-text">1.线性规划目标模型——生产盈利问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#eg1%EF%BC%9A"><span class="toc-text">eg1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eg2%EF%BC%9A"><span class="toc-text">eg2：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%90%E8%BE%93%E9%97%AE%E9%A2%98"><span class="toc-text">2.运输问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Lingo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-text">3.Lingo使用教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%817-7%E6%97%A5-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">三、7.7日 微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.定义模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Matlab%E6%B1%82%E8%A7%A3"><span class="toc-text">2.Matlab求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%A0%E6%9F%93%E7%97%85%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">3.传染病预测模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A7%8D%E7%BE%A4%E4%BD%9C%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="toc-text">4.种群作用模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%817-8%E6%97%A5-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">四、7.8日 动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A9%E7%94%A8Lingo%E8%A7%A3%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BA%BF%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">1.利用Lingo解最短路线的动态规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E5%88%A9%E6%B6%A6%E9%97%AE%E9%A2%98"><span class="toc-text">2.动态规划解决利润问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%817-9%E6%97%A5%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%B5%9B%E7%AE%80%E4%BB%8B"><span class="toc-text">五、7.9日建模比赛简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%817-10%E6%97%A5-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">六、7.10日 灰色预测模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%BA%A6"><span class="toc-text">1.灰色关联度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.灰色预测模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%817-11-Matlab%E4%BD%BF%E7%94%A8"><span class="toc-text">七、7.11 Matlab使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%817-12-Lingo%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%A0%BC%E5%BC%8F"><span class="toc-text">八、7.12 Lingo和数学公式格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%817-13%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88"><span class="toc-text">九、7.13最小二乘曲线拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%817-14%E5%9B%BE%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90"><span class="toc-text">十、7.14图与网络分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%817-15"><span class="toc-text">十一、7.15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%817-16-%E6%A8%A1%E7%B3%8A%E6%95%B0%E5%AD%A6"><span class="toc-text">十二、7.16 模糊数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%817-17-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">十三、7.17 数据处理与分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%817-19-%E5%BB%BA%E6%A8%A1%E6%80%BB%E8%A7%88"><span class="toc-text">十四、7.19 建模总览</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A1%A5"><span class="toc-text">一、补</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%80%BC%E6%8B%9F%E5%90%88"><span class="toc-text">插值拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%817-6%E6%97%A5-%E7%BA%BF%E6%80%A7%E7%9B%AE%E6%A0%87"><span class="toc-text">二、7.6日 线性目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E7%9B%AE%E6%A0%87%E6%A8%A1%E5%9E%8B%E2%80%94%E2%80%94%E7%94%9F%E4%BA%A7%E7%9B%88%E5%88%A9%E9%97%AE%E9%A2%98"><span class="toc-text">1.线性规划目标模型——生产盈利问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#eg1%EF%BC%9A"><span class="toc-text">eg1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eg2%EF%BC%9A"><span class="toc-text">eg2：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%90%E8%BE%93%E9%97%AE%E9%A2%98"><span class="toc-text">2.运输问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Lingo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-text">3.Lingo使用教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%817-7%E6%97%A5-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">三、7.7日 微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.定义模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Matlab%E6%B1%82%E8%A7%A3"><span class="toc-text">2.Matlab求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%A0%E6%9F%93%E7%97%85%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">3.传染病预测模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A7%8D%E7%BE%A4%E4%BD%9C%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="toc-text">4.种群作用模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%817-8%E6%97%A5-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">四、7.8日 动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A9%E7%94%A8Lingo%E8%A7%A3%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BA%BF%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">1.利用Lingo解最短路线的动态规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E5%88%A9%E6%B6%A6%E9%97%AE%E9%A2%98"><span class="toc-text">2.动态规划解决利润问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%817-9%E6%97%A5%E5%BB%BA%E6%A8%A1%E6%AF%94%E8%B5%9B%E7%AE%80%E4%BB%8B"><span class="toc-text">五、7.9日建模比赛简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%817-10%E6%97%A5-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">六、7.10日 灰色预测模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%BA%A6"><span class="toc-text">1.灰色关联度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.灰色预测模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%817-11-Matlab%E4%BD%BF%E7%94%A8"><span class="toc-text">七、7.11 Matlab使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%817-12-Lingo%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%A0%BC%E5%BC%8F"><span class="toc-text">八、7.12 Lingo和数学公式格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%817-13%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88"><span class="toc-text">九、7.13最小二乘曲线拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%817-14%E5%9B%BE%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90"><span class="toc-text">十、7.14图与网络分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%817-15"><span class="toc-text">十一、7.15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%817-16-%E6%A8%A1%E7%B3%8A%E6%95%B0%E5%AD%A6"><span class="toc-text">十二、7.16 模糊数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%817-17-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">十三、7.17 数据处理与分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%817-19-%E5%BB%BA%E6%A8%A1%E6%80%BB%E8%A7%88"><span class="toc-text">十四、7.19 建模总览</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>【待】画一个可爱的三只小鸟button</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="【待】画一个可爱的三只小鸟button">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/01/26/%E7%94%BB%E4%B8%80%E4%B8%AA%E5%8F%AF%E7%88%B1%E7%9A%84%E4%B8%89%E5%8F%AA%E5%B0%8F%E9%B8%9Fbutton/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-01-26">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="前端">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      【待】画一个可爱的三只小鸟button
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-01-26T03:06:24.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-01-26</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/" 
+          class="post-meta-link">
+          编程相关
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.3k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E5%89%8D%E7%AB%AF/" 
+            class="post-meta-link">
+            前端
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：去武汉伢转了几天，以及见了从深圳回来的表哥，有点儿唏嘘嘿。上午摸鱼刷知乎的时候发现了知乎一个大佬使用纯html和css画了一个带动态特效的三只小鸟的button按钮，太可爱啦！原帖地址：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/584747362">https://zhuanlan.zhihu.com/p/584747362</a></p>
+<hr />
+
+
+
+<p>实现效果：</p>
+<iframe src="https://vdn6.vzuu.com/SD/0ff20716-6749-11ed-b57e-a6c2ce451de3.mp4?pkey=AAVmTiajZmraWI1uy03CrabsLPQ8oxdN4bii0KWcZ_tu7BN5hKx-FK-FrkuuJf8hysU_i7_iFeSPpBee7TETBypG&c=avc.1.1&f=mp4&pu=078babd7&bu=078babd7&expiration=1674708226&v=ks6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>代码部分：</p>
+<pre class="highlight"><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;<span class="built_in">head</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;a href=<span class="string">&quot;https://www.baidu.com&quot;</span> class=<span class="string">&quot;button button--bird&quot;</span>&gt;</span><br><span class="line">        &lt;div class=<span class="string">&quot;button__wrapper&quot;</span>&gt;</span><br><span class="line">            &lt;span class=<span class="string">&quot;button__text&quot;</span>&gt;ENTRY&lt;/span&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">&quot;birdBox&quot;</span>&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;bird wakeup&quot;</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;bird__face&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;bird wakeup&quot;</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;bird__face&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;bird&quot;</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;bird__face&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            padding: 100px;</span><br><span class="line">        &#125;</span><br><span class="line">        .button--bird&#123;</span><br><span class="line">            --main_color: <span class="comment">#f4cf47;</span></span><br><span class="line">            --sub_color1: <span class="comment">#f4e19c;</span></span><br><span class="line">            --sub_color2: <span class="comment">#ff8108;</span></span><br><span class="line">            --base_color: <span class="comment">#000;</span></span><br><span class="line">            --border_radius1: 60px 60px 40px 40px / 48px 48px 30px 30px;</span><br><span class="line">            --border_radius2: 70px 70px 40px 40px / 48px 48px 30px 30px;</span><br><span class="line">            --border_radius3: 40px 40px 40px 40px / 48px 48px 30px 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        .button &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            align-items: center;</span><br><span class="line"></span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            width: 280px;</span><br><span class="line">            height: 80px;</span><br><span class="line"></span><br><span class="line">            text-decoration: none;</span><br><span class="line">            border: solid 3px <span class="comment">#000;</span></span><br><span class="line">            border-radius: 40px;</span><br><span class="line">            background: var(--main_color);</span><br><span class="line">            position: relative;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .button__wrapper&#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            align-items: center;</span><br><span class="line"></span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line"></span><br><span class="line">            border-radius: 40px;</span><br><span class="line"></span><br><span class="line">            overflow: hidden;</span><br><span class="line">            position: relative;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        .button__text&#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            font-size: 32px;</span><br><span class="line">            letter-spacing: 4px;</span><br><span class="line">            color: var(--base_color);</span><br><span class="line">            transition: all .3s ease;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .button::before&#123;</span><br><span class="line">            content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            position: absolute;</span><br><span class="line"></span><br><span class="line">            right: 20px;</span><br><span class="line">            margin: auto 0;</span><br><span class="line">            width: 24px;</span><br><span class="line">            height: 24px;</span><br><span class="line">            background: var(--base_color); </span><br><span class="line">            clip-path: path(<span class="string">&#x27;M24,12.02c0-1.09-.75-1.71-.81-1.77L11.17,.45c-.91-.74-2.21-.56-2.91,.42-.69,.97-.52,2.37,.39,3.11l7.12,5.81-13.7-.02h0C.93,9.77,0,10.76,0,11.99c0,1.23,.93,2.22,2.07,2.22l13.7,.02-7.13,5.78c-.91,.74-1.09,2.13-.4,3.11,.41,.58,1.03,.88,1.65,.88,.44,0,.88-.15,1.25-.45l12.04-9.76c.07-.06,.82-.67,.82-1.77Z&#x27;</span>);</span><br><span class="line">            transition: all ease .2s;</span><br><span class="line">        &#125;</span><br><span class="line">        .button--bird .button__wrapper::before,</span><br><span class="line">        .button--bird .button__wrapper::after&#123;</span><br><span class="line">            content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            position: absolute;</span><br><span class="line">            bottom: 0;</span><br><span class="line">            width: 130px;</span><br><span class="line">            height: 38px;</span><br><span class="line">            background: var(--sub_color1);</span><br><span class="line">            transition: all .5s ease;</span><br><span class="line">            clip-path: path(<span class="string">&#x27;M13.77,37.35L.25,16.6c-.87-1.33,.69-2.91,2-2.02l12.67,8.59c.81,.55,1.91,.14,2.18-.81l2.62-9.33c.39-1.4,2.34-1.42,2.76-.02l3.6,11.99c.33,1.11,1.74,1.4,2.47,.52L49.38,.52c.87-1.04,2.53-.42,2.53,.95V23.7c0,1.13,1.2,1.83,2.16,1.26l12.75-7.51c.85-.5,1.94,0,2.13,.98l1.5,7.6c.2,1.03,1.37,1.51,2.22,.92l17.74-12.3c1.09-.75,2.52,.25,2.21,1.55l-2.44,10.2c-.26,1.09,.74,2.06,1.8,1.75l30.8-9.04c1.37-.4,2.42,1.26,1.49,2.36l-9.07,10.66c-.83,.98-.1,2.49,1.17,2.42l12.12-.68c1.6-.09,2.12,2.15,.65,2.8l-2.73,1.21c-.18,.08-.38,.12-.58,.12H14.97c-.48,0-.93-.25-1.2-.65Z&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        .button--bird .button__wrapper::before&#123;</span><br><span class="line">            left: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .button--bird .button__wrapper::after&#123;</span><br><span class="line">            right: 0;</span><br><span class="line">            transform: rotateY(180deg);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .button:hover .button__wrapper::before&#123;</span><br><span class="line">            transform: translateX(-12px);</span><br><span class="line">        &#125;</span><br><span class="line">        .button:hover .button__wrapper::after&#123;</span><br><span class="line">            transform: rotateY(180deg) translateX(-12px);</span><br><span class="line">        &#125;</span><br><span class="line">        .button:hover .button__text&#123;</span><br><span class="line">            letter-spacing: 6px;</span><br><span class="line">        &#125;</span><br><span class="line">        .button:hover::before&#123;</span><br><span class="line">            right: 14px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .birdBox&#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: -54px;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content:space-between;</span><br><span class="line">            align-items: flex-end;</span><br><span class="line">            width: 180px;</span><br><span class="line">            height: 56px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .bird&#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            width: 56px;</span><br><span class="line">            height: 36px;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            border: solid 3px <span class="comment">#000;</span></span><br><span class="line">            background: var(--main_color);</span><br><span class="line">            border-radius: var(--border_radius1);</span><br><span class="line">            animation: <span class="built_in">sleep</span> 1s ease infinite alternate;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content: center;</span><br><span class="line">        &#125;</span><br><span class="line">        .bird__face&#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: 15px;</span><br><span class="line">            width: 12px;</span><br><span class="line">            height: 6px;</span><br><span class="line">            background: var(--sub_color2);</span><br><span class="line">            border-radius: 50% 50% 50% 50% / 78% 78% 22% 22%;</span><br><span class="line">            transition: .2s;</span><br><span class="line">        &#125;</span><br><span class="line">        .bird__face::before,</span><br><span class="line">        .bird__face::after&#123;</span><br><span class="line">            content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: -4px;</span><br><span class="line">            width: 8px;</span><br><span class="line">            height: 2px;</span><br><span class="line">            border-radius: 4px;</span><br><span class="line">            background: <span class="comment">#000;</span></span><br><span class="line">        &#125;</span><br><span class="line">        .bird__face::before&#123;</span><br><span class="line">            left: -5px;</span><br><span class="line">        &#125;</span><br><span class="line">        .bird__face::after&#123;</span><br><span class="line">            right: -5px;</span><br><span class="line">        &#125;</span><br><span class="line">        .bird::before&#123;</span><br><span class="line">            content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: -12px;</span><br><span class="line">            left: 22px;</span><br><span class="line">            width: 12px;</span><br><span class="line">            height: 12px;</span><br><span class="line">            background: <span class="comment">#000;</span></span><br><span class="line">            clip-path: path(<span class="string">&#x27;M10.23,3.32c-3.54,.63-5.72,2.51-7.02,4.23-.33-1.58-.34-3.54,.93-5.12,.52-.65,.41-1.59-.24-2.11C3.24-.19,2.29-.08,1.77,.57c-3.82,4.77-.31,11.11-.13,11.42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0-.01-.02,2.49,.04,2.52,0,.1-.14,1.54-4.82,6.59-5.71,.82-.14,1.37-.92,1.22-1.74s-.94-1.36-1.75-1.21Z&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        .button:hover .wakeup&#123;</span><br><span class="line">            animation: wakeup .2s ease;</span><br><span class="line">            animation-fill-mode: forwards;</span><br><span class="line">        &#125;</span><br><span class="line">        .button:hover .wakeup .bird__face&#123;</span><br><span class="line">            top: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        .button:hover .wakeup .bird__face::before,</span><br><span class="line">        .button:hover .wakeup .bird__face::after&#123;</span><br><span class="line">            animation: eye 5s linear infinite;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .button:hover .wakeup:nth-child(2) .bird__face::before,</span><br><span class="line">        .button:hover .wakeup:nth-child(2) .bird__face::after&#123;</span><br><span class="line">            animation: eye_2 5s linear infinite;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        @keyframes wakeup&#123;</span><br><span class="line">            0%  &#123;</span><br><span class="line">                height: 32px;</span><br><span class="line">                border-radius: var(--border_radius2);</span><br><span class="line">            &#125;</span><br><span class="line">            100%&#123;</span><br><span class="line">                height: 56px;</span><br><span class="line">                border-radius: var(--border_radius3);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @keyframes eye &#123;</span><br><span class="line">            0%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            30%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            32%&#123;</span><br><span class="line">                top: -4px;</span><br><span class="line">                width: 8px;</span><br><span class="line">                height: 2px;</span><br><span class="line">            &#125;</span><br><span class="line">            34%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            70%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            72%&#123;</span><br><span class="line">                top: -4px;</span><br><span class="line">                width: 8px;</span><br><span class="line">                height: 2px;</span><br><span class="line">            &#125;</span><br><span class="line">            74%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            76%&#123;</span><br><span class="line">                top: -4px;</span><br><span class="line">                width: 8px;</span><br><span class="line">                height: 2px;</span><br><span class="line">            &#125;</span><br><span class="line">            78%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            100%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @keyframes eye_2 &#123;</span><br><span class="line">            0%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            10%&#123;</span><br><span class="line">                transform: translateX(0);</span><br><span class="line">            &#125;</span><br><span class="line">            12%&#123;</span><br><span class="line">                transform: translateX(3px);</span><br><span class="line">            &#125;</span><br><span class="line">            20%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            22%&#123;</span><br><span class="line">                top: -4px;</span><br><span class="line">                width: 8px;</span><br><span class="line">                height: 2px;</span><br><span class="line">            &#125;</span><br><span class="line">            24%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            25%&#123;</span><br><span class="line">                transform: translateX(3px);</span><br><span class="line">            &#125;</span><br><span class="line">            27%&#123;</span><br><span class="line">                transform: translateX(0);</span><br><span class="line">            &#125;</span><br><span class="line">            74%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">                transform: translateX(0);</span><br><span class="line">            &#125;</span><br><span class="line">            76%&#123;</span><br><span class="line">                top: -4px;</span><br><span class="line">                width: 8px;</span><br><span class="line">                height: 2px;</span><br><span class="line">                transform: translateX(3px);</span><br><span class="line">            &#125;</span><br><span class="line">            78%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            80%&#123;</span><br><span class="line">                top: -4px;</span><br><span class="line">                width: 8px;</span><br><span class="line">                height: 2px;</span><br><span class="line">            &#125;</span><br><span class="line">            82%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">            &#125;</span><br><span class="line">            85%&#123;</span><br><span class="line">                transform: translateX(3px);</span><br><span class="line">            &#125;</span><br><span class="line">            87%&#123;</span><br><span class="line">                transform: translateX(0);</span><br><span class="line">            &#125;</span><br><span class="line">            100%&#123;</span><br><span class="line">                top: -6px;</span><br><span class="line">                width: 6px;</span><br><span class="line">                height: 6px;</span><br><span class="line">                transform: translateX(0);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        @keyframes <span class="built_in">sleep</span>&#123;</span><br><span class="line">            0%  &#123;</span><br><span class="line">                height: 36px;</span><br><span class="line">                border-radius: var(--border_radius1);</span><br><span class="line">            &#125;</span><br><span class="line">            100%&#123;</span><br><span class="line">                height: 32px;</span><br><span class="line">                border-radius: var(--border_radius2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre>
+
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/01/26/%E7%94%BB%E4%B8%80%E4%B8%AA%E5%8F%AF%E7%88%B1%E7%9A%84%E4%B8%89%E5%8F%AA%E5%B0%8F%E9%B8%9Fbutton/">
+            https://www.wuzhiyou.top/2023/01/26/%E7%94%BB%E4%B8%80%E4%B8%AA%E5%8F%AF%E7%88%B1%E7%9A%84%E4%B8%89%E5%8F%AA%E5%B0%8F%E9%B8%9Fbutton/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/02/06/Markdown%E8%AF%AD%E6%B3%95%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">Markdown语法使用说明 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/01/20/%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E6%8C%89%E4%B8%8B%E5%9B%9E%E8%BD%A6%E5%90%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">输入网址按下回车后浏览器会发生什么？ </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

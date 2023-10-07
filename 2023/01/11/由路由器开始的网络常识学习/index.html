@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>由路由器开始的网络常识学习</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="由路由器开始的网络常识学习">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/01/11/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-01-11">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="网络">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8-%E5%85%89%E7%8C%AB-wifi"><span class="toc-text">一、路由器 光猫 wifi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81IP-DNS-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E7%BD%91%E5%85%B3"><span class="toc-text">二、IP  DNS 子网掩码 网段 网关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%AB%AF%E5%8F%A3-%E5%AE%BD%E5%B8%A6%E6%8B%A8%E5%8F%B7-NAT%E8%BD%AC%E6%8D%A2"><span class="toc-text">三、端口 宽带拨号 NAT转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A7%A3%E5%86%B3wifi%E4%BF%A1%E5%8F%B7%E5%B7%AE%E2%80%94%E8%B7%AF%E7%94%B1%E7%BB%84%E7%BD%91"><span class="toc-text">四、解决wifi信号差—路由组网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-text">五、网络分层模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E5%9E%8B%E6%80%BB%E8%A7%88"><span class="toc-text">1、模型总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE"><span class="toc-text">2、各种协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%BA%94%E7%94%A8"><span class="toc-text">3、应用</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      由路由器开始的网络常识学习
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-01-11T07:57:49.222Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-01-11</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/" 
+          class="post-meta-link">
+          网络相关
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>2.7k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E7%BD%91%E7%BB%9C/" 
+            class="post-meta-link">
+            网络
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：由于要和学弟学妹们分享网络基础的内容了，故将暑期的一篇博文整理并完善。</p>
+<h2 id="一、路由器-光猫-wifi"><a href="#一、路由器-光猫-wifi" class="headerlink" title="一、路由器 光猫 wifi"></a>一、路由器 光猫 wifi</h2><p><em><strong>三者的关系：</strong></em></p>
+<p>通俗来说，光猫把光纤中的<u>光信号转换成电信号</u>，传到路由器，路由器再把<u>电信号转换成电磁信号</u>形式覆盖到空间，又称WiFi。</p>
+<p>需要注意的是，有些光猫也能提供路由器的功能，但效果大都不尽人意。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/1.jpg" alt="光猫能替代路由器吗 光猫和路由器有什么区别【详解】 - 知乎" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/1.jpg" class="lozad post-image"></p>
+<blockquote>
+<p>在WiFi或者说路由器未普及之前，大概是小学那回儿，依稀记得家里只有一个猫单连电脑，也依稀记得家里第一次装上路由器从此有WiFi时的兴奋。（猛然惊觉猫这个称呼原来是上学期学到的英语单词 modem-调制解质器 的音译）</p>
+</blockquote>
+<p><em><strong>WIFI</strong></em>：如今的手机和电脑大都支持了5G网络（使用5Ghz频段），相比4G（2.4Ghz频段），最深刻的感触就是速度变快了，但是有一些运营商号称5G的wifi下载速度感知并不明显，其实很大可能是因为路由器的设置中启用了混合频段，建议大家都在路由器后台把双频段合一给关掉，防止网络不稳定。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/2.png" alt="2" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/2.png" class="lozad post-image"></p>
+<p>！！！<code>注意：5G频段比4G频段速度更快，但信号穿透性更差，下图就是我卧室里的两个不同频段的wifi信号强度</code>！！！</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/3.png" alt="3" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/3.png" class="lozad post-image"></p>
+<p><em><strong>硬路由</strong></em>：硬件组合起来实现路由的功能，如路由器。</p>
+<p><em><strong>软路由</strong></em>：是台式机或服务器配合软件形成路由解决方案，主要靠软件的设置，达成路由器的功能。如手机开热点，台式机插入随身wifi。</p>
+<p>在一个路由环境下，也就是处于同一个局域网内，<strong>公网ip</strong>是相同的（在百度上搜出来的ip）</p>
+<p>之前大多数是将光猫和路由器放在同一个位置使用，方便连接光猫和路由器，但却造成了繁杂的排线，以及路由器的位置也会收到限制。但如今的大多新房子里会预留多媒体箱，里边专门用来放光猫，然后通过墙体里隐藏的排线直接接到路由器或者设备直接使用。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/4.png" alt="4" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/4.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/5.png" alt="5" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/5.png" class="lozad post-image"></p>
+<p><strong>LAN口（<em>Local Area Network</em> ）</strong>和<strong>WAN口（<em>Wide</em> <em>Area Network</em>）</strong>：</p>
+<p>光猫或路由器提供的网络就属于本地局域网，如果设备的接口上标注着“LAN”，代表该接口是下行网络，是用来连接终端设备或次一级网络的接口，如果说WAN是连接外网的接口，那么LAN就是连接本地局域网的接口。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/6.jpg" alt="6" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/6.jpg" class="lozad post-image"></p>
+<h2 id="二、IP-DNS-子网掩码-网段-网关"><a href="#二、IP-DNS-子网掩码-网段-网关" class="headerlink" title="二、IP  DNS 子网掩码 网段 网关"></a>二、IP  DNS 子网掩码 网段 网关</h2><p><strong>IP地址（<em>Internet Protocol Address</em>）：</strong></p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/18.png" alt="image-20230113193856995" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/18.png" class="lozad post-image"></p>
+<p><strong>IPV4（<em>Internet Protocol version 4</em>）：</strong></p>
+<p>网络号+主机号构成 。原本是四个八位的二进制数，也就是总共三十二个（2的四次方，即ipv4中4的由来）二进制数组成，为了简化将其以十进制的形式表示，中间用小数点隔开。</p>
+<p>一个字节即为1Byte，1Byte包含八个比特（Bit），在二进制的计算机中每个比特位只能用0或1表示。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/7.png" alt="7" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/7.png" class="lozad post-image"></p>
+<p>ipv6类似，但只不过是将2的6次方个二进制数字用十六进制表示了。</p>
+<p>关于ipv6的作用和发展，b站有一个很有趣且通俗的科普视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1i14y157YV">https://www.bilibili.com/video/BV1i14y157YV</a></p>
+<p><strong>DNS（<em>Domain Name System</em>）：</strong></p>
+<p>域名解析系统，将ip解析成对应的域名。如访问百度时候输入<a target="_blank" rel="noopener" href="http://www.baidu.com,实际上就是访问了百度服务器所在的ip,而将这个域名解析到ip用到的就是dns./">www.baidu.com，实际上就是访问了百度服务器所在的ip，而将这个域名解析到ip用到的就是dns。</a></p>
+<p><em><strong>子网掩码：</strong></em></p>
+<p>用来判断ipv4中哪些是网络号，哪些是主机号。对应ipv4上该位是网络号时为1，主机号时候为0。</p>
+<p>最常见的ipv4如192.168.1.1，对应的子网掩码如255.255.255.0，其转换成二进制数后前24位都是1，后8位是0，则前24位（也就是255.255.255）对应的ipv4 的前24位（192.168.1）是主机号。<strong>网络号</strong>用于标示不同的网段,<strong>主机号</strong>用于识别目标网段内的不同主机，如此便可快速划分子网，节省ip。</p>
+<p><strong>MAC(<em>Media Access Control Address</em>)</strong>:	</p>
+<p>MAC地址用于在网络中唯一标示一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E5%8D%A1">网卡</a>，一台设备若有一或多个网卡，则每个网卡都需要并会有一个唯一的MAC地址。</p>
+<p>因此一台设备可能存在多个网卡，在dhcp握手中仅凭mac地址不能完全确定对应的设备，还存在一个Transaction ID来辅助确认。</p>
+<p>MAC地址又叫做网络连接信息的物理地址，大都为16进制的数。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/8.png" alt="8" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/8.png" class="lozad post-image"></p>
+<blockquote>
+<p>​	IP 地址是基于逻辑的，比较灵活，不受硬件的限制，也容易记忆。而 MAC地址在一定程度上与硬件一致，是基于物理的能够标识具体的网络节点。这两种地址各有优点，使用时也因条件不同而采取不同的地址 [6]<br>​	大多数接入Internet的方式是把主机通过局域网组织在一起，然后再通过交换机或路由器等设备和 nternet 相连接。这样一来就出现了如何区分具体用户，防止 P地址被盗用的问题。由于IP地址只是逻辑上的标识，任何人都能随意修改，因此不能用来具体标识一个用户。而MAC地址则不然，它是固化在网卡里面的。从理论上讲，除非盗来硬件即网卡，否则一般是不能被冒名顶替的。基于 MAC 地址的这种特点，因此局域网采用了用MAC地址来标识具体用户的方法。</p>
+</blockquote>
+<p>题外话：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/51net/p/4068344.html">使用无线路由器的“克隆MAC地址”解决路由器显示已连接，但是上不去网的问题</a></p>
+<p><em><strong>网关：</strong></em></p>
+<p>即软件层面的路由器。</p>
+<p>若IP在同一网段（网络号相同的即成为同一网段），可以实现直接通讯，不需要用到网关，否则需要。我们常说的局域网一般就是指的是在同一网段内的ip。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/9.png" alt="9" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/9.png" class="lozad post-image"></p>
+<p><em><strong>私网和公网：</strong></em></p>
+<p>常见三类的私有地址（内部局域网可以使用的）</p>
+<p>A级：10.0.0.0 - 10.255.255.255</p>
+<p>B级：172.16.0.0 - 172.31.255.255</p>
+<p>C级：192.168.0.0 - 192.168.255.255</p>
+<p>公有地址：</p>
+<p>在百度上搜到的ip即为自己的公网ip</p>
+<pre class="highlight"><span class="line"><span class="comment">#常见命令：</span></span><br><span class="line"></span><br><span class="line">nslookup +网址           		<span class="comment">#获取ip</span></span><br><span class="line"></span><br><span class="line">tracert+网址/tracert -d+ip　　<span class="comment">#查看本机与该ip通信需要进过那个哪个网关,即查询从本机到光猫所要经过的路由器的IP地址</span></span><br></pre>
+
+
+
+<h2 id="三、端口-宽带拨号-NAT转换"><a href="#三、端口-宽带拨号-NAT转换" class="headerlink" title="三、端口 宽带拨号 NAT转换"></a>三、端口 宽带拨号 NAT转换</h2><p><em><strong>端口：</strong></em></p>
+<p>帮助计算机识别数据包是属于那个软件或进程</p>
+<p>网页中常见的端口为80和443</p>
+<p><em><strong>拨号：</strong></em></p>
+<p>宽带拨号分为静态拨号和动态拨号两种，动态拨号又分为PPPOE和DHCP拨号</p>
+<p><em><strong>DHCP服务：</strong></em></p>
+<p>自动给电脑分配ip和子网掩码，避免了手动设置ip时造成局域网内的ip的冲突，分配有的ip有时间限制，到期会自动重亲分配，若原ip没被占用会继续分配到原ip。</p>
+<p>由于这个原因，电脑的ip并不是一成不变的，因此使用ip连接打印机或其他设备时，有时需要经常重新连接。</p>
+<p>用ipconfig&#x2F;all命令可查看。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/10.png" alt="10" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/10.png" class="lozad post-image"></p>
+<p><strong>NAT转换（<em>Network Address Port Translation</em>）</strong>：</p>
+<p>路由的NAT转换可以将多个设备用一个公网ip访问互联网，节约了ip。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/11.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/11.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/12.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/12.png" class="lozad post-image"></p>
+<h2 id="四、解决wifi信号差—路由组网"><a href="#四、解决wifi信号差—路由组网" class="headerlink" title="四、解决wifi信号差—路由组网"></a>四、解决wifi信号差—路由组网</h2><p><strong>方法一</strong>：将主路由器的lan口和副路由器的wan口相连，然后在副路由器的后台设置成动态ip，或打开DHCP服务。</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/13.png" alt="image-20230110223349004" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/13.png" class="lozad post-image"></p>
+<p>但是每个路由器都会有一个wifi，即使设置成相同的名称也无法变成一个wifi网络，需要在两个wifi间来回切换。</p>
+<p><strong>方法二</strong>：mesh组网</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/13.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/13.webp" class="lozad post-image"></p>
+<p>只需要购买相同品牌的多台路由器（需要支持mesh），即可使用傻瓜式操作，也不需要再连网线即可。</p>
+<h2 id="五、网络分层模型"><a href="#五、网络分层模型" class="headerlink" title="五、网络分层模型"></a>五、网络分层模型</h2><h3 id="1、模型总览"><a href="#1、模型总览" class="headerlink" title="1、模型总览"></a>1、模型总览</h3><p>网络分层模型包括三种以不同的标准形成的分法儿，具体的关系如图所示：</p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/14.jpg" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/14.jpg" class="lozad post-image"></p>
+<p>OSI七层模型<em>从上到下（第一层到第七层）</em>依次是：</p>
+<ul>
+<li><strong>应用层</strong>：协议有：HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP。如访问网址时使用的http或者https加密协议。 </li>
+<li><em><strong>表示层</strong></em>：数据的表示、安全、压缩。格式有，JPEG、ASCll、DECOIC、加密格式等。如gzip压缩。较为理论。</li>
+<li><em><strong>会话层</strong></em>：建立、管理、终止会话。对应主机进程，指本地主机与远程主机正在进行的会话。如SSL连接。较为理论。</li>
+<li><strong>传输层</strong>：定义传输数据的协议端口号，以及流控和差错校验。协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层。如<a target="_blank" rel="noopener" href="https://blog.csdn.net/ningdaxing1994/article/details/73076795">TCP协议</a>。</li>
+<li><strong>网络层</strong>：进行逻辑地址寻址，实现不同网络之间的路径选择。协议有：ICMP IGMP IP（IPV4 IPV6） ARP RARP。如常见的ipv4和ipv6。</li>
+<li><strong>数据链路层</strong>：建立逻辑连接、进行硬件地址寻址、差错校验等功能。将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。如mac地址就属于链路协议层的存在。</li>
+<li><strong>物理层</strong>：建立、维护、断开物理连接。如插上一根网线的电脑。</li>
+</ul>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/15.png" alt="image-20230111160917295" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/15.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/16.png" alt="image-20230111160953361" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/16.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/17.png" alt="image-20230111161011768" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/17.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/image-20230120010823345.png" alt="image-20230120010823345" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/image-20230120010823345.png" class="lozad post-image"></p>
+<h3 id="2、各种协议"><a href="#2、各种协议" class="headerlink" title="2、各种协议"></a>2、各种协议</h3><p>UDP（<em>User Datagram Protocol</em>）：为无连接协议，给应用程序发数据包实现功能并在所需层次构建协议。不需要验证和连接即可单方面发送数据，并不检测数据接收方是否成功接收数据，因此网络情况不好时可能丢包严重。常见应用如视频网站。</p>
+<p>TCP（<em>Transmission Control Protocol</em>）：TCP为连接协议，并且是基于双向验证的可靠的协议，需要“三次握手四次挥手”。数据发送方需要得到接收方的回应后才继续发送数据的操作，因此数据传输速度慢于UDP。常见于互联网的各个应用，应用面远高于UDP。</p>
+<p>DHCP（<em>Dynamic Host Configuration Protocol</em>）：</p>
+<h3 id="3、应用"><a href="#3、应用" class="headerlink" title="3、应用"></a>3、应用</h3><table>
+<thead>
+<tr>
+<th>应用层协议</th>
+<th>应用</th>
+<th>传输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SMTP</td>
+<td>电子邮件</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>TELNET</td>
+<td>远程终端接入</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>万维网</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>文件传输</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>域名转换</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>TFTP</td>
+<td>文件传输</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>网络管理</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>NFS</td>
+<td>远程文件服务器</td>
+<td>UDP</td>
+</tr>
+</tbody></table>
+<p><br /><p>此贴未完待续，持续更新</p></p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/01/11/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/">
+            https://www.wuzhiyou.top/2023/01/11/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/01/17/HTML%20CSS%E5%A4%8D%E4%B9%A0/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">HTML CSS复习 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/12/29/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8iso%E8%A3%85Windows%E6%97%B6%E5%87%BA%E7%8E%B0MBR%E5%88%86%E5%8C%BA%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">解决使用iso装Windows时出现MBR分区无法安装 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8-%E5%85%89%E7%8C%AB-wifi"><span class="toc-text">一、路由器 光猫 wifi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81IP-DNS-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E7%BD%91%E5%85%B3"><span class="toc-text">二、IP  DNS 子网掩码 网段 网关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%AB%AF%E5%8F%A3-%E5%AE%BD%E5%B8%A6%E6%8B%A8%E5%8F%B7-NAT%E8%BD%AC%E6%8D%A2"><span class="toc-text">三、端口 宽带拨号 NAT转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A7%A3%E5%86%B3wifi%E4%BF%A1%E5%8F%B7%E5%B7%AE%E2%80%94%E8%B7%AF%E7%94%B1%E7%BB%84%E7%BD%91"><span class="toc-text">四、解决wifi信号差—路由组网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-text">五、网络分层模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E5%9E%8B%E6%80%BB%E8%A7%88"><span class="toc-text">1、模型总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE"><span class="toc-text">2、各种协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%BA%94%E7%94%A8"><span class="toc-text">3、应用</span></a></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8-%E5%85%89%E7%8C%AB-wifi"><span class="toc-text">一、路由器 光猫 wifi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81IP-DNS-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E7%BD%91%E5%85%B3"><span class="toc-text">二、IP  DNS 子网掩码 网段 网关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%AB%AF%E5%8F%A3-%E5%AE%BD%E5%B8%A6%E6%8B%A8%E5%8F%B7-NAT%E8%BD%AC%E6%8D%A2"><span class="toc-text">三、端口 宽带拨号 NAT转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A7%A3%E5%86%B3wifi%E4%BF%A1%E5%8F%B7%E5%B7%AE%E2%80%94%E8%B7%AF%E7%94%B1%E7%BB%84%E7%BD%91"><span class="toc-text">四、解决wifi信号差—路由组网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-text">五、网络分层模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E5%9E%8B%E6%80%BB%E8%A7%88"><span class="toc-text">1、模型总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE"><span class="toc-text">2、各种协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%BA%94%E7%94%A8"><span class="toc-text">3、应用</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

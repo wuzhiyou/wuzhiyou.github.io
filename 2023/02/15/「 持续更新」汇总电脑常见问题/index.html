@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>「持续更新」汇总电脑常见问题</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="「持续更新」汇总电脑常见问题">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/02/15/%E3%80%8C%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%8D%E6%B1%87%E6%80%BB%E7%94%B5%E8%84%91%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-02-15">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="电脑维修">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E6%96%B9%E9%9D%A2"><span class="toc-text">一、网络方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A1%AC%E4%BB%B6%E6%96%B9%E9%9D%A2"><span class="toc-text">二、硬件方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E6%96%B9%E9%9D%A2"><span class="toc-text">三、系统方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%93%E5%8D%B0%E6%9C%BA%E6%96%B9%E9%9D%A2"><span class="toc-text">四、打印机方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="toc-text">五、杂七杂八</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      「持续更新」汇总电脑常见问题
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-02-15T15:22:57.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-02-15</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/" 
+          class="post-meta-link">
+          电脑相关
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>2.1k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+            class="post-meta-link">
+            电脑维修
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：寒假在跟学弟做分享时写的一篇博文，留着以后继续添加完善维修过程中遇到的各种电脑问题嘿。</p>
+<blockquote>
+<p>本文最近更新时间：2023-6-21 10:39:27。</p>
+</blockquote>
+<h2 id="一、网络方面"><a href="#一、网络方面" class="headerlink" title="一、网络方面"></a>一、网络方面</h2><ol>
+<li><strong>QQ微信能打开，网页打不开：</strong>常为DNS出现问题。更改DNS设置为自动获取，或者在网上搜索阿里云等大厂商的DNS手动设置。</li>
+</ol>
+<p>​		更改方法：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265364903">Windows如何修改DNS  (zhihu.com)</a></p>
+<ol start="2">
+<li><p><strong>某些个特定网址打不开：</strong>多为被运营商在后台屏蔽了，如我们使用的校园网CMCC就会屏蔽很多常用的包括github在内的诸多网站。</p>
+<p>解决办法： 更换wifi网络，或者使用手机热点。</p>
+</li>
+<li><p><strong>网速慢的异常：</strong>网速慢大概率是运营商的问题，但不排除使用的wifi在后台被限制了网速。</p>
+<p>解决办法：<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/f79b7cb33ea0e19144023e99.html">无线路由器如何更改限制网速 如何控制wifi速度 (baidu.com)</a></p>
+</li>
+<li><p><strong>网络显示连接正常但完全连不上网络：</strong>先通过ping命令测试一下能不能正常访问互联网。</p>
+<p>如果不行，需要从<code>网络未拨号登陆</code>，<code>网络设备连接错误</code> ，<code>网络运营商设备出错</code>等方面排除问题。</p>
+<p>如果可以，则有可能是<code>路由器的mac地址错误问题</code>，<code>局域网代理被开启问题</code>等问题。</p>
+<p><a href="https://www.wuzhiyou.top/2022/11/19/%E8%83%BDping%E9%80%9A%E7%BD%91%E5%9D%80%E4%B8%94dns%E6%97%A0%E9%97%AE%E9%A2%98%E6%83%85%E5%86%B5%E4%B8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/">能ping通网址且dns无问题情况下浏览器无法访问 (wuzhiyou.top)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/51net/p/4068344.html">无线路由器的“克隆MAC地址”解决网络不能访问问题(cnblogs.com)</a></p>
+</li>
+<li><p><strong>能正常访问互联网但访问不了内网：</strong>信管团委的电脑常出现这种情况，原因在于需要手动设置学校的DNS，分别为202.196.80.1和114.114.114.114。</p>
+</li>
+</ol>
+<h2 id="二、硬件方面"><a href="#二、硬件方面" class="headerlink" title="二、硬件方面"></a>二、硬件方面</h2><ol>
+<li><p><strong>开机左上角出现一条闪烁的横杠：</strong>大概率为内存条读取失败。</p>
+<p>解决办法：拔出内存条，使用橡皮轻轻擦拭金手指部分，最后吹净橡皮沫放回。</p>
+</li>
+<li><p><strong>电脑风扇转动异常：</strong>积灰过多或CPU硅脂少会造成风扇转速快且声音响。</p>
+<p>解决办法：涂硅脂并清灰。</p>
+</li>
+<li><p><strong>开机读取不到电脑硬盘：</strong>进入BIOS或者PE里边，确认是不是真的没有读取，先排除显示异常的问题。</p>
+<p>解决办法：拆机，更换硬盘通道接口。</p>
+</li>
+<li><p><strong>台式机电脑无法开机&#x2F;开机完全没反应：</strong>排除掉内存条和硬盘的问题后，确认一下主机上的显示器接口是不是插对了，一般会有两个接口，其中一个通的是显卡。如果一个主机有独显的话，大概率是要插到通显卡的那个显示器接口。</p>
+<p>解决办法：更换到另一个显示接口上。</p>
+</li>
+<li><p><strong>电脑拆机注意事项：</strong></p>
+<ul>
+<li>拆机第一件事儿断电源按开机键放静电，一定要断电源断电源断电源！不然可能像我一样无线网卡和指纹识别模块都烧了（哭</li>
+<li>M2接口的硬盘和内存条有点儿像，注意分清楚</li>
+<li>连接电池的数据带可能一个是键盘背光灯，一个是指纹识别的，没烧的话一般不会坏，大都是没接好（戴尔G3）</li>
+</ul>
+</li>
+<li><p><strong>能正常进入系统但只有在PE里读不到硬盘：</strong>检查比特锁是否开启，或在bios里边更改SATA设置</p>
+</li>
+</ol>
+<h2 id="三、系统方面"><a href="#三、系统方面" class="headerlink" title="三、系统方面"></a>三、系统方面</h2><ol>
+<li><p><strong>蓝屏&#x2F;黑屏等异常：</strong>极少频率的蓝屏或黑屏没有太大问题，但也要注意是不是驱动或者硬件等出现问题了。</p>
+<p>解决办法：搜索响应的蓝屏&#x2F;黑屏代码，对症下药解决问题。如果仍旧不能解决，重装系统。</p>
+</li>
+<li><p><strong>声音&#x2F;WiFi&#x2F;蓝牙等缺失：</strong>大概率驱动问题，小概率硬件问题。</p>
+<p>解决办法：查找相应的驱动，第三方软件自动安装有时会不全面，可以去官网搜索对应型号的驱动手动下载。</p>
+</li>
+<li><p><strong>格式化分区&#x2F;重新分区时出现bitlocker锁：</strong>如果是真的比特锁，无解，但有时只是带bitlocker的标志，并不一定是真正加了bitlocker锁的。</p>
+<p>解决办法：可尝试删除分区，然后格式化，重新分区。</p>
+</li>
+<li><p><strong>电脑卡顿&#x2F;系统盘接近爆满：</strong>可以手动清理，也可以使用清理工具清理。清理工具会清理的更干净，但可能会漏掉微信QQ传输的历史文件。如果使用工具的话推荐使用ccleaner。</p>
+<p>解决办法：<a target="_blank" rel="noopener" href="https://www.ccleaner.com/zh-cn/ccleaner/download">下载 CCleaner | 免费清理、优化和调整您的 PC！</a></p>
+<p>​					<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20542755/answer/1045259440">如何手动清理电脑里的垃圾？  (zhihu.com)</a></p>
+</li>
+<li><p><strong>使用iSO安装系统时出现MBR分区无法安装：</strong>开机引导的方式 与 存储数据的结构 存在对应关系，Legacy引导 → MBR分区，UEFI引导 → GPT分区。所以需要正确选择开机引导方式或者更改引导方式。</p>
+<p>解决办法：<a href="https://www.wuzhiyou.top/2022/12/29/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8iso%E8%A3%85Windows%E6%97%B6%E5%87%BA%E7%8E%B0MBR%E5%88%86%E5%8C%BA%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85/">解决使用iso装Windows时出现MBR分区无法安装 (wuzhiyou.top)</a></p>
+</li>
+<li><p><strong>iso重装系统后没有WiFi或网络：</strong>确实网卡&#x2F;无线网卡驱动，建议直接用有网的电脑在官网找到对应驱动然后下载。小兵PE里带的那个驱动总裁就挺好用的，或者是手机usb连接电脑供网。</p>
+</li>
+</ol>
+<h2 id="四、打印机方面"><a href="#四、打印机方面" class="headerlink" title="四、打印机方面"></a>四、打印机方面</h2><p>和爽这个学期修了好多打印机，遂汇总了起来遇到过的（目前只有校园网能访问）：</p>
+<p><a target="_blank" rel="noopener" href="https://diannao120.henau.edu.cn/archives/2624.html">打印机常见问题 - 电脑120 (henau.edu.cn)</a></p>
+<h2 id="五、杂七杂八"><a href="#五、杂七杂八" class="headerlink" title="五、杂七杂八"></a>五、杂七杂八</h2><p>1.<strong>电脑进水：</strong>第一时间关机，然后拆机拔掉电源电池以及主板上的纽扣电池，切记不要再通电开机。电脑能拆到哪一步是哪一步（要保证拆完后能再装上），然后吹风机冷风吹干并多晾几天。然而即便如此也不能保证进水的电脑不出现后续问题。</p>
+<p>2.<strong>bj网弹不出登录界面：</strong><a target="_blank" rel="noopener" href="https://diannao120.henau.edu.cn/archives/1994.html">Windows系统校园bj网络不弹登录网页的解决方法 - 电脑120 (henau.edu.cn)</a></p>
+<p>3.<strong>微信接受的文档类文件打开全部自动默认为只读：</strong>维修一台电脑时发现的奇怪的问题，原以为是office没有激活的问题，经过测试后才发现只有通过微信接受的文件才会出现这个问题，在网上搜索发现是因为微信新版本的bug。<a target="_blank" rel="noopener" href="https://m.sohu.com/a/638291790_121124018/?pvid=000115_3w_a&qq-pf-to=pcqq.c2c">2个月了，微信接收的所有文件变成只读，终于有解了_手机搜狐网 (sohu.com)</a></p>
+<p>4.<strong>vscode插件和汉化包都无法下载：</strong>首先把vscode卸载干净然后重装，如果仍然相同问题考虑更换网络环境，如我们学校的CMCC校园网就会导致这种情况的出现。</p>
+<p>5.<strong>电脑黑屏但其他一切正常：</strong>那天晚上在值班过程中遇到一个同学的电脑黑屏，按下最上边的功能键发现功能和对应功能不匹配，揭开键盘膜才发现好家伙原来是不配套的键盘膜，亮度不知不觉中给调到了最低就出现了黑屏的现象。笑死。</p>
+<p>6.<strong>u盘误改为mbr分区后无法读取</strong>：操作系统无法识别但pe可以，进pe改回gpt分区即可。不过数据恢复大概是要钱的。</p>
+<p>7.<strong>电脑扬声器显示一切正常但没有声音</strong>：进主板里边测试是否有声音，先排除硬件故障。然后把声卡驱动卸载重装，或者是卸载掉某项奇怪的驱动（就是这么的奇怪</p>
+<p>8.<strong>无纸化测评打不开：</strong>如今微软已经彻底停止了对win10及win11的IE支持，最简单的办法是下载360安全浏览器使用ie模式，如在收到安装插件时出现<code>&quot;不能打开要写入的文件windows\system 32\SowerKsv7RichClientAddin.dll&quot;</code>提示，关机重启电脑即可。</p>
+<p>9.<strong>U盘中的文件能修改但不能保存：</strong>格式化u盘并选择NTFS格式，用此方法解决了一个劣质u盘出现的奇葩问题。</p>
+<p><br /><hr /><br /></p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/02/15/%E3%80%8C%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%8D%E6%B1%87%E6%80%BB%E7%94%B5%E8%84%91%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+            https://www.wuzhiyou.top/2023/02/15/%E3%80%8C%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%8D%E6%B1%87%E6%80%BB%E7%94%B5%E8%84%91%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/03/01/%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">返回顶部的几种方式 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/02/15/%E5%85%B3%E4%BA%8ERAM%E5%92%8CROM%E7%9A%84%E6%B5%85%E7%90%86%E8%A7%A3/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">关于RAM和ROM的浅理解 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E6%96%B9%E9%9D%A2"><span class="toc-text">一、网络方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A1%AC%E4%BB%B6%E6%96%B9%E9%9D%A2"><span class="toc-text">二、硬件方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E6%96%B9%E9%9D%A2"><span class="toc-text">三、系统方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%93%E5%8D%B0%E6%9C%BA%E6%96%B9%E9%9D%A2"><span class="toc-text">四、打印机方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="toc-text">五、杂七杂八</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E6%96%B9%E9%9D%A2"><span class="toc-text">一、网络方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A1%AC%E4%BB%B6%E6%96%B9%E9%9D%A2"><span class="toc-text">二、硬件方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E6%96%B9%E9%9D%A2"><span class="toc-text">三、系统方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%93%E5%8D%B0%E6%9C%BA%E6%96%B9%E9%9D%A2"><span class="toc-text">四、打印机方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="toc-text">五、杂七杂八</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

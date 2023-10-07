@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>HTML CSS复习</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="HTML CSS复习">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/01/17/HTML%20CSS%E5%A4%8D%E4%B9%A0/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-01-17">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="前端">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81HTML-%E9%83%A8%E5%88%86"><span class="toc-text">一、HTML 部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE"><span class="toc-text">1.排版标签</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">这是一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">这是二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%97%E4%BD%93%E6%A0%87%E7%AD%BE%E5%92%8C%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-text">2.字体标签和超链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE"><span class="toc-text">3.图片标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%97%E8%A1%A8%E3%80%81%E8%A1%A8%E6%A0%BC%E4%B8%8E%E8%A1%A8%E5%8D%95%E5%8F%8A%E6%A1%86%E6%9E%B6%E6%A0%87%E7%AD%BE"><span class="toc-text">4.列表、表格与表单及框架标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%97%E8%A1%A8"><span class="toc-text">1.列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A8%E6%A0%BC"><span class="toc-text">2.表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A1%A8%E5%8D%95"><span class="toc-text">3.表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A1%86%E6%9E%B6"><span class="toc-text">4.框架</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E5%AA%92%E4%BD%93%E7%9B%B8%E5%85%B3%E6%A0%87%E7%AD%BE"><span class="toc-text">5.多媒体相关标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-HTML5%E6%96%B0%E5%A2%9E%E5%86%85%E5%AE%B9"><span class="toc-text">6.HTML5新增内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B0%8F%E7%BB%93"><span class="toc-text">7.小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81CSS%E9%83%A8%E5%88%86"><span class="toc-text">二、CSS部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7"><span class="toc-text">1.样式属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="toc-text">2.布局属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">3.动画属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B0%8F%E7%BB%93-1"><span class="toc-text">7.小结</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      HTML CSS复习
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-01-17T15:22:59.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-01-17</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/" 
+          class="post-meta-link">
+          编程相关
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>3.3k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E5%89%8D%E7%AB%AF/" 
+            class="post-meta-link">
+            前端
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：找到了躺床上看电脑的舒舒服服的姿势，瞬间又有学习的欲望了诶嘿！先花一天把html和css复习一下。</p>
+<h2 id="一、HTML-部分"><a href="#一、HTML-部分" class="headerlink" title="一、HTML 部分"></a>一、HTML 部分</h2><h3 id="1-排版标签"><a href="#1-排版标签" class="headerlink" title="1.排版标签"></a>1.排版标签</h3><h1>这是一级标题</h1>
+
+<h2>这是二级标题</h2>
+
+<p>这是一段p标签</p>
+
+<p align="right">这是使用align（排列）属性靠右排列的p标签</p>
+
+
+
+<p>下方是<em>横线</em>和<em>换行</em>：</p>
+<hr />
+
+<br />
+
+<div> 这是一段结尾带换行符的div区域</div>
+
+<p><span>这是一段结尾不带换行符的span区域</span></p>
+<center>这是一段居中的center区域这是一段居中的center区域这是一段居中的center区域这是一段居中的center区域这是一段居中的center区域这是一段居中的center区域(h5中已放弃)</center>
+
+
+
+<p><img src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230117144110707.png" alt="image-20230117144110707" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230117144110707.png" class="lozad post-image"></p>
+<pre>这是一个不忽略任何    空格和空行的pre标签</pre>
+
+<h3 id="2-字体标签和超链接"><a href="#2-字体标签和超链接" class="headerlink" title="2.字体标签和超链接"></a>2.字体标签和超链接</h3><p><img src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230117145424216.png" alt="image-20230117145424216" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230117145424216.png" class="lozad post-image"></p>
+<p>这是p段落中的一个&lt;号</p>
+
+<p>这是p段落中的一个&gt;号</p>
+
+<p><u>这是下划线标记</u></p>
+<p><del>这是中划线（删除线）标记</del></p>
+<p><i>这是斜体标记</i></p>
+<p>这是<b>b标签粗体标记 </b>  这是<strong>strong标签粗体标记</strong>(已放弃)</p>
+<p><font face="宋体" color="red" size="5">这是h5中已放弃的font标签</font></p>
+<p>底部文字<sup>这是上标签sup</sup></p>
+<p>底部文字<sub>这是下标签sub </sub></p>
+<p>下方是size为50的绿色hr标签：</p>
+<hr  color="green" size="30"> </hr>
+
+<p>①外部链接</p>
+<p><a href="baidu.com">这是一个跳转到百度的a标签</a></p>
+<p><a href="02.html">这是一个跳转到本地02页面的标签</a></p>
+<p>②锚链接(需要先给a标签添加name锚点)</p>
+<p><a href="#top_pos">点击跳转到之前name属性为top_pos的a标签</a></p>
+<p><a href="b.html#123">点击跳转至b网页中123的锚点</a></p>
+<p>HTML4.0之前使用name，之后使用id，可直接替换。</p>
+<p><img src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230117153407565.png" alt="image-20230117153407565" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230117153407565.png" class="lozad post-image"></p>
+<p><a href="#" tittle="好呀好呀">这是tittle的作用-请我吃饭</a></p>
+<h3 id="3-图片标签"><a href="#3-图片标签" class="headerlink" title="3.图片标签"></a>3.图片标签</h3><p>相对路径写法：相对于当前页面所在的目录，<code>.</code>为当前目录，<code>..</code>为上一目录。src相对路径可以存在多个<code>..</code>。</p>
+<p><strong>当前目录</strong>中的2.jpg图片：</p>
+<p><code>&lt;img src=&quot;2.jpg&quot;&gt; </code></p>
+<p><code>&lt;img src=&quot;./2.jpg&quot;&gt;</code></p>
+<p><strong>上一目录</strong>中的2.jpg图片：</p>
+<p><code>&lt;img src=&quot;../2.jpg&quot;&gt;</code></p>
+<p>绝对路径写法：</p>
+<p>1.以盘符开始的绝对路径</p>
+<p>2.以http&#x2F;https开头的网络路径</p>
+<blockquote>
+<p>疑问：在hexo博客中使用html语法时，需要用src&#x3D;”&#x2F;..&#x2F;2.jpg”的写法，前边多加了一个&#x2F;才能在博客中正常显示？</p>
+</blockquote>
+<hr />
+
+<p>img的属性有：</p>
+<p>width height tittle algin</p>
+<p>alt:图片无法显示时候代替的文字内容</p>
+<p>align:图片和周围文字的相对位置</p>
+<hr />
+
+
+
+<p>这是一个align为bottom(默认)的<img src="/../测试.png" align="" width="150" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../测试.png" class="lozad post-image">图片展示效果</p>
+<hr />
+
+
+
+<p>这是一个align为center的<img src="/../测试.png" align="center" width="150" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../测试.png" class="lozad post-image">图片展示效果</p>
+<hr />
+
+<p>这是一个align为right的<img src="/../测试.png" align="right" width="60" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../测试.png" class="lozad post-image">图片展示效果</p>
+<hr />
+
+
+
+<p>若要保证图片等比缩放，width和height只设置一个：</p>
+<img src="/../测试.png" width="300" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../测试.png" class="lozad post-image">
+
+<h3 id="4-列表、表格与表单及框架标签"><a href="#4-列表、表格与表单及框架标签" class="headerlink" title="4.列表、表格与表单及框架标签"></a>4.列表、表格与表单及框架标签</h3><h4 id="1-列表"><a href="#1-列表" class="headerlink" title="1.列表"></a>1.列表</h4><ul><li>我是无序列表ul中的每一项li</li><li>我是无序列表ul中的每一项li</li><li>我是无序列表ul中的每一项li</li></ul>
+
+<ul type="square"><li>我是ul的type属性为square时的样子</li></ul>
+
+<ul type="circle"><li>我是ul的type属性为circle时的样子</li></ul>
+
+<ul><li>我是无序列表ul中的每一项li</li><li type="circle">我也可以被单独设置type属性</li><li>我是无序列表ul中的每一项li</li></ul>
+
+<p><strong>列表之间相互嵌套：</strong></p>
+<ul>
+    <li><b>河南省</b>
+        <ul>
+            <li>许昌市</li>
+            <li>郑州市</li>
+            <li>平顶山市</li>
+        </ul>
+    </li>
+    <li><b>广东省</b>
+        <ul>
+            <li>深圳市</li>
+            <li>广州市</li>
+            <li>惠州市</li>
+        </ul>
+    </li>
+</ul>
+
+<p>ul→两个li→分别各包括一个ul→每个ul包括三个li</p>
+<p>注意：li为容器级标签，里边什么都能放，如购物网站搜索结果列表。</p>
+<hr /><br />
+
+<ol><li>我是有序列表ol中的每一项li</li><li>我是有序列表ol中的每一项li</li><li>我是有序列表ol中的每一项li</li></ol>
+
+<ol type="a"><li>我是ol的type属性为a的样子</li><li>我是ol的type属性为a的样子</li></ol>
+
+<ol type="I" start="3"><li>我是ol的type属性为I，start属性为3的样子</li><li>我是ol的type属性为a的样子</li></ol>
+
+<p>其实不如用ul然后手动给打上序号。</p>
+<hr />
+
+<p><br />定义列表：</p>
+<p><img src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/20170704_1727.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/20170704_1727.png" class="lozad post-image"></p>
+<dl>
+        <dt>我是第一条dt</dt>
+        <dd>dd和dt的规则非常灵活</dd>
+        <dd>下边可以搭配多条dd</dd>
+        <dt>我是第二条dt</dt>
+        <dd>啦啦啦啦啦啦啦</dd>
+</dl>
+
+<p>注意：dt必须有，dd可以没有。两者均为容器级标签，什么都可以放。</p>
+<hr />
+
+<h4 id="2-表格"><a href="#2-表格" class="headerlink" title="2.表格"></a>2.表格</h4><p><br /><code>表格标签</code>由<code>行标签</code>组成，行标签又由<code>单元格标签</code>组成。</p>
+<p>三者分别对应：<code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;td&gt;</code></p>
+<table>
+<tr>
+<td>我是第一行第一个单元格</td>
+<td>我是第一行第二个单元格</td>
+</tr>
+<tr>
+<td>我是第二行第一个单元格</td>
+<td>我是第二行第二个单元格</td>
+</tr>
+</table>
+
+
+<p><code>&lt;table&gt;</code>对应的属性(注意是对整个表格而言）：</p>
+<p>width height border  &#x2F;&#x2F;表格的宽、高和边框大小</p>
+<p>style &#x2F;&#x2F;单元格线和表格线的样式</p>
+<p>cellpadding &#x2F;&#x2F;单元格内容到边线的距离 默认为0</p>
+<p>dir &#x2F;&#x2F;单元格内容排列方式 默认从左到右（ltr） 则此时cellpading为到左边线的距离</p>
+<p>cellspacing &#x2F;&#x2F;单元格和单元格之间的距离</p>
+<p>以及aligin、bgcolor、background、boderclolorlight、bodercolordark。</p>
+<p><code>&lt;tr&gt;</code>对应属性:</p>
+<p>dir bgcolor height align</p>
+<p><strong>valign(垂直显示方式 包括top middle bottom)</strong></p>
+<p><code>&lt;td&gt;</code>对应属性:</p>
+<p>align valign width height bgcolor background</p>
+<p>单元格合并和标题: colspan rowspan caption</p>
+<table>
+    <tr>
+        <td>1-1</td>
+        <td>1-2</td>
+        <td>1-3</td>
+        <td>1-4</td>
+    </tr>
+    <tr>
+        <td>2-1</td>
+        <td>2-2</td>
+        <td colspan=“2”>我是colspan值为2的内容</td>
+    </tr>
+</table>
+
+
+<table>
+    <capation align="center">我是table表格的capation标题</capation>
+    <tr>
+        <th>1-1使用th</th>
+        <td>1-2使用td</td>
+        <td>1-3使用td</td>
+        <td rowspan="2">我是rowspan值为2的内容</td>
+    </tr>
+    <tr>
+        <td>2-1</td>
+        <td>2-2</td>
+        <td>2-3</td>
+    </tr>
+</table>
+
+
+
+<blockquote>
+<p><code>&lt;thead&gt;</code> <code>&lt;tbody&gt;</code> <code>&lt;tfoot&gt;</code>三个标签作为tr的外标签，作为顺序标记显示。以及对数据边获取边显示，加快表格读取速度。</p>
+</blockquote>
+<blockquote>
+<p>Q：标题没居中？</p>
+</blockquote>
+<hr /><br />
+
+<h4 id="3-表单"><a href="#3-表单" class="headerlink" title="3.表单"></a>3.表单</h4><p>表单标签（form）：</p>
+<p>属性包括name，id，action，method。action用来规定表单提交到哪里，method规定表单数据提交方式（有get和post）</p>
+<p>form标签下有input，select，textarea，label等标签。</p>
+<p><code>&lt;input&gt;</code>标签：</p>
+<p><strong>同时有表单（form）和表格（table）时，table嵌套在form中使用</strong>。</p>
+<form>
+姓名-text文本框：<input type = "text"/><br />
+简介-value默认填充：<input value="啦啦啦"><br />
+密码-password密码框：<input type="password"><br />
+性别-radio单选框：<input type="radio" name=”gender“>男
+                <input type="radio" name=”gender“ checked="">女（chekecd=""默认勾选状态）<br />
+爱好-checkbox复选框：<input type="checkbox" name="love">跑步
+                   <input type="checkbox" name="love">篮球
+                   <input type="checkbox" name="love">羽毛球<br />
+老板名-readonly改不掉的文本框：<input type="text" readonly="" value="资本家"><br />
+老板名-disabled点不进去的文本框：<input type="text" disabled="" value="资本家"><br />
+上传文件-file类型<input type="file"><br />
+清空该表单表单-reset类型<input type="reset"><br />
+提交该表单-submit类型<input type="submit"><br />
+带背景图的提交按钮-image类型<input type="image"><br />
+普普通通的button按钮-value自定义设置<input type="button" value="啦啦啦"><br />
+我是hidden <input type="hidden" />隐藏框
+</form>
+<br/><br/><br/>
+
+<p><code>&lt;select&gt;</code>标签：</p>
+<form>
+    <select>
+        <option>美女</option>
+        <option selected="">帅哥</option>
+        <option>不是美女也不是帅哥</option>
+    </select>
+    <br/><br/><br/>
+    <select size="3">
+        <option>美女</option>
+        <option selected="">帅哥</option>
+        <option selected="">不是美女也不是帅哥</option>
+    </select>
+    <br/><br/><br/>
+    <select multiple="">
+        <option selected="">是美女</option>
+        <option selected="">是帅哥</option>
+        <option>既是美女也是帅哥</option>
+    </select>
+    <br/><br/><br/>
+</form>
+
+
+
+<p><code>&lt;textarea&gt;</code>标签：</p>
+<form>
+    <textarea name="1" row="3" cols="20">这是一个行长row为3列宽cols为20的textarea文本区域这是一个行长row为3列宽cols为20的textarea文本区域这是一个行长row为3列宽cols为20的textarea文本区域</textarea>
+    <textarea name="2" row="3" cols="20" readonly="">这是一个行长row为3列宽cols为20的textarea只读文本区域这是一个行长row为3列宽cols为20的textarea只读文本区域这是一个行长row为3列宽cols为20的textarea只读文本区域</textarea>
+</form>
+
+
+
+<p><code>&lt;label&gt;</code>标签：</p>
+<p>作用：将input和汉字包裹起来作为整体，使选择框前的字段也变为可选项。</p>
+<p>方法：将label的for属性值和id属性值相同即可绑定。</p>
+<form>
+    <label for="male">男性</label>
+    <input type="radio" id="male" />
+    <br/>
+    <label for="female">女性</label>
+    <input type="radio" id="female" />
+</form>
+<p>另一种写法：将for属性值为空，包括字段和input在内的全部放入label标签下。</p>
+
+<form>
+    <label for="">
+        姓名:<input type="name">
+    </label>
+</form>
+
+
+
+<p><code>&lt;fieldset&gt;</code>标签：</p>
+<form>
+  <fieldset>
+    <legend>健康信息</legend>
+    身高：<input type="text" />
+    体重：<input type="text" />
+  </fieldset>
+  <fieldset>
+    <legend>身份信息</legend>
+    年龄：<input type="text" />
+    姓名：<input type="text" />
+  </fieldset>
+</form>
+
+<hr />
+
+<h4 id="4-框架"><a href="#4-框架" class="headerlink" title="4.框架"></a>4.框架</h4><p><br />框架标签：在一个网页中显示多个页面。</p>
+<p>使用frameset和frame标签，现已废除。使用<code>iframe</code>替代。效果图如：</p>
+<p><img src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230119162726747.png" alt="image-20230119162726747" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/image-20230119162726747.png" class="lozad post-image"></p>
+<hr />
+
+<br />
+
+<p>内嵌标签：嵌入在一个页面上的框架。</p>
+<p>使用<code>&lt;iframe&gt;</code>，是<code>&lt;body&gt;</code>的子标签。</p>
+<blockquote>
+<p>target&#x3D;”<em>framename</em>“时：在指定的框架中打开被链接的文档。</p>
+<p>如在不同目录跳转时，全设置成相同的framename，第一个被打开的链接在新窗口打开，并标记为framename，之后点开的均在此窗口跳转。</p>
+</blockquote>
+<pre class="highlight"><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;a href=<span class="string">&quot;文字页面1.html&quot;</span> target=<span class="string">&quot;123&quot;</span>&gt;&lt;/a&gt;点击进入食品部分&lt;br/ &gt;</span><br><span class="line">	&lt;a href=<span class="string">&quot;文字页面2.html&quot;</span> target=<span class="string">&quot;123&quot;</span>&gt;&lt;/a&gt;点击进入家电部分&lt;br/ &gt;</span><br><span class="line">	&lt;a href=<span class="string">&quot;文字页面3.html&quot;</span> target=<span class="string">&quot;123&quot;</span>&gt;&lt;/a&gt;点击进入服饰部分&lt;br/ &gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre>
+
+<p><img src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/2015-10-02-cnblogs_html_GIF.gif" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/HTML%E4%B8%8ECSS%E5%A4%8D%E4%B9%A0/2015-10-02-cnblogs_html_GIF.gif" class="lozad post-image"></p>
+<p>这是一个iframe标签效果：</p>
+<body>
+    <iframe src=https://www.bilibili.com width="300" height="300" scrolling="true"></iframe>
+</body>
+
+<h3 id="5-多媒体相关标签"><a href="#5-多媒体相关标签" class="headerlink" title="5.多媒体相关标签"></a>5.多媒体相关标签</h3><p>这是bgsound标签（播放音频）：</p>
+<p><code>&lt;bgsound src=&quot;王菲 - 清风徐来.mp3&quot;&gt;&lt;/bgsound&gt;</code>    </p>
+<p>这是embed标签（播放音频视频等）：</p>
+<p><embed src="/../video/陈一发儿 - 童话镇.mp3"></embed></p>
+<br/>
+
+<p><code>&lt;object&gt;</code>标签：<br>播放多媒体文件，应用于IE浏览器。</p>
+<p><code>&lt;marquee&gt;</code>标签：<br>内容在网页自动移动，类似弹幕和歌词效果。</p>
+<h3 id="6-HTML5新增内容"><a href="#6-HTML5新增内容" class="headerlink" title="6.HTML5新增内容"></a>6.HTML5新增内容</h3><p>标准h5布局：</p>
+<pre class="highlight"><span class="line">&lt;!-- 头部 --&gt;</span><br><span class="line">&lt;header&gt;</span><br><span class="line">    &lt;ul class=<span class="string">&quot;nav&quot;</span>&gt;&lt;/ul&gt;</span><br><span class="line">&lt;/header&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 主体部分 --&gt;</span><br><span class="line">&lt;div class=<span class="string">&quot;main&quot;</span>&gt;</span><br><span class="line">    &lt;!-- 文章 --&gt;</span><br><span class="line">    &lt;article&gt;&lt;/article&gt;</span><br><span class="line">    &lt;!-- 侧边栏 --&gt;</span><br><span class="line">    &lt;aside&gt;&lt;/aside&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 底部 --&gt;</span><br><span class="line">&lt;footer&gt;</span><br><span class="line"></span><br><span class="line">&lt;/footer&gt;</span><br></pre>
+
+
+
+<p><strong>form新增表单部分：</strong></p>
+<p>input属性值新增：<code>&lt;email&gt; &lt;tel&gt; &lt;url&gt; &lt;number&gt; &lt;search&gt; &lt;range&gt; &lt;color&gt; &lt;time&gt; &lt;date&gt; &lt;datetime&gt; &lt;month&gt; &lt;week&gt; </code></p>
+<p>search搜索框</p>
+<p>range滑动条</p>
+<p>color拾色器</p>
+<p>form表单属性新增：</p>
+<p>1.<code>datalist</code>可填充可选择数据列表</p>
+<form>
+    <input type="text" list="myData">
+    <datalist id="myData">
+    <option>本科</option>
+    <option>研究生</option>
+    <option>不明</option>
+</datalist>
+</form>
+
+<p>2.<code>&lt;keygen&gt;</code>元素在提交表单时生成公钥和私钥，进行非对称加密验证。</p>
+<p>3.<code>&lt;meter&gt;</code>度量器</p>
+<pre class="highlight"><span class="line">&lt;meter  value=<span class="string">&quot;81&quot;</span>    min=<span class="string">&quot;0&quot;</span> max=<span class="string">&quot;100&quot;</span>  low=<span class="string">&quot;60&quot;</span>  high=<span class="string">&quot;80&quot;</span>/&gt; 	 <span class="comment">//当前值81，最大值最小值，超过范围的警告值</span></span><br></pre>
+
+<hr />
+
+<p>音频<code>&lt;audio&gt;</code></p>
+<p><audio src="/../video/陈一发儿 - 童话镇.mp3" autopaly="no" controls></embed></p>
+<p>视频<code>&lt;vedio&gt;</code></p>
+<p><vedio src="//player.bilibili.com/player.html?aid=818846308&bvid=BV1nG4y1g72V&cid=923756300&page=1" autopaly="no" controls></vedio></p>
+<hr />
+
+<p>DOM操作：</p>
+<h3 id="7-小结"><a href="#7-小结" class="headerlink" title="7.小结"></a>7.小结</h3><ul>
+<li>少用br换行 多用p</li>
+<li>标准div+css界面常用标签种类：<code>div  p  h1  span   a   img   ul   ol    dl    input</code></li>
+</ul>
+<h2 id="二、CSS部分"><a href="#二、CSS部分" class="headerlink" title="二、CSS部分"></a>二、CSS部分</h2><h3 id="1-样式属性"><a href="#1-样式属性" class="headerlink" title="1.样式属性"></a>1.样式属性</h3><pre class="highlight"><span class="line">div&#123;</span><br><span class="line">	字体基础</span><br><span class="line">	font-size: 50px; 			/*字体大小*/</span><br><span class="line">	line-height: 30px;      	/*行高*/</span><br><span class="line">	font-family: 幼圆,黑体;    	/*字体类型：如果没有幼圆就显示黑体，没有黑体就显示默认*/</span><br><span class="line">	font-style: italic ;		/*italic表示斜体，normal表示不倾斜*/</span><br><span class="line">	font-weight: bold;			/*粗体*/</span><br><span class="line">	font-variant: small-caps;  /*小写变大写*/</span><br><span class="line">	</span><br><span class="line">	字体进阶</span><br><span class="line">	letter-spacing: 0.5cm ; 单个字母之间的间距</span><br><span class="line">	word-spacing: 1cm; 单词之间的间距</span><br><span class="line">	text-decoration: none; 字体修饰：none 去掉下划线、underline 下划线、line-through 中划线、overline 上划线</span><br><span class="line">	color:red; 字体颜色</span><br><span class="line">	text-align: center; 在当前容器中的对齐方式。属性值可以是：left、right、center（在当前容器的中间）、justify</span><br><span class="line">	text-transform: lowercase; 单词的字体大小写。属性值可以是：uppercase（单词大写）、lowercase（单词小写）capitalize（每个单词的首字母大写）</span><br><span class="line">	</span><br><span class="line">	列表样式</span><br><span class="line">	list-style-image:url()    列表项样式，需要加左margin才能使图标显示完整</span><br><span class="line">	</span><br><span class="line">	背景图片</span><br><span class="line">	background-color: red; 设置元素的背景颜色。</span><br><span class="line">	background-image:url(images/2.gif); 将图像设置为背景。</span><br><span class="line">	background-repeat: no-repeat; 设置背景图片是否重复及如何重复，默认平铺满。（重要）</span><br><span class="line">	background-position:10px 10px;     向右偏移量，向下偏移量，可正可负。</span><br><span class="line">	background-position: center top;   图片左右位置，图片上下位置。</span><br><span class="line">	background-attachment:scroll; 设置背景图片可以被滚走。默认值。</span><br><span class="line">	background-attachment:fixed; 设置背景图片不可以被滚走。</span><br><span class="line">	background-size: 100% auto;  相对于容器高100%，宽度自动。此属性还有cover及contain属性值。</span><br><span class="line">	background-origin 属性：控制背景从什么地方开始显示。默认为padding-box。</span><br><span class="line">	</span><br><span class="line">	图片滤镜</span><br><span class="line">	filter:gray()    给图片加上灰色滤镜</span><br><span class="line">&#125;</span><br></pre>
+
+<p>拓展：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7002980054632235045">CSS｜自定义字体，让页面看起来更加舒服一些 - 掘金 (juejin.cn)</a></p>
+<p><img src="http://img.smyhvae.com/20170808_2220.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="http://img.smyhvae.com/20170808_2220.png" class="lozad post-image"></p>
+<h3 id="2-布局属性"><a href="#2-布局属性" class="headerlink" title="2.布局属性"></a>2.布局属性</h3><p><code>vertical-align：middle</code>：指定行内元素，行块元素，表格单元格元素垂直对齐方式</p>
+<p><code>overflow:auto</code>：超出范围的内容自动显示滚动条，不超出不显示</p>
+<h3 id="3-动画属性"><a href="#3-动画属性" class="headerlink" title="3.动画属性"></a>3.动画属性</h3><ul>
+<li><p><code>transition-property: all;</code> 如果希望所有的属性都发生过渡，就使用all，如图。</p>
+<p><img src="http://img.smyhvae.com/20180208_1440.gif" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="http://img.smyhvae.com/20180208_1440.gif" class="lozad post-image"></p>
+</li>
+<li><p><code>transition-property: width;</code>  如图，鼠标悬浮上的时候宽度变化，且只在宽度变化时候才有对宽度的过渡效果。</p>
+<p><img src="http://img.smyhvae.com/20180208_1440.gif" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="http://img.smyhvae.com/20180208_1440.gif" class="lozad post-image"></p>
+</li>
+<li><p><code>transition-duration: 1s;</code> 过渡的持续时间。</p>
+</li>
+<li><p><code>transition-timing-function: linear;</code> 运动曲线。属性值可以是：</p>
+<ul>
+<li><code>linear</code> 线性</li>
+<li><code>ease</code> 减速</li>
+<li><code>ease-in</code> 加速</li>
+<li><code>ease-out</code> 减速</li>
+<li><code>ease-in-out</code> 先加速后减速</li>
+</ul>
+</li>
+<li><p><code>transition-delay: 1s;</code> 过渡延迟。多长时间后再执行这个过渡动画。</p>
+</li>
+</ul>
+<p>transform：实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式</p>
+<pre class="highlight"><span class="line"><span class="attribute">transform</span>: <span class="built_in">scale</span>(x, y);</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">2</span>, <span class="number">0.5</span>);</span><br><span class="line">//scale缩放  <span class="number">2</span>：表示水平方向的缩放倍数。<span class="number">0.5</span>：表示垂直方向的缩放倍数</span><br><span class="line"></span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">translate</span>(水平位移, 垂直位移);</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">//translate位移 向左和向上对于自身移动移动<span class="number">50%</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(角度);</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">//rotate旋转 正值顺时针；负值逆时针。</span><br></pre>
+
+<p>利用rotate实现扑克牌发牌，cool！</p>
+<p><img src="https://img.smyhvae.com/20180208_1650.gif" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://img.smyhvae.com/20180208_1650.gif" class="lozad post-image"></p>
+<pre class="highlight"><span class="line"><span class="attr">transform</span>: <span class="title function_">rotateX</span>(360deg);    <span class="comment">//绕 X 轴旋转360度</span></span><br><span class="line"><span class="attr">transform</span>: <span class="title function_">rotateY</span>(360deg);    <span class="comment">//绕 Y 轴旋转360度</span></span><br><span class="line"><span class="attr">transform</span>: <span class="title function_">rotateZ</span>(360deg);    <span class="comment">//绕 Z 轴旋转360度</span></span><br></pre>
+
+<p><img src="http://img.smyhvae.com/20180208_2010.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="http://img.smyhvae.com/20180208_2010.png" class="lozad post-image"></p>
+<pre class="highlight"><span class="line"><span class="attr">transform</span>: <span class="title function_">translateX</span>(100px);    <span class="comment">//沿着 X 轴移动</span></span><br><span class="line"><span class="attr">transform</span>: <span class="title function_">translateY</span>(360px);    <span class="comment">//沿着 Y 轴移动</span></span><br><span class="line"><span class="attr">transform</span>: <span class="title function_">translateZ</span>(360px);    <span class="comment">//沿着 Z 轴移动</span></span><br></pre>
+
+
+
+<h3 id="7-小结-1"><a href="#7-小结-1" class="headerlink" title="7.小结"></a>7.小结</h3><ul>
+<li>css中必须写单位，html中可写可不写（单位只有px）</li>
+<li>设置line-height值等于盒子高即可使单行文本垂直居中</li>
+<li>设置banner图时设置position为center和top，以及no-repeat，不需要设置宽度。</li>
+<li>设置img标签和ul标签在同一行显示：display全设为inline，并给li标签加上float</li>
+</ul>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/01/17/HTML%20CSS%E5%A4%8D%E4%B9%A0/">
+            https://www.wuzhiyou.top/2023/01/17/HTML%20CSS%E5%A4%8D%E4%B9%A0/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/01/19/%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">提高网站访问速度的方法 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/01/11/%E7%94%B1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86%E5%AD%A6%E4%B9%A0/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">由路由器开始的网络常识学习 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81HTML-%E9%83%A8%E5%88%86"><span class="toc-text">一、HTML 部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE"><span class="toc-text">1.排版标签</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">这是一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">这是二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%97%E4%BD%93%E6%A0%87%E7%AD%BE%E5%92%8C%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-text">2.字体标签和超链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE"><span class="toc-text">3.图片标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%97%E8%A1%A8%E3%80%81%E8%A1%A8%E6%A0%BC%E4%B8%8E%E8%A1%A8%E5%8D%95%E5%8F%8A%E6%A1%86%E6%9E%B6%E6%A0%87%E7%AD%BE"><span class="toc-text">4.列表、表格与表单及框架标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%97%E8%A1%A8"><span class="toc-text">1.列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A8%E6%A0%BC"><span class="toc-text">2.表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A1%A8%E5%8D%95"><span class="toc-text">3.表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A1%86%E6%9E%B6"><span class="toc-text">4.框架</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E5%AA%92%E4%BD%93%E7%9B%B8%E5%85%B3%E6%A0%87%E7%AD%BE"><span class="toc-text">5.多媒体相关标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-HTML5%E6%96%B0%E5%A2%9E%E5%86%85%E5%AE%B9"><span class="toc-text">6.HTML5新增内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B0%8F%E7%BB%93"><span class="toc-text">7.小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81CSS%E9%83%A8%E5%88%86"><span class="toc-text">二、CSS部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7"><span class="toc-text">1.样式属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="toc-text">2.布局属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">3.动画属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B0%8F%E7%BB%93-1"><span class="toc-text">7.小结</span></a></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81HTML-%E9%83%A8%E5%88%86"><span class="toc-text">一、HTML 部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE"><span class="toc-text">1.排版标签</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">这是一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">这是二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%97%E4%BD%93%E6%A0%87%E7%AD%BE%E5%92%8C%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-text">2.字体标签和超链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE"><span class="toc-text">3.图片标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%97%E8%A1%A8%E3%80%81%E8%A1%A8%E6%A0%BC%E4%B8%8E%E8%A1%A8%E5%8D%95%E5%8F%8A%E6%A1%86%E6%9E%B6%E6%A0%87%E7%AD%BE"><span class="toc-text">4.列表、表格与表单及框架标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%97%E8%A1%A8"><span class="toc-text">1.列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A8%E6%A0%BC"><span class="toc-text">2.表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A1%A8%E5%8D%95"><span class="toc-text">3.表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A1%86%E6%9E%B6"><span class="toc-text">4.框架</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E5%AA%92%E4%BD%93%E7%9B%B8%E5%85%B3%E6%A0%87%E7%AD%BE"><span class="toc-text">5.多媒体相关标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-HTML5%E6%96%B0%E5%A2%9E%E5%86%85%E5%AE%B9"><span class="toc-text">6.HTML5新增内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B0%8F%E7%BB%93"><span class="toc-text">7.小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81CSS%E9%83%A8%E5%88%86"><span class="toc-text">二、CSS部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7"><span class="toc-text">1.样式属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="toc-text">2.布局属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">3.动画属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B0%8F%E7%BB%93-1"><span class="toc-text">7.小结</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

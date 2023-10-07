@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>JavaScript复习</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="JavaScript复习">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/07/15/JavaScript%E5%A4%8D%E4%B9%A0/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-07-15">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-08-15">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="前端">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81JavaScript"><span class="toc-text">一、JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-text">数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-text">时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96"><span class="toc-text">获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-text">设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BOM"><span class="toc-text">BOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-%E4%B8%8A"><span class="toc-text">DOM(上)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-%E4%B8%8B"><span class="toc-text">DOM(下)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A6%82%E5%BF%B5"><span class="toc-text">1、概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">2、创建对象的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">3、构造函数的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%8D%E5%90%88%E7%90%86"><span class="toc-text">4、构造函数的不合理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8E%9F%E5%BD%A2%EF%BC%88%EF%BC%9F%EF%BC%89"><span class="toc-text">5、原形（？）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%80%89%E9%A1%B9%E5%8D%A1-%E6%A1%88%E4%BE%8B"><span class="toc-text">6、面向对象选项卡-案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E6%96%B0%E5%A2%9E%E8%AF%AD%E6%B3%95"><span class="toc-text">ES6新增语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E9%94%AE%E8%AF%8D%E5%9B%9E%E5%BF%86%E5%A4%8D%E4%B9%A0"><span class="toc-text">二、关键词回忆复习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A1%88%E4%BE%8B"><span class="toc-text">三、案例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8"><span class="toc-text">1、回到顶部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%85%A8%E9%80%89%E6%8C%89%E9%92%AE"><span class="toc-text">2、全选按钮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E9%80%89%E9%A1%B9%E5%8D%A1"><span class="toc-text">3、选项卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%BC%A0%E6%A0%87%E8%B7%9F%E9%9A%8F"><span class="toc-text">4、鼠标跟随</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%BD%AE%E6%92%AD%E5%9B%BE"><span class="toc-text">5、轮播图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A1%A5%E5%85%85"><span class="toc-text">四、补充</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      JavaScript复习
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-07-15T08:01:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-07-15</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/" 
+          class="post-meta-link">
+          编程相关
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>2.9k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E5%89%8D%E7%AB%AF/" 
+            class="post-meta-link">
+            前端
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：暑假空闲时间比较多，之前的落下的一个个都要补上。在牛客先刷刷题吧，前端至少要成为自己熟练掌握的一项，不管是为了工作还是以后读研，总得有拿出手的一项熟练的领域啊。</p>
+<h1 id="一、JavaScript"><a href="#一、JavaScript" class="headerlink" title="一、JavaScript"></a>一、JavaScript</h1><p>字符串 单引号双引号不区分</p>
+<p>var定义所有 定义前不分类型</p>
+<p>dom输出换行符<code>&lt;br/&gt;</code>，conslog输入换行<code>&#39; \n &#39;</code></p>
+<p>类型转换</p>
+<p>parseInt（）  &#x2F;&#x2F;转换成int形式</p>
+<p>parseFloat（） &#x2F;&#x2F;转换成float形式</p>
+<p>isNaN() 	&#x2F;&#x2F;检查是否是非数字</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234354514.png" alt="image-20230625234354514" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234354514.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234404009.png" alt="image-20230625234404009" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234404009.png" class="lozad post-image"></p>
+<p>两种特殊类型</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234436990.png" alt="image-20230625234436990" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234436990.png" class="lozad post-image"></p>
+<p>获取类型</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234309632.png" alt="image-20230625234309632" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234309632.png" class="lozad post-image"></p>
+<p>三种在不同界面的不同输出：</p>
+<p>alert（）</p>
+<p>console.log（）</p>
+<p>document.write（）</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010312482.png" alt="image-20230207010312482" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010312482.png" class="lozad post-image"></p>
+<p>特殊进制的数值</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234754512.png" alt="image-20230625234754512" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625234754512.png" class="lozad post-image"></p>
+<p>字符串</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625235228527.png" alt="image-20230625235228527" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230625235228527.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207004718266.png" alt="image-20230207004718266" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207004718266.png" class="lozad post-image"></p>
+<p>俩等号和仨等号</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207004814040.png" alt="image-20230207004814040" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207004814040.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207004844297.png" alt="image-20230207004844297" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207004844297.png" class="lozad post-image"></p>
+<p>组合语句这样输出</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207005402176.png" alt="image-20230207005402176" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207005402176.png" class="lozad post-image"></p>
+<p>Switch</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207005527435.png" alt="image-20230207005527435" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207005527435.png" class="lozad post-image"></p>
+<p>函数调用</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010456998.png" alt="image-20230207010456998" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010456998.png" class="lozad post-image">	</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010520223.png" alt="image-20230207010520223" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010520223.png" class="lozad post-image"></p>
+<p>形参不强调数据类型 其余一样</p>
+<p>作用域</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010853979.png" alt="image-20230207010853979" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207010853979.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011021456.png" alt="image-20230207011021456" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011021456.png" class="lozad post-image"></p>
+<p>注意访问和赋值的不同、</p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>obj对象</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011227799.png" alt="image-20230207011227799" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011227799.png" class="lozad post-image"></p>
+<p>key-value</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011304312.png" alt="image-20230207011304312" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011304312.png" class="lozad post-image"> 	</p>
+<p>对空obj增加键值对 &#x2F; 改变<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011452932.png" alt="image-20230207011452932" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011452932.png" class="lozad post-image"></p>
+<p>删除</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011539911.png" alt="image-20230207011539911" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011539911.png" class="lozad post-image"></p>
+<p>查找访问</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011646674.png" alt="image-20230207011646674" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207011646674.png" class="lozad post-image"></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>冒泡排序</p>
+<p>选择排序</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207165730119.png" alt="image-20230207165730119" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207165730119.png" class="lozad post-image"></p>
+<p>数组长度<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207165837308.png" alt="image-20230207165837308" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230207165837308.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232258386.png" alt="image-20230208232258386" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232258386.png" class="lozad post-image"></p>
+<p>push</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232318908.png" alt="image-20230208232318908" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232318908.png" class="lozad post-image"></p>
+<p>pop</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232103928.png" alt="image-20230208232103928" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232103928.png" class="lozad post-image"></p>
+<p>unshift</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232211680.png" alt="image-20230208232211680" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232211680.png" class="lozad post-image"></p>
+<p>shift</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232345255.png" alt="image-20230208232345255" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232345255.png" class="lozad post-image"></p>
+<p>reverse</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232437911.png" alt="image-20230208232437911" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232437911.png" class="lozad post-image"></p>
+<p>splice</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232614191.png" alt="image-20230208232614191" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232614191.png" class="lozad post-image"></p>
+<p> sort默认<strong>按位排序</strong> 如11 12 13 2 21 23 3 31 32</p>
+<p>return a-b  从小到大</p>
+<p>return b-a 从大到小</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232854990.png" alt="image-20230208232854990" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232854990.png" class="lozad post-image"></p>
+<p>join</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232945273.png" alt="image-20230208232945273" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208232945273.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233002385.png" alt="image-20230208233002385" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233002385.png" class="lozad post-image"></p>
+<p>concat</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233048444.png" alt="image-20230208233048444" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233048444.png" class="lozad post-image"></p>
+<p>slice</p>
+<p>包前不包后</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233228661.png" alt="image-20230208233228661" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233228661.png" class="lozad post-image"> 	</p>
+<p> 没有数据返回就是-1</p>
+<p>indexOf</p>
+<p><strong>以下为数组function：</strong></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233517626.png" alt="image-20230208233517626" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233517626.png" class="lozad post-image"></p>
+<p>forEach 遍历一次执行一次里边的功能</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233613947.png" alt="image-20230208233613947" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233613947.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233630605.png" alt="image-20230208233630605" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233630605.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233700103.png" alt="image-20230208233700103" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233700103.png" class="lozad post-image"></p>
+<p>map 将一个数组遍历 以一定规则映射到另一个数组里 遍历时确定返回值</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233723769.png" alt="image-20230208233723769" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233723769.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233803027.png" alt="image-20230208233803027" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233803027.png" class="lozad post-image"></p>
+<p>fiflter 过滤数组 返回过滤后的数组</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233821242.png" alt="image-20230208233821242" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233821242.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233846578.png" alt="image-20230208233846578" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233846578.png" class="lozad post-image"></p>
+<p>every 判断数组每一项元素条件 返回一个布尔值</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233913853.png" alt="image-20230208233913853" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208233913853.png" class="lozad post-image"></p>
+<p>some 判断数组有一项元素条件 返回一个布尔值</p>
+<p><strong>16种数组方法：</strong></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234014187.png" alt="image-20230208234014187" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234014187.png" class="lozad post-image"></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>首位连接连个字符串：加号</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234216336.png" alt="image-20230208234216336" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234216336.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234251036.png" alt="image-20230208234251036" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234251036.png" class="lozad post-image"></p>
+<p>charAt 获取索引位置的字符串</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234319072.png" alt="image-20230208234319072" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234319072.png" class="lozad post-image"></p>
+<p>toLowerCase</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234328769.png" alt="image-20230208234328769" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234328769.png" class="lozad post-image"></p>
+<p>toUpperCase</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234357391.png" alt="image-20230208234357391" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234357391.png" class="lozad post-image"></p>
+<p>replace</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234426240.png" alt="image-20230208234426240" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234426240.png" class="lozad post-image"></p>
+<p>trim</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234511169.png" alt="image-20230208234511169" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234511169.png" class="lozad post-image"></p>
+<p>split</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234527975.png" alt="image-20230208234527975" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234527975.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234605798.png" alt="image-20230208234605798" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234605798.png" class="lozad post-image"></p>
+<p>substr substring slice</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234753426.png" alt="image-20230208234753426" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234753426.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234841974.png" alt="image-20230208234841974" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234841974.png" class="lozad post-image"></p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>针对数字 仍旧使用var定义</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235332557.png" alt="image-20230208235332557" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235332557.png" class="lozad post-image"></p>
+<p>获取数字↑</p>
+<p>对数字的操作↓</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235356341.png" alt="image-20230208235356341" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235356341.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235447981.png" alt="image-20230208235447981" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235447981.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235522614.png" alt="image-20230208235522614" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235522614.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235609453.png" alt="image-20230208235609453" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235609453.png" class="lozad post-image"></p>
+<p>结果保留正数  其实是算术平方根</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235731377.png" alt="image-20230208235731377" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235731377.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235712482.png" alt="image-20230208235712482" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235712482.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235838736.png" alt="image-20230208235838736" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235838736.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235904072.png" alt="image-20230208235904072" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208235904072.png" class="lozad post-image"></p>
+<p>【不均衡概x率随机获取0-10范围内的整数】</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000201096.png" alt="image-20230209000201096" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000201096.png" class="lozad post-image"></p>
+<p>【均匀概率随机获取0-10范围内的整数】</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000447167.png" alt="image-20230209000447167" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000447167.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000516153.png" alt="image-20230209000516153" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000516153.png" class="lozad post-image"><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000542519.png" alt="image-20230209000542519" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000542519.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000709567.png" alt="image-20230209000709567" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000709567.png" class="lozad post-image"></p>
+<p>获取0~△（x，y）  再加x</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000853831.png" alt="image-20230209000853831" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000853831.png" class="lozad post-image"></p>
+<h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001029883.png" alt="image-20230209001029883" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001029883.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001041484.png" alt="image-20230209001041484" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001041484.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001621097.png" alt="image-20230209001621097" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001621097.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002235445.png" alt="image-20230209002235445" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002235445.png" class="lozad post-image"> 	</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001725905.png" alt="image-20230209001725905" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001725905.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001815282.png" alt="image-20230209001815282" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209001815282.png" class="lozad post-image"></p>
+<p>0是一月 11是十二月</p>
+<p>星期信息：即是星期几。1-6代表周一到周六 0是周日</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002217996.png" alt="image-20230209002217996" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002217996.png" class="lozad post-image"></p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002337943.png" alt="image-20230209002337943" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002337943.png" class="lozad post-image"></p>
+<p><strong>【封装函数 获得两个节点之间的时间差（天 时 分表示）】：</strong></p>
+<p>时间戳相减</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002656580.png" alt="image-20230209002656580" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002656580.png" class="lozad post-image"></p>
+<p>对象数据类型返回</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002808039.png" alt="image-20230209002808039" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002808039.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002842452.png" alt="image-20230209002842452" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209002842452.png" class="lozad post-image"></p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><p>browser object model</p>
+<p>可视窗口尺寸： </p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003033978.png" alt="image-20230209003033978" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003033978.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003134249.png" alt="image-20230209003134249" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003134249.png" class="lozad post-image"></p>
+<p>单位px</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003215027.png" alt="image-20230209003215027" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003215027.png" class="lozad post-image"></p>
+<p>如何和某个事件绑定</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230324183314285.png" alt="image-20230324183314285" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230324183314285.png" class="lozad post-image"></p>
+<p>询问框有确定和取消按钮，点确定返回true，取消返回false</p>
+<p>输入框：<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003351490.png" alt="image-20230209003351490" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003351490.png" class="lozad post-image"></p>
+<p>返回值是输入内容，取消返回null</p>
+<p>开启和关闭标签页 </p>
+<p>（js中页面元素id可以直接当做变量使用）<br><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003524687.png" alt="image-20230209003524687" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003524687.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003628421.png" alt="image-20230209003628421" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003628421.png" class="lozad post-image"></p>
+<p>均在控制台触发</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003837947.png" alt="image-20230209003837947" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209003837947.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209004018148.png" alt="image-20230209004018148" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209004018148.png" class="lozad post-image"></p>
+<p>相当于左右箭头</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209004057958.png" alt="image-20230209004057958" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209004057958.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205530829.png" alt="image-20230213205530829" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205530829.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205559006.png" alt="image-20230213205559006" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205559006.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205830328.png" alt="image-20230213205830328" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205830328.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205951988.png" alt="image-20230213205951988" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213205951988.png" class="lozad post-image"></p>
+<p>瞬间滚动</p>
+<p>平滑滚动：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210102305.png" alt="image-20230213210102305" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210102305.png" class="lozad post-image"></p>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210240830.png" alt="image-20230213210240830" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210240830.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210319427.png" alt="image-20230213210319427" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210319427.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210442205.png" alt="image-20230213210442205" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210442205.png" class="lozad post-image"></p>
+<p>返回值均表示   <strong>第几个</strong>定时器  不区分种类</p>
+<p>关闭定时器：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210702503.png" alt="image-20230213210702503" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210702503.png" class="lozad post-image"></p>
+<p>关闭时不区分种类 可以互相关闭  即两种用法选择一种使用即可</p>
+<p>温馨提示：close 是关键字，取ID时可以将c大写哦</p>
+<p>给按钮绑定事件：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210844145.png" alt="image-20230213210844145" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213210844145.png" class="lozad post-image"></p>
+<h2 id="DOM-上"><a href="#DOM-上" class="headerlink" title="DOM(上)"></a>DOM(上)</h2><p>Document Object Model</p>
+<p>获取元素：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211041976.png" alt="image-20230213211041976" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211041976.png" class="lozad post-image"></p>
+<p>如获取到的这个元素为：<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219143151272.png" alt="image-20230219143151272" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219143151272.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211322325.png" alt="image-20230213211322325" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211322325.png" class="lozad post-image"></p>
+<p>多了一个s</p>
+<p>伪数组按照数组排列方法，但是不能使用数组类方法。 </p>
+<blockquote>
+<p>拓展：关于多类，html元素可以使用多类，中间用空格隔开，例如<code>&lt;h2 class=&quot;city main&quot;&gt;London&lt;/h2&gt;</code>中h2同属于city类和main类，并从这两个类中获取css样式。</p>
+</blockquote>
+<p> <img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211357677.png" alt="image-20230213211357677" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211357677.png" class="lozad post-image"><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211423864.png" alt="image-20230213211423864" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230213211423864.png" class="lozad post-image"></p>
+<p>  <img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219143841147.png" alt="image-20230219143841147" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219143841147.png" class="lozad post-image"></p>
+<p> div span  a  h1都是标签名</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219143950631.png" alt="image-20230219143950631" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219143950631.png" class="lozad post-image"></p>
+<p>选择器可以直接是**<code>标签名 / .类名 / #id名</code>**，即三种均可，只不过是返回第一个元素</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219144243504.png" alt="image-20230219144243504" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219144243504.png" class="lozad post-image"> </p>
+<p>获取元素共五种方法：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219144349208.png" alt="image-20230219144349208" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219144349208.png" class="lozad post-image"></p>
+<p>操作元素内容：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155236787.png" alt="image-20230219155236787" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155236787.png" class="lozad post-image"></p>
+<p>操作文本内容：通过点击按钮或某事件完成对html的标签内容修改（ 不改变原标签）</p>
+<p>操作超文本内容：通过点击按钮或某事件完成对html的标签或标签内容修改</p>
+<p>如何获元素？自己设置一个变量，运用dom操作从网页中获取。对元素的修改能直接运用到网页中。</p>
+<p>点击button按钮修改文本内容：<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219144709315.png" alt="image-20230219144709315" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219144709315.png" class="lozad post-image"></p>
+<p>  将p标签换成span标签：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155352135.png" alt="image-20230219155352135" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155352135.png" class="lozad post-image"></p>
+<p>​    </p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155912206.png" alt="image-20230219155912206" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155912206.png" class="lozad post-image"></p>
+<p>元素的属性有id type等</p>
+<p>更改元素原生属性：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155744475.png" alt="image-20230219155744475" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219155744475.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160243763.png" alt="image-20230219160243763" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160243763.png" class="lozad post-image"></p>
+<p>自定义修改属性（？）</p>
+<p>操作类名</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160345680.png" alt="image-20230219160345680" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160345680.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160505144.png" alt="image-20230219160505144" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160505144.png" class="lozad post-image"></p>
+<p>中划线名需改成驼峰名，如background-color改成backgroundColor。</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160626614.png" alt="image-20230219160626614" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160626614.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160752580.png" alt="image-20230219160752580" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160752580.png" class="lozad post-image"></p>
+<p>对于非行内样式，只能获取不能更改。</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160912787.png" alt="image-20230219160912787" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160912787.png" class="lozad post-image"></p>
+<p> <img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160931500.png" alt="image-20230219160931500" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160931500.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160954913.png" alt="image-20230219160954913" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230219160954913.png" class="lozad post-image"></p>
+<h2 id="DOM-下"><a href="#DOM-下" class="headerlink" title="DOM(下)"></a>DOM(下)</h2><p>节点操作</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205151654.png" alt="image-20230325205151654" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205151654.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205229528.png" alt="image-20230325205229528" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205229528.png" class="lozad post-image"></p>
+<p>创建节点</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205422768.png" alt="image-20230325205422768" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205422768.png" class="lozad post-image"></p>
+<p>创建后插入节点  父节点也需要使用var获取</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205557644.png" alt="image-20230325205557644" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205557644.png" class="lozad post-image"></p>
+<p>删除节点</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205659542.png" alt="image-20230325205659542" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205659542.png" class="lozad post-image"></p>
+<p>替换节点</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205927916.png" alt="image-20230325205927916" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325205927916.png" class="lozad post-image"></p>
+<p>克隆节点 默认是false 不克隆后代 </p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325210035898.png" alt="image-20230325210035898" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325210035898.png" class="lozad post-image"></p>
+<p>获取元素尺寸 区别在于是否加上border区域尺寸</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>​					”<strong>事件源.on事件类型&#x3D;事件处理函数</strong>“</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211250393.png" alt="image-20230325211250393" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211250393.png" class="lozad post-image"></p>
+<p>常用事件类型：</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211354397.png" alt="image-20230325211354397" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211354397.png" class="lozad post-image"></p>
+<p>事件对象：以一个对象数据类型记录下每次事件触发时的一些相关信息。如鼠标点击事件的事件对象：<img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211631468.png" alt="image-20230325211631468" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211631468.png" class="lozad post-image"></p>
+<p>  <img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211723814.png" alt="image-20230325211723814" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325211723814.png" class="lozad post-image"></p>
+<p>接受事件对象的方法</p>
+<p> <img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212659642.png" alt="image-20230325212659642" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212659642.png" class="lozad post-image"></p>
+<p>鼠标事件相关信息</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212734256.png" alt="image-20230325212734256" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212734256.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212749830.png" alt="image-20230325212749830" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212749830.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212758140.png" alt="image-20230325212758140" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212758140.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212815722.png" alt="image-20230325212815722" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325212815722.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213211265.png" alt="image-20230325213211265" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213211265.png" class="lozad post-image"></p>
+<p>事件传播：</p>
+<p>当点击小盒子时，先从外向内传，再从内向外传。 总共三个阶段。</p>
+<p>浏览器传播机制默认从冒泡阶段开始。</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213419684.png" alt="image-20230325213419684" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213419684.png" class="lozad post-image"></p>
+<p>如点击inner小块儿，另外两个也会被触发onclick的function 。</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213508692.png" alt="image-20230325213508692" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213508692.png" class="lozad post-image"></p>
+<p>阻止事件传播</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213719086.png" alt="image-20230325213719086" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213719086.png" class="lozad post-image"></p>
+<p>事件委托（？）</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213832170.png" alt="image-20230325213832170" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230325213832170.png" class="lozad post-image"></p>
+<p>通过target判断</p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326102251392.png" alt="image-20230326102251392" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326102251392.png" class="lozad post-image"></p>
+<p>面向对象的核心:高内聚低耦合(就是对面向过程的高度封装)</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326102540048.png" alt="image-20230326102540048" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326102540048.png" class="lozad post-image"></p>
+<p>机器 即 构造函数</p>
+<h3 id="2、创建对象的方式"><a href="#2、创建对象的方式" class="headerlink" title="2、创建对象的方式"></a>2、创建对象的方式</h3><p>若用var obj字面量方式创造，则不符合“批量生产”原则</p>
+<p>若用内置构造函数创建对象， 依旧不满足批量生产。</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326102911297.png" alt="image-20230326102911297" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326102911297.png" class="lozad post-image"></p>
+<p>使用工厂函数创建对象</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326103218683.png" alt="image-20230326103218683" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326103218683.png" class="lozad post-image"></p>
+<p>可初步实现批量制造要求</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326103258228.png" alt="image-20230326103258228" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326103258228.png" class="lozad post-image"></p>
+<p>使用形参后，可实现批量且内容不同，满足条件。</p>
+<p>使用自定义构造函数创建对象 需要new和this一起使用</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326104327838.png" alt="image-20230326104327838" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326104327838.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326104356225.png" alt="image-20230326104356225" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326104356225.png" class="lozad post-image"></p>
+<h3 id="3、构造函数的使用"><a href="#3、构造函数的使用" class="headerlink" title="3、构造函数的使用"></a>3、构造函数的使用</h3><p>和普通函数没有区别 只是使用的时候和new关键字连用</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326105733554.png" alt="image-20230326105733554" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326105733554.png" class="lozad post-image"></p>
+<h3 id="4、构造函数的不合理"><a href="#4、构造函数的不合理" class="headerlink" title="4、构造函数的不合理"></a>4、构造函数的不合理</h3><p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326110219695.png" alt="image-20230326110219695" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326110219695.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326110017097.png" alt="image-20230326110017097" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326110017097.png" class="lozad post-image"></p>
+<p>调用function内的function</p>
+<h3 id="5、原形（？）"><a href="#5、原形（？）" class="headerlink" title="5、原形（？）"></a>5、原形（？）</h3><p>prototype是一个对象</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326181459192.png" alt="image-20230326181459192" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326181459192.png" class="lozad post-image"></p>
+<p>如图 构造一个孔的Person的function函数prototype输出结果</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326181525086.png" alt="image-20230326181525086" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326181525086.png" class="lozad post-image"></p>
+<h3 id="6、面向对象选项卡-案例"><a href="#6、面向对象选项卡-案例" class="headerlink" title="6、面向对象选项卡-案例"></a>6、面向对象选项卡-案例</h3><h2 id="ES6新增语法"><a href="#ES6新增语法" class="headerlink" title="ES6新增语法"></a>ES6新增语法</h2><p>ES6 是新的 JS 语法标准。<strong>ES6 实际上是一个泛指，泛指 ES 2015 及后续的版本</strong>。</p>
+<p> jQuery 的语法是偏向于 ES3 的。而现在主流的框架 Vue.js 和 React.js 的默认语法，都是用的 ES6。	</p>
+<p>新增let const：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/373652940">var、let、const 的本质区别是什么 - 知乎 (zhihu.com)</a></p>
+<p>简而言之，let是局部作用域，var是全局作用域，const是全局中的常量作用域。</p>
+<p>新增数组的解构赋值：可以将数组中的位置提取出来，按照对应位置一一赋值给变量：</p>
+<p><code>let [a, b, c] = [1, 2, 3];</code></p>
+<p>以及对对象的解构复制：</p>
+<pre class="highlight"><span class="line">const person = &#123; name: <span class="string">&#x27;qianguyihao&#x27;</span>, age: 28, sex: <span class="string">&#x27;男&#x27;</span> &#125;;</span><br><span class="line"><span class="built_in">let</span> &#123; name, age, sex &#125; = person; // 对象的结构赋值</span><br><span class="line"></span><br><span class="line">console.log(name); // 打印结果：qianguyihao</span><br><span class="line">console.log(age); // 打印结果：28</span><br><span class="line">console.log(sex); // 打印结果：男</span><br></pre>
+
+<p>对字符串的解构赋值：</p>
+<pre class="highlight"><span class="line">const [a, b, c, d] = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">console.log(a);</span><br><span class="line">console.log(b);</span><br><span class="line">console.log(c);</span><br><span class="line"></span><br><span class="line">console.log(typeof a); //输出结果：string</span><br><span class="line"></span><br><span class="line">打印结果：</span><br><span class="line">h</span><br><span class="line">e</span><br><span class="line">l</span><br><span class="line">string</span><br></pre>
+
+
+
+<p>新增箭头函数</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230327103954960.png" alt="image-20230327103954960" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230327103954960.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230327105825688.png" alt="image-20230327105825688" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230327105825688.png" class="lozad post-image"></p>
+<p><strong>箭头函数本身不绑定 this</strong>，this 指向的是<strong>箭头函数定义位置的 this</strong>（也就是说，箭头函数在哪个位置定义的，this 就跟这个位置的 this 指向相同）。</p>
+<pre class="highlight"><span class="line">var name = <span class="string">&#x27;许嵩&#x27;</span>;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;千古壹号&#x27;</span>,</span><br><span class="line">    sayHello: () =&gt; &#123;</span><br><span class="line">        console.log(this.name);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.sayHello();</span><br><span class="line">//打印结果 许嵩</span><br></pre>
+
+
+
+<p>参数默认值</p>
+<pre class="highlight"><span class="line"><span class="keyword">function</span> fn(param = <span class="string">&#x27;hello&#x27;</span>) &#123;</span><br><span class="line">    console.log(param);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方法被调用时，如果没有给参数赋值，那就是用默认值；</span><br><span class="line"></span><br><span class="line">//方法被调用时，如果给参数赋值了新的值，那就用新的值。</span><br></pre>
+
+
+
+
+
+<p>剩余参数</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230403100100395.png" alt="：" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230403100100395.png" class="lozad post-image"></p>
+<p>拓展运算：将数组或者对象拆分成逗号分隔的参数序列。</p>
+<p>（而剩余参数是将剩余的元素放到一个数组中）</p>
+<pre class="highlight"><span class="line">const arr = [10, 20, 30];</span><br><span class="line">...arr // 10, 20, 30      注意，这一行是伪代码，这里用到了扩展运算符</span><br><span class="line">console.log(...arr); // 10 20 30</span><br><span class="line"></span><br><span class="line">console.log(10, 20, 30); // 10 20 30</span><br></pre>
+
+<p>eg1</p>
+<pre class="highlight"><span class="line"></span><br></pre>
+
+
+
+
+
+<h1 id="二、关键词回忆复习"><a href="#二、关键词回忆复习" class="headerlink" title="二、关键词回忆复习"></a>二、关键词回忆复习</h1><p>obj   </p>
+<p>三种输出</p>
+<p>var</p>
+<p>typeof</p>
+<p>五种数据类型</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234014187-1689407839040.png" alt="image-20230208234014187" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234014187-1689407839040.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234841974-1689407841180.png" alt="image-20230208234841974" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230208234841974-1689407841180.png" class="lozad post-image"></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000853831-1689407842476.png" alt="image-20230209000853831" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230209000853831-1689407842476.png" class="lozad post-image"></p>
+<p>时间的 获取 与 设置</p>
+<p>BOM事件：alert confirm prompt open close</p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326103417495.png" alt="image-20230326103417495" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230326103417495.png" class="lozad post-image"></p>
+<p>总结：说了这么多其实还是得和html一样自己敲一遍才能记得住。。。</p>
+<h1 id="三、案例"><a href="#三、案例" class="headerlink" title="三、案例"></a>三、案例</h1><p>以后所有案例用vscode写成html，用typora写代码简直太受罪了…</p>
+<h2 id="1、回到顶部"><a href="#1、回到顶部" class="headerlink" title="1、回到顶部"></a>1、回到顶部</h2><p>一、使用js中dom操作实现</p>
+<pre class="highlight"><span class="line">//需求：下拉滚动条，导航栏浮现，右下角回到顶部按钮浮现。</span><br><span class="line">&lt;<span class="built_in">head</span>&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            margin: 0px;</span><br><span class="line">            padding: 0px;</span><br><span class="line">        &#125;</span><br><span class="line">        body&#123;</span><br><span class="line">            height: 2500px;</span><br><span class="line">        &#125;</span><br><span class="line">        .header&#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 80px;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            align-items: center;</span><br><span class="line">            font-size: 30px;</span><br><span class="line">            color: aqua;</span><br><span class="line">            background-color: blueviolet;</span><br><span class="line">            position: fixed;</span><br><span class="line">            top: -80px;</span><br><span class="line">            left: 0;</span><br><span class="line">            transition:bottom .5s linear ;</span><br><span class="line">        &#125;</span><br><span class="line">        .goTop&#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            background-color:pink;</span><br><span class="line">            color: aliceblue;</span><br><span class="line">            font-size: 20px;</span><br><span class="line">            line-height: 25px;</span><br><span class="line">            text-align: center;</span><br><span class="line">            </span><br><span class="line">            position:fixed;</span><br><span class="line">            bottom: 50px;</span><br><span class="line">            right: 50px;</span><br><span class="line">            </span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;header&quot;</span>&gt;i am top&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;goTop&quot;</span>&gt;goTop&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var header = document.querySelector(<span class="string">&#x27;.header&#x27;</span>);</span><br><span class="line">        var goTop  = document.querySelector(<span class="string">&#x27;.goTop&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">        window.onscroll=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            var height= document.documentElement.scrollTop || document.body.scrollTop;</span><br><span class="line">            <span class="keyword">if</span>(height&gt;=300)&#123;</span><br><span class="line">                header.style.top=<span class="string">&#x27;0px&#x27;</span>;</span><br><span class="line">                goTop.style.display=<span class="string">&#x27;block&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                header.style.top=<span class="string">&#x27;-80px&#x27;</span>;</span><br><span class="line">                goTop.style.display=<span class="string">&#x27;none&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        goTop.onclick=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            alert(<span class="string">&quot;this click has been started&quot;</span>);</span><br><span class="line">            // header.style.display=<span class="string">&#x27;block&#x27;</span>;  非行内元素只能获取不能更改</span><br><span class="line"></span><br><span class="line">            window.scrollTo(&#123;</span><br><span class="line">            top: 0,                   //必须要跟逗号  scroolTo语法规定</span><br><span class="line">            // left: 0,</span><br><span class="line">            behavior: <span class="string">&#x27;smooth&#x27;</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre>
+
+<h2 id="2、全选按钮"><a href="#2、全选按钮" class="headerlink" title="2、全选按钮"></a>2、全选按钮</h2><pre class="highlight"><span class="line">//需求：全选按钮生效，且四个单选勾上后全选自动勾上。</span><br><span class="line">&lt;<span class="built_in">head</span>&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    	*&#123;</span><br><span class="line">    		margin:0;</span><br><span class="line">    		padding:0;</span><br><span class="line">    	&#125;</span><br><span class="line">    	.box&#123;</span><br><span class="line">    		width:100px;</span><br><span class="line">    		padding:20px;</span><br><span class="line">    		border:1px solid pink;</span><br><span class="line">    		margin:30px auto;</span><br><span class="line">    		border-radius: 5px;</span><br><span class="line">    	&#125;</span><br><span class="line">    	hr&#123;</span><br><span class="line">    		margin:10px 0;</span><br><span class="line">    	&#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">		全选:&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;&lt;br /&gt;</span><br><span class="line">		&lt;hr /&gt;</span><br><span class="line">		&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;选项一&lt;br /&gt;</span><br><span class="line">		&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;选项二&lt;br /&gt;</span><br><span class="line">		&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;选项三&lt;br /&gt;</span><br><span class="line">		&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;选项四&lt;br /&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br></pre>
+
+<h2 id="3、选项卡"><a href="#3、选项卡" class="headerlink" title="3、选项卡"></a>3、选项卡</h2><h2 id="4、鼠标跟随"><a href="#4、鼠标跟随" class="headerlink" title="4、鼠标跟随"></a>4、鼠标跟随</h2><h2 id="5、轮播图"><a href="#5、轮播图" class="headerlink" title="5、轮播图"></a>5、轮播图</h2><h1 id="四、补充"><a href="#四、补充" class="headerlink" title="四、补充"></a>四、补充</h1><p>css transition 动画效果</p>
+<p>html 自定义属性自定义属性<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenjineng/article/details/108131054">(37条消息) HTML - 标签自定义属性_cjn.的博客-CSDN博客_标签自定义属性</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/cssref/selector_nth-child.asp">CSS3 :nth-child() 选择器 (w3school.com.cn)</a></p>
+<p>n从0取值,子选项按钮2开始,n+2取值就是(2,3,4,…)</p>
+<p>事件委托<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26536815">JavaScript 事件委托详解 - 知乎 (zhihu.com)</a></p>
+<p>new运算符<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new">new 运算符 - JavaScript | MDN (mozilla.org)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41796631/article/details/82939585">JS 中构造函数和普通函数的区别_构造函数和普通函数在定义上的区别_灵灵7的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35458229">理解JS的prototype - 知乎 (zhihu.com)</a></p>
+<p>flex 1 ：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6969797532687794183">『前端大白话』之 “flex:1” - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow">flex-grow - CSS：层叠样式表 | MDN (mozilla.org)</a></p>
+<p><img src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230626000608479.png" alt="image-20230626000608479" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/JavaScript%E5%A4%8D%E4%B9%A0/image-20230626000608479.png" class="lozad post-image"></p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/07/15/JavaScript%E5%A4%8D%E4%B9%A0/">
+            https://www.wuzhiyou.top/2023/07/15/JavaScript%E5%A4%8D%E4%B9%A0/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/08/12/%E5%B8%A6www%E5%92%8C%E4%B8%8D%E5%B8%A6www%E7%9A%84%E5%9F%9F%E5%90%8D%E8%B7%B3%E8%BD%AC/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">带www和不带www的域名跳转 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/07/15/%E5%86%AF%E8%80%81%E6%9D%91%20%E4%B8%89%E6%97%A5%E5%B0%8F%E8%AE%B0/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">扶沟县冯老村三下乡 小记 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81JavaScript"><span class="toc-text">一、JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-text">数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-text">时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96"><span class="toc-text">获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-text">设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BOM"><span class="toc-text">BOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-%E4%B8%8A"><span class="toc-text">DOM(上)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-%E4%B8%8B"><span class="toc-text">DOM(下)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A6%82%E5%BF%B5"><span class="toc-text">1、概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">2、创建对象的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">3、构造函数的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%8D%E5%90%88%E7%90%86"><span class="toc-text">4、构造函数的不合理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8E%9F%E5%BD%A2%EF%BC%88%EF%BC%9F%EF%BC%89"><span class="toc-text">5、原形（？）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%80%89%E9%A1%B9%E5%8D%A1-%E6%A1%88%E4%BE%8B"><span class="toc-text">6、面向对象选项卡-案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E6%96%B0%E5%A2%9E%E8%AF%AD%E6%B3%95"><span class="toc-text">ES6新增语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E9%94%AE%E8%AF%8D%E5%9B%9E%E5%BF%86%E5%A4%8D%E4%B9%A0"><span class="toc-text">二、关键词回忆复习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A1%88%E4%BE%8B"><span class="toc-text">三、案例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8"><span class="toc-text">1、回到顶部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%85%A8%E9%80%89%E6%8C%89%E9%92%AE"><span class="toc-text">2、全选按钮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E9%80%89%E9%A1%B9%E5%8D%A1"><span class="toc-text">3、选项卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%BC%A0%E6%A0%87%E8%B7%9F%E9%9A%8F"><span class="toc-text">4、鼠标跟随</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%BD%AE%E6%92%AD%E5%9B%BE"><span class="toc-text">5、轮播图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A1%A5%E5%85%85"><span class="toc-text">四、补充</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81JavaScript"><span class="toc-text">一、JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-text">数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-text">时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96"><span class="toc-text">获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-text">设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BOM"><span class="toc-text">BOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-%E4%B8%8A"><span class="toc-text">DOM(上)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-%E4%B8%8B"><span class="toc-text">DOM(下)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A6%82%E5%BF%B5"><span class="toc-text">1、概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">2、创建对象的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">3、构造函数的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%8D%E5%90%88%E7%90%86"><span class="toc-text">4、构造函数的不合理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8E%9F%E5%BD%A2%EF%BC%88%EF%BC%9F%EF%BC%89"><span class="toc-text">5、原形（？）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%80%89%E9%A1%B9%E5%8D%A1-%E6%A1%88%E4%BE%8B"><span class="toc-text">6、面向对象选项卡-案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E6%96%B0%E5%A2%9E%E8%AF%AD%E6%B3%95"><span class="toc-text">ES6新增语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E9%94%AE%E8%AF%8D%E5%9B%9E%E5%BF%86%E5%A4%8D%E4%B9%A0"><span class="toc-text">二、关键词回忆复习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A1%88%E4%BE%8B"><span class="toc-text">三、案例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8"><span class="toc-text">1、回到顶部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%85%A8%E9%80%89%E6%8C%89%E9%92%AE"><span class="toc-text">2、全选按钮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E9%80%89%E9%A1%B9%E5%8D%A1"><span class="toc-text">3、选项卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%BC%A0%E6%A0%87%E8%B7%9F%E9%9A%8F"><span class="toc-text">4、鼠标跟随</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%BD%AE%E6%92%AD%E5%9B%BE"><span class="toc-text">5、轮播图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A1%A5%E5%85%85"><span class="toc-text">四、补充</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

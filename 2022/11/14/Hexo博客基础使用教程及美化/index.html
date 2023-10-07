@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>Hexo博客基础使用教程及美化</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="Hexo博客基础使用教程及美化">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2022/11/14/Hexo%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E5%8F%8A%E7%BE%8E%E5%8C%96/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-11-14">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="博客">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E7%B5%AE%E7%B5%AE%E5%BF%B5"><span class="toc-text">三. 一些絮絮念</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      Hexo博客基础使用教程及美化
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-11-14T07:32:31.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-11-14</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
+          class="post-meta-link">
+          日常随笔
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.4k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E5%8D%9A%E5%AE%A2/" 
+            class="post-meta-link">
+            博客
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-基础使用"><a href="#一-基础使用" class="headerlink" title="一. 基础使用"></a>一. 基础使用</h2><h3 id="1-博客设置"><a href="#1-博客设置" class="headerlink" title="1. 博客设置"></a>1. 博客设置</h3><p>在blog文件下的<code>_config.yml</code>文件中能修改站点的基本信息。</p>
+<p><img src="/../images/image-20221114155357138.png" alt="image-20221114155357138" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114155357138.png" class="lozad post-image"></p>
+<p>里边的基本所有东西都能自定义，可以参考hexo官方的说明文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration.html">Hexo配置文档 | Hexo</a></p>
+<p>最主要的就是<code>theme</code>，<code>deploy</code>这两个。前者是自定义选择博客主题，后者是github的配置文件。</p>
+<h3 id="2-上传-x2F-删除-x2F-管理文章"><a href="#2-上传-x2F-删除-x2F-管理文章" class="headerlink" title="2. 上传&#x2F;删除&#x2F;管理文章"></a>2. 上传&#x2F;删除&#x2F;管理文章</h3><p>在blog文件夹下</p>
+<pre class="highlight"><span class="line">hexo new “<span class="built_in">test</span>” <span class="comment">#新建名为test的文章</span></span><br></pre>
+
+<p>会发现在source的_posts文件夹中生成了一个名为test的markdown文件。需要用Markdown编辑器打开，写完后执行</p>
+<pre class="highlight"><span class="line"><span class="comment">#可以将以下三条命令一起执行</span></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d  </span><br></pre>
+
+<p>更新到自己的博客中，过两三分钟再刷新网页就能见到效果了。</p>
+<p>大多主流的博客都支持markdown语法，hexo也不例外。</p>
+<p><a target="_blank" rel="noopener" href="https://markdown.com.cn/intro.html#markdown-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">关于什么是Markdown？| Markdown 官方教程</a></p>
+<p>推荐一款好用的markdown编辑器：Typora</p>
+<p>（类使用打开word文件所需要的office工具）</p>
+<p>如果要编辑写过的博客，直接在打开对应的博客文件编辑，保存后再执行上述三条命令即可。删除的话直接删除对应博客文件，执行上述三条命令。</p>
+<p>注意：markdown编辑器是一款<strong>纯文本</strong>编辑器，不像office一样支持插入图片，故本地显示的图片不能使用绝对路径上传到网站中。</p>
+<p>解决<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hugochen1024/p/12570656.html">Hexo博客插入图片的方法 - SChen1024 - 博客园 (cnblogs.com)</a></p>
+<h2 id="二-美化"><a href="#二-美化" class="headerlink" title="二. 美化"></a>二. 美化</h2><h3 id="1-更改主题"><a href="#1-更改主题" class="headerlink" title="1. 更改主题"></a>1. 更改主题</h3><p>官方提供了数百套主题供大家选择，大家可以点图片进入主题预览，点主题名的话就直接进入该主题的github仓库了。当然也可以去网上搜索自己喜欢的主题。</p>
+<p>在blog文件夹下进入themes文件夹，使用 <code>git clone 链接</code>命令把主题仓库拉到本地，会发现自动生成了一个文件夹。然后在blog文件夹里打开<code>_config.yml</code>文件，找到theme项，<strong>把后边的名字换成你下载的主题的文件夹名</strong>。保存后三步命令走。</p>
+<p><img src="/../images/image-20221114171335758.png" alt="image-20221114171335758" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114171335758.png" class="lozad post-image"></p>
+<p>主题就更换成功了。</p>
+<p>每套主题有自己的设置，但都大同小异。接下来以我选择的Kaze主题为例演示一下。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
+<h3 id="2-美化教程-以Kaze主题为例"><a href="#2-美化教程-以Kaze主题为例" class="headerlink" title="2. 美化教程 (以Kaze主题为例)"></a>2. 美化教程 (以Kaze主题为例)</h3><p>每个主题都有自己的使用文档，如我使用的这套Kaze主题也有官方文档：<a target="_blank" rel="noopener" href="https://demo.theme-kaze.top/document/">主题使用文档 (theme-kaze.top)</a></p>
+<p>另外也可以必应（不推荐百度）搜索 <code>hexo 主题名</code>这样，一般也能搜到其他个人的一些使用教程。</p>
+<p>在主题文件夹里找到<code>_config.yml</code>（这个文件名是配置项的通用名），打开。</p>
+<pre class="highlight"><span class="line"><span class="comment">#------------------------</span></span><br><span class="line"><span class="comment"># Header config</span></span><br><span class="line">title: 无知呦的博客 - wuzhiyou<span class="string">&#x27;s blog</span></span><br><span class="line"><span class="string">author: 无知呦</span></span><br><span class="line"><span class="string"># put the logo on the $&#123;blog_path&#125;/source/img/$&#123;picname&#125;.png or use urls</span></span><br><span class="line"><span class="string">logo_img: https://s1.ax1x.com/2022/11/14/zAQwge.png</span></span><br><span class="line"><span class="string">author_img: https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg</span></span><br><span class="line"><span class="string">author_description: 承认无知，怀揣敬畏</span></span><br><span class="line"><span class="string">#------------------------</span></span><br><span class="line"><span class="string"># Navbar config</span></span><br><span class="line"><span class="string">#------------------------</span></span><br><span class="line"><span class="string">menus:</span></span><br><span class="line"><span class="string">  home: /</span></span><br><span class="line"><span class="string">  archive: /archives</span></span><br><span class="line"><span class="string">  tags: /tags</span></span><br><span class="line"><span class="string">  categories: /categories</span></span><br><span class="line"><span class="string">  about: /about</span></span><br><span class="line"><span class="string">  friends: /links</span></span><br><span class="line"><span class="string">  # artitalk: /shuoshuo # You can uncomment to add this route</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">about:</span></span><br><span class="line"><span class="string">  description: description</span></span><br><span class="line"><span class="string">  social_links:</span></span><br><span class="line"><span class="string">    # - &#123; icon: icon, link: your link &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//以上为该文件的前半部分</span></span><br></pre>
+
+<p>tittle是网站标题，author是作者，logo_img是网站logo，下边两个是头像和个人描述。</p>
+<p>menus里边的设置是菜单栏导航，下边几个为具体的设置，拿其中两个举下例子：</p>
+<ul>
+<li>冒号前边的是你显示在菜单栏上的内容，如<code>home</code>可以改成<code>首页</code>，改变后并不影响点击后的跳转功能，<strong>只做显示使用</strong>。</li>
+<li>冒号后边的是你点击相应的文字后进入的目录。如点击<code>about</code>就进入<code>source/about</code>文件夹，当然默认是没有的，需要自己创建这个文件夹。当然也可以把<code>/about</code>改为<code>/123456</code>，这时候需要在source文件夹下创建名为<code>123456</code>的文件夹。其他设置项同理。</li>
+</ul>
+<p>创建完成后如何在about里显示自己的内容呢？需要新建一个名为<code>index</code>的markdown格式的文件，然后在<strong>源代码模式</strong>下将下边代码复制到文章开头：</p>
+<pre class="highlight"><span class="line">---</span><br><span class="line">title: Hexo博客基础使用教程及美化</span><br><span class="line"><span class="built_in">date</span>: 2022-11-14 15:32:31</span><br><span class="line">tags: 博客</span><br><span class="line">---</span><br></pre>
+
+<p>下边就可以写关于自己的个人介绍页面啦，当然也不是一定只能写个人介绍，<del>改个标题写征婚启事也不是不可以。</del></p>
+<p>其他菜单栏导航的设置项也是一样。</p>
+<p>往下翻还有很多很多的设置，有些我也还没搞明白有什么用，就留作日后的自己和正在阅读此文的你，一起慢慢探索。</p>
+<h2 id="三-一些絮絮念"><a href="#三-一些絮絮念" class="headerlink" title="三. 一些絮絮念"></a>三. 一些絮絮念</h2><ul>
+<li>当网站加载速度比较慢时，设置一张预加载的图片就显得非常必要了。</li>
+</ul>
+<pre class="highlight"><span class="line">lazyload:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  loadingImg: </span><br><span class="line"><span class="comment">#一般在配置文件里边搜索loading就能找到，在网上找一张转圈圈的动图的链接，会在图片加载的时候显示。</span></span><br></pre>
+
+
+
+<ul>
+<li>另外调试本地博客的话使用<code>hexo s</code>更快捷，直接运行本地的文件夹展示在4000端口上，无延迟。当此次调试完后再使用三步命令推到仓库即可。</li>
+<li>搭建这个博客到github的仓库后才知道原来还有一个gitee的平台，服务器是基于国内的，也有github pages的功能，访问速度比在github快不少。emmm….下次再说吧（逃</li>
+</ul>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2022/11/14/Hexo%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E5%8F%8A%E7%BE%8E%E5%8C%96/">
+            https://www.wuzhiyou.top/2022/11/14/Hexo%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E5%8F%8A%E7%BE%8E%E5%8C%96/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2022/11/19/%E8%83%BDping%E9%80%9A%E7%BD%91%E5%9D%80%E4%B8%94dns%E6%97%A0%E9%97%AE%E9%A2%98%E6%83%85%E5%86%B5%E4%B8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">能ping通网址且dns无问题情况下浏览器无法访问 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/11/13/%E5%88%A9%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%92%8Cgithub%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">利用hexo框架和github免费搭建个人博客 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E7%B5%AE%E7%B5%AE%E5%BF%B5"><span class="toc-text">三. 一些絮絮念</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">一. 基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 博客设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%BC%A0-x2F-%E5%88%A0%E9%99%A4-x2F-%E7%AE%A1%E7%90%86%E6%96%87%E7%AB%A0"><span class="toc-text">2. 上传&#x2F;删除&#x2F;管理文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BE%8E%E5%8C%96"><span class="toc-text">二. 美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">1. 更改主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B-%E4%BB%A5Kaze%E4%B8%BB%E9%A2%98%E4%B8%BA%E4%BE%8B"><span class="toc-text">2. 美化教程 (以Kaze主题为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E7%B5%AE%E7%B5%AE%E5%BF%B5"><span class="toc-text">三. 一些絮絮念</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

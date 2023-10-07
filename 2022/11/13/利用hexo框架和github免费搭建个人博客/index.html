@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>利用hexo框架和github免费搭建个人博客</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="利用hexo框架和github免费搭建个人博客">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2022/11/13/%E5%88%A9%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%92%8Cgithub%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-11-13">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="博客">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">一. 简介及前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">1. 实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">2. 前期准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%8B%E8%BD%BDhexo%E6%A1%86%E6%9E%B6%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-text">二. 下载hexo框架到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%8E%A8%E9%80%81%E5%88%B0%E5%85%AC%E7%BD%91"><span class="toc-text">三. 推送到公网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A5%E9%AA%A4"><span class="toc-text">1. 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">2. 常见问题及解决方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E7%BB%91%E5%AE%9A%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-text">四.（可选）绑定到自己的域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">1. 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-1"><span class="toc-text">2. 常见问题及解决方法</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      利用hexo框架和github免费搭建个人博客
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-11-13T09:50:50.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-11-13</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
+          class="post-meta-link">
+          日常随笔
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>2.4k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E5%8D%9A%E5%AE%A2/" 
+            class="post-meta-link">
+            博客
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：本文基于本校一位很优秀的18级学长的博文<a target="_blank" rel="noopener" href="https://blog.soarli.top/archives/333.html">Hexo博客安装配置方法（Win版本） - soarli博客</a>，个人在安装过程中多次踩坑，算是把能遇到的错误信息全遇了一遍，故补充了一些原博文中没有出现的问题的解决方法，以及当时自己搭建时的一些困惑。感谢soarli学长的原创分享！</p>
+<h2 id="一-简介及前期准备"><a href="#一-简介及前期准备" class="headerlink" title="一. 简介及前期准备"></a>一. 简介及前期准备</h2><h3 id="1-实现原理"><a href="#1-实现原理" class="headerlink" title="1. 实现原理"></a>1. 实现原理</h3><p>利用开源的hexo博客框架，以及github上免费的仓库和github pages功能（托管仓库静态界面），可以无技术成本的搭建一套属于自己的个人的博客。若自己有购买的域名，还可以绑定到自己的域名上。</p>
+<blockquote>
+<p>Q1：搭建的博客别人可以看到吗？</p>
+<p>A：可以 ，github pages会展示到公网上。</p>
+</blockquote>
+<blockquote>
+<p>Q2：自己没有购买的域名话别人怎么访问？</p>
+<p>A：只有创建特定的仓库名时github pages才可以展示静态界面到公网上，该仓库名就是别人访问你博客时的域名。格式均为xxx.github.io(正是因为过长所以很多人才会另买域名绑定上去)。</p>
+</blockquote>
+<h3 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2. 前期准备"></a>2. 前期准备</h3><p>提示：以下软件的下载源均在境外，有条件的话建议使用境外ip下载。<strong>尽量避免使用校园网，可能会屏蔽掉很多下载源</strong>。</p>
+<p>如果node.js和git的介绍看不懂也没关系，只需要跟着步骤安装使用即可。</p>
+<p><strong>1.注册github并创建仓库</strong></p>
+<p>在repository里选择new新建，该仓库名称必须为 <strong>你的Github用户名. <code>github.io</code></strong></p>
+<p>如我的github用户名为<code>wuzhiyou</code> ,我创建的仓库名就必须为<strong>wuhziyou.github.io</strong>，如果有任何不一样后面将会出错。</p>
+<p><strong>2.下载node.js</strong></p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/node.js/7567977?fr=aladdin">node.js_百度百科 (baidu.com)</a></p>
+<p>官网下载地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Download | Node.js (nodejs.org)</a></p>
+<p><strong>3.下载git</strong></p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/GIT/12647237?fr=aladdin">GIT（分布式版本控制系统）_百度百科 (baidu.com)</a></p>
+<p>官网下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/">Git (git-scm.com)</a></p>
+<p>自行选择响应的系统版本下载安装，之后按照默认的提示一步步安装即可。都安装完成后在cmd命令里分别输入“node -v” “git -v”查看版本号，有内容显示即为安装成。</p>
+<p>安装完后在桌面右键<code>Git Bash Here</code>设置自己的用户名和邮箱，需要和github上的保持一致。</p>
+<pre class="highlight"><span class="line">git config --global user.name <span class="string">&quot;你的GitHub用户名&quot;</span></span><br><span class="line"></span><br><span class="line">//执行完第一步后再执行第二步</span><br><span class="line">//引号中的内容替换为自己的信息</span><br><span class="line"></span><br><span class="line">git config --global user.email <span class="string">&quot;你的GitHub注册邮箱&quot;</span></span><br></pre>
+
+<p>接着生成本地的ssh密钥，</p>
+<pre class="highlight"><span class="line">//还在git bash里边操作</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;你的GitHub注册邮箱&quot;</span></span><br></pre>
+
+<p>出现暂停的时候直接回车，出现“y&#x2F;n”的时候输y再回车。</p>
+<p>大概共需要四次回车。</p>
+<blockquote>
+<p>题外话：关于什么是ssh？</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shengyin714959/article/details/125214960">ssh 是什么？怎么用？有哪些误区？_shengyin714959的博客-CSDN博客_ssh命令的作用</a>   可以看这篇博文做基础的了解，当然不理解也并不影响后续操作。</p>
+</blockquote>
+<p>生成完后提示如下</p>
+<p><img src="/../images/image-20221113141234589.png" alt="image-20221113141234589" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221113141234589.png" class="lozad post-image"></p>
+<p>找到这个文件用记事本打开，全选，复制，在 <a target="_blank" rel="noopener" href="https://github.com/settings/keys">SSH and GPG keys (github.com)</a>里新建ssh keys，tittle可以随便填，将复制的内容全部粘贴到下边的key一栏，点击添加。</p>
+<p>之后应该会收到一封邮件，接着git bash，输入<code>ssh git@github.com</code>，看到“successfully authentic”的字样即绑定成功。</p>
+<h2 id="二-下载hexo框架到本地"><a href="#二-下载hexo框架到本地" class="headerlink" title="二. 下载hexo框架到本地"></a>二. 下载hexo框架到本地</h2><p>新建一个文件夹，作为以后存放博客文件的地方。</p>
+<p>在该文件夹里，按住shift右键鼠标，打开Powershell窗口，</p>
+<pre class="highlight"><span class="line">npm install -g hexo-cli //安装hexo框架</span><br></pre>
+
+<p>如果一直报错或者卡住不动 按Ctrl+c强制结束当前命令行 尝试使用</p>
+<pre class="highlight"><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.orgcnpm install hexo-cli –g //使用淘宝镜像下载安装</span><br></pre>
+
+<p>安装时间会比较慢，安装完成后<u><strong>此时文件夹内不会有任何变化</strong></u>，需要还在该文件夹中进行命令</p>
+<pre class="highlight"><span class="line">hexo init blog //初始化博客</span><br></pre>
+
+<p>初始化完成后提示<code>“starting blogginh with hexo”</code>即代表成功</p>
+<p>会发现该文件夹出现了一个blog的子文件夹，接着进入blog文件夹中，使用</p>
+<pre class="highlight"><span class="line">hexo s	//开启hexo</span><br></pre>
+
+<p>开启成功后进入127.0.0.1:4000 ，会发现网页和hello wordl，即开启成功。</p>
+<p>hexo默认使用的是4000端口，若开启失败，先检查自己的4000端口是不是被占用。或者尝试<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/336545277197441725.html">hexo修改默认端口号</a>。</p>
+<p>此时的博客已经在本地搭建完成。</p>
+<h2 id="三-推送到公网"><a href="#三-推送到公网" class="headerlink" title="三. 推送到公网"></a>三. 推送到公网</h2><h3 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1. 步骤"></a>1. 步骤</h3><p>找到在<u><strong>blog根目录</strong></u>里的<code>_config.yml</code>文件，用txt打开，翻到最后修改为并保存<strong>（原本只有deploy 其他需要自己加上）</strong></p>
+<pre class="highlight"><span class="line">deploy:</span><br><span class="line"> <span class="built_in">type</span>: git</span><br><span class="line"> repo: 此处需要填写刚创建的github仓库的https地址</span><br><span class="line"> branch: master</span><br></pre>
+
+<p>注意两点：</p>
+<ul>
+<li><strong>后三行要比第一行多一个空格，表示缩进关系。</strong></li>
+<li><strong>冒号后一定要有个空格</strong></li>
+</ul>
+<p>查看仓库https地址的方法如下：</p>
+<p><img src="/../images/image-20221113143414415.png" alt="image-20221113143414415" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221113143414415.png" class="lozad post-image"></p>
+<p>然后进入到blog文件夹里，同样使用powershell命令部署deployer插件</p>
+<pre class="highlight"><span class="line">npm install hexo-deployer-git --save</span><br></pre>
+
+<p>然后输入</p>
+<pre class="highlight"><span class="line">//三条需要一条条输入并回车</span><br><span class="line"></span><br><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d	//输入完这条并回车后正常情况下会弹出github信息验证的窗口</span><br></pre>
+
+<p><img src="/../images/image-20221113144741817.png" alt="image-20221113144741817" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221113144741817.png" class="lozad post-image"></p>
+<p>若无报错信息，则博客已成功推送到公网，可以通过<code>http://xxxx.github.io</code>或<code>https://xxxx.github.io</code>访问。</p>
+<h3 id="2-常见问题及解决方法"><a href="#2-常见问题及解决方法" class="headerlink" title="2. 常见问题及解决方法"></a>2. 常见问题及解决方法</h3><p>笔者在推文章到博客的时候发现有时候即使配置正确也会出现FATAL的报错，而过了十分钟又没问题了。猜测可能是因为网络的问题（毕竟github服务器在境外嘛），故当尝试完以下几种解决报错的方法还不成功时稍安勿躁，等待十分钟可再重新尝试。另外，即使hexo d成功也存在延迟，网站大概要一两分钟才会更新显示。</p>
+<p>当执行hexo d时候常见的错误问题有三种：</p>
+<ul>
+<li><p>出现<code>Available deployer plugins</code>提示：说明deploy插件没装好，使用<code>npm install --save hexo-deployer-git</code>命令重新安装后再次尝试上述三条命令。</p>
+</li>
+<li><p>出现红色的<code>FATAL</code>的提示 ，并报错<code>error：spawn failed...</code>，以下三步走能解决99%的问题：</p>
+<ol>
+<li><p>可能github登陆信息没有设置好，再分别执行<code>git config --global user.name &quot;你的GitHub用户名&quot;</code> 和<code>git config --global user.email &quot;你的GitHub注册邮箱&quot;</code>命令即可，接着再重新打开powershell重试以上三条命令。</p>
+</li>
+<li><p>可能由于hexo d的过程中改变了<code>.deploy_git</code>文件夹下的一些内容，删除该文件夹，然后输入<code>git config --global core.autocrlf false</code>，接着重新执行以上三条命令。</p>
+</li>
+<li><p>如果进行过以上两步都不行，改用ssh绑定仓库的地址，打开刚才的<code>_config.yml</code>文件，修改deploy中repo为<code>git@github.com:yourname/yourname.github.io.git</code>，或在仓库里直接找到ssh复制过来。保存后重新执行三条命令。（笔者的一些絮叨：想了解git http和ssh的区别可以看这篇文章<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b60858bdd7ed">git clone Https 还是 SSH ? </a>）</p>
+</li>
+</ol>
+<p><img src="/../images/image-20221114110738401.png" alt="image-20221114110738401" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114110738401.png" class="lozad post-image"></p>
+</li>
+<li><p>在github的登录框中login无反应或login后无反应：2021年8月之后github为了安全性逐渐停止账号密码登陆仓库，改为Token登陆（相当于身份证编码）。设置自己的Token方法如博：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/342855489">启用并查看自己的Token</a></p>
+</li>
+</ul>
+<h2 id="四-（可选）绑定到自己的域名"><a href="#四-（可选）绑定到自己的域名" class="headerlink" title="四.（可选）绑定到自己的域名"></a>四.（可选）绑定到自己的域名</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2647e079741f">三步搞定Github Pages自定义域名 - 简书 (jianshu.com)</a></p>
+<h3 id="1-步骤-1"><a href="#1-步骤-1" class="headerlink" title="1. 步骤"></a>1. 步骤</h3><p>1）首先在cmd中的ping命令到github pages页面获取ip地址</p>
+<p><img src="/../images/image-20221114113915064.png" alt="img-20221114113915064" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114113915064.png" class="lozad post-image"></p>
+<p>2）然后在自己购买的域名解析中添加两条记录</p>
+<p><img src="/../images/image-20221114114929277.png" alt="image-20221114114929277" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114114929277.png" class="lozad post-image"></p>
+<p>一条使用A记录&#x2F;AAAA记录，另一条使用CANME记录。具体区别可看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuzhiyou/p/16219051.html">常见的域名跳转的方法及原理 - 无知呦 - 博客园 (cnblogs.com)</a></p>
+<p>CANME记录中带主机www，另一条不带。</p>
+<p><img src="/../images/image-20221114115837047.png" alt="image-20221114115837047" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114115837047.png" class="lozad post-image"></p>
+<p>3）然后打开自己创建的github仓库，在settings里找到Pages，拉到最下边，填上自己的域名</p>
+<p><img src="/../images/image-20221114120051731.png" alt="image-20221114120051731" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114120051731.png" class="lozad post-image"></p>
+<p>4）最后要在自己blog的文件夹中打开source，新建一个CNAME.txt，在里边输入自己的域名，保存退出后删掉txt后缀。</p>
+<p><img src="/../images/image-20221114120602128.png" alt="image-20221114120602128.png" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221114120602128.png" class="lozad post-image"></p>
+<h3 id="2-常见问题及解决方法-1"><a href="#2-常见问题及解决方法-1" class="headerlink" title="2. 常见问题及解决方法"></a>2. 常见问题及解决方法</h3><p>补充四个需要注意的点：</p>
+<ul>
+<li>添加解析记录时，如果github page页的ip是ipv4的，需要选择A解析，如果是ipv6的，则需要选择AAAA解析（<strong>笔者在2022.11.12日使用github page发现已经为ipv6了</strong>）</li>
+<li>添加两条解析记录但提示冲突：只在CANME主机记录填上<code>www</code>，A记录&#x2F;AAAA记录不填。</li>
+<li>绑定成功后访问博客却“与此站点的连接不安全”：在github-page里的Custom domain下边找到Enforce HTTPS （执行https加密协议）勾上即可。</li>
+<li>CNAME文件无后缀，<strong>不是TXT文件</strong>，不属于任何类型。</li>
+<li>长时间不登录如果出现推送失败，检查邮箱和账号以及ssh：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43705131/article/details/107965888"> 解决Please make sure you have the correct access rights and the repository exists</a></li>
+</ul>
+<p>至此，绑有你域名的博客已经被推送到公网，在任意设备均可直接访问你的博客。下篇我们再更新博客的基础操作和美化教程。</p>
+<p>——2022年11月14日15:17:37，完成于一个在Java课摸鱼的的阳光明媚且慵懒的下午。</p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2022/11/13/%E5%88%A9%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%92%8Cgithub%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+            https://www.wuzhiyou.top/2022/11/13/%E5%88%A9%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E5%92%8Cgithub%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2022/11/14/Hexo%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E5%8F%8A%E7%BE%8E%E5%8C%96/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">Hexo博客基础使用教程及美化 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">一. 简介及前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">1. 实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">2. 前期准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%8B%E8%BD%BDhexo%E6%A1%86%E6%9E%B6%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-text">二. 下载hexo框架到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%8E%A8%E9%80%81%E5%88%B0%E5%85%AC%E7%BD%91"><span class="toc-text">三. 推送到公网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A5%E9%AA%A4"><span class="toc-text">1. 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">2. 常见问题及解决方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E7%BB%91%E5%AE%9A%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-text">四.（可选）绑定到自己的域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">1. 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-1"><span class="toc-text">2. 常见问题及解决方法</span></a></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">一. 简介及前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">1. 实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">2. 前期准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%8B%E8%BD%BDhexo%E6%A1%86%E6%9E%B6%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-text">二. 下载hexo框架到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%8E%A8%E9%80%81%E5%88%B0%E5%85%AC%E7%BD%91"><span class="toc-text">三. 推送到公网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A5%E9%AA%A4"><span class="toc-text">1. 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">2. 常见问题及解决方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E7%BB%91%E5%AE%9A%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-text">四.（可选）绑定到自己的域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">1. 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-1"><span class="toc-text">2. 常见问题及解决方法</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

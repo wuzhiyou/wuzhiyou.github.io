@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>虚拟化和容器化渐进式入门</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="虚拟化和容器化渐进式入门">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2022/11/20/%E8%99%9A%E6%8B%9F%E5%8C%96%E5%92%8C%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E5%85%A5%E9%97%A8/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-11-20">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-16">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="服务器">
+        
+          <meta 
+            property="og:article:tag" 
+            content="docker">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>36</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">1.安装虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linux%E5%85%A5%E9%97%A8%EF%BC%88ubuntu%E6%96%B9%E5%90%91%EF%BC%89"><span class="toc-text">2.Linux入门（ubuntu方向）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6-apt%E5%92%8Cdpkg"><span class="toc-text">1.安装软件 apt和dpkg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-apt%E5%AE%89%E8%A3%85vim%E5%92%8Cnano"><span class="toc-text">2.apt安装vim和nano</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9C%A8vscode%E4%B8%8B%E8%BD%BDdeb%E5%8C%85"><span class="toc-text">3.在vscode下载deb包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-docker%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-text">3.docker安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-docker%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-text">1.docker基础命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8D%A2%E6%BA%90%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">2.换源下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-vscode%E5%9C%A8docker%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">3.vscode在docker中使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-docker%E6%8B%89%E5%8F%96kali"><span class="toc-text">4.docker拉取kali</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%99%9A%E6%8B%9F%E5%8C%96%E5%B9%B3%E5%8F%B0ESXI%E5%85%A5%E9%97%A8"><span class="toc-text">4.虚拟化平台ESXI入门</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      虚拟化和容器化渐进式入门
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-11-20T15:39:33.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-11-20</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
+          class="post-meta-link">
+          日常随笔
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.8k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+            class="post-meta-link">
+            服务器
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/docker/" 
+            class="post-meta-link">
+            docker
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p><strong>前言：</strong>为了了解120值班室的服务器的使用，在胡老师的学习目录帮助下前几天完成了一些关于linux和docker的入门学习，稍作修改贴到自己的博客上，供以后查找复习。</p>
+<h2 id="1-安装虚拟机"><a href="#1-安装虚拟机" class="headerlink" title="1.安装虚拟机"></a>1.安装虚拟机</h2><p>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111567471">虚拟机Oracle VM VirtualBox安装和使用教程 </a></p>
+<p>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Wang_Dou_Dou_/article/details/120107987">安装虚拟机 VMware Workstation + 安装Linux操作系统 + 输出“Hello World”</a></p>
+<h2 id="2-Linux入门（ubuntu方向）"><a href="#2-Linux入门（ubuntu方向）" class="headerlink" title="2.Linux入门（ubuntu方向）"></a>2.Linux入门（ubuntu方向）</h2><h3 id="1-安装软件-apt和dpkg"><a href="#1-安装软件-apt和dpkg" class="headerlink" title="1.安装软件 apt和dpkg"></a><strong>1.安装软件 apt和dpkg</strong></h3><p>在ubuntu下，安装软件经常会用到一个命令就是“apt-get install”，这里的apt命令，其实是linux系统下一个通用的软件包管理器，使用该命令可以很方便的用来安装和卸载软件。</p>
+<p>apt常用命令如下</p>
+<pre class="highlight"><span class="line">sudo apt-get install 			<span class="comment"># package 安装包</span></span><br><span class="line">sudo apt-get reinstall 			<span class="comment"># package - - reinstall 重新安装包</span></span><br><span class="line">sudo apt-get remove 			<span class="comment"># package 删除包</span></span><br><span class="line">sudo apt-get remove --purge 		<span class="comment"># package 删除包，包括删除配置文件等</span></span><br><span class="line">sudo apt-get autoremove --purge 	<span class="comment"># package 删除包及其依赖的软件包配置文件等</span></span><br><span class="line">sudo apt-get update 			<span class="comment"># 更新源</span></span><br><span class="line">sudo apt-get upgrade 			<span class="comment"># 更新已安装的包</span></span><br><span class="line">sudo apt-get dist-upgrade 		<span class="comment"># 升级系统</span></span><br><span class="line"></span><br></pre>
+
+<p>sudo相当于Windows中的以管理员身份运行</p>
+<p>dpkg常用命令如下</p>
+<pre class="highlight"><span class="line">dpkg -i package.deb		<span class="comment"># 安装一个 Debian 软件包，如手动下载的文件。</span></span><br><span class="line">dpkg -c package.deb		<span class="comment"># 列出 package.deb 的内容。</span></span><br><span class="line">dpkg -I package.deb		<span class="comment"># 从 package.deb 中提取包信息。</span></span><br><span class="line">dpkg -r package			<span class="comment"># 移除一个已安装的包。</span></span><br><span class="line">dpkg -P package			<span class="comment"># 完全清除一个已安装的包。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。</span></span><br><span class="line">dpkg -L package			<span class="comment"># 列出 package 安装的所有文件清单。</span></span><br><span class="line">dpkg -s package			<span class="comment"># 显示已安装包的信息。</span></span><br><span class="line">dpkg -reconfigure package	<span class="comment"># 重新配制一个已经安装的包，如果它使用的是 debconf (debconf 为包安装提供了一个统一的配置界面)。</span></span><br><span class="line">dpkg -S package			<span class="comment"># 查看软件在哪个包里；</span></span><br><span class="line"></span><br></pre>
+
+<p>简而言之，<strong>apt通过网络远程下载软件，dpkg安装管理本地的软件。</strong></p>
+<h3 id="2-apt安装vim和nano"><a href="#2-apt安装vim和nano" class="headerlink" title="2.apt安装vim和nano"></a><strong>2.apt安装vim和nano</strong></h3><p>安装前先在 软件和更新 里，下载自选择清华镜像站<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn</a> </p>
+<p>使用命令  </p>
+<p>sudo apt-get install vim</p>
+<p>sudo apt-get install nano</p>
+<p>安装完成后使用 vim -v     nano -v 命令查看是否成功(v - version)</p>
+<p>在Windows使用cmd窗口控制虚拟机（免除来回切换的繁琐）：</p>
+<p>首先在主机Windows中通过安装ssh服务：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d682b645615f">win10通过powershell安装ssh服务 - 简书 (jianshu.com)</a></p>
+<pre class="highlight"><span class="line">ip addr	//linux中查看设备的ip的命令 可能会包括docker的</span><br><span class="line"></span><br></pre>
+
+<p>在windows的cmd中</p>
+<pre class="highlight"><span class="line">ssh -v	//检查ssh是否安装成功</span><br><span class="line">ssh username@ip //输入虚拟机的username和ip绑定 然后会提示输入密码 就可以绑定了</span><br></pre>
+
+
+
+<p><img src="/../images/image-20221111153826273.png" alt="image-20221111153826273" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111153826273.png" class="lozad post-image"></p>
+<p><img src="/../images/image-20221111154633763.png" alt="image-20221111154633763" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111154633763.png" class="lozad post-image"></p>
+<h3 id="3-在vscode下载deb包"><a href="#3-在vscode下载deb包" class="headerlink" title="3.在vscode下载deb包"></a>3.在vscode下载deb包</h3><p>在下载好的deb文件夹目录下使用</p>
+<p>dpkg -i vscode.deb</p>
+<p><u>注意安装完成后不会有提示，自己到软件里边找</u></p>
+<p>Q：然而安装搜狗拼音时候错误了..</p>
+<img src="../images/image-20221110151542566.png" alt="image-20221110151542566" style="zoom: 80%;" / srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="../images/image-20221110151542566.png" class="lozad post-image">
+
+
+
+<p><strong>5.linux基础命令</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengfangbing/p/9773269.html">Linux基础命令大全 - 鸣の落夕 - 博客园 (cnblogs.com)</a></p>
+<pre class="highlight"><span class="line">sudo 		//管理员权限运行</span><br><span class="line">sudo <span class="keyword">do</span> 	//取得管理员权限</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> 			//切换目录</span><br><span class="line"><span class="built_in">cd</span> ../ 		//切换到上级目录</span><br><span class="line"><span class="built_in">cd</span> /        //切换到根目录</span><br><span class="line"><span class="built_in">cd</span>~         //切换到</span><br><span class="line"></span><br><span class="line"><span class="built_in">touch</span> 		//创建文件</span><br><span class="line"><span class="built_in">rm</span> 			//删除文件</span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span>		//创建文件夹</span><br><span class="line"><span class="built_in">rm</span> 			//删除文件夹</span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> a.txt b.txt			 //复制a文件且新命名为b文件</span><br><span class="line"><span class="built_in">mv</span> 文件名或目录  目标目录   // 将前移动到后</span><br></pre>
+
+
+
+
+
+<p><strong>6.输出一个c程序</strong></p>
+<p>编译前使用gcc -v查看自己的gcc版本</p>
+<p>可以直接touch test.c在终端创建c文件，然后再</p>
+<pre class="highlight"><span class="line">gcc -o <span class="built_in">test</span> test.c</span><br><span class="line">./test</span><br></pre>
+
+
+
+<p>编译c文件，就会生成编译好的软件了。（但是不知道为啥打不开）</p>
+<p><strong>在vscode里边下载插件的时候，记得别用校园网，会出现xhr failed</strong></p>
+<h2 id="3-docker安装与使用"><a href="#3-docker安装与使用" class="headerlink" title="3.docker安装与使用"></a>3.docker安装与使用</h2><p>​	</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/187505981">什么是Docker？看这一篇干货文章就够了！ - 知乎 (zhihu.com)</a></p>
+<p>[如何在 Ubuntu 20.04 上安装和使用 Docker - 知乎 (zhihu.com)](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143156163#:~:text=Docker">https://zhuanlan.zhihu.com/p/143156163#:~:text=Docker</a> 在标准的 Ubuntu 20.04 软件源中可用，但是可能不是最新的版本。 我们将会从 Docker 的官方软件源中安装最新的,sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common)</p>
+<p><a target="_blank" rel="noopener" href="https://huaweicloud.csdn.net/6356683bd3efff3090b5de43.html?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~activity-2-126387732-blog-117048140.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~activity-2-126387732-blog-117048140.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=5">Docker常用命令大全（万字详解）Java-DevPress官方社区 (csdn.net)</a></p>
+<p>&#x2F;&#x2F;三篇文章分别对应docker 的<strong>介绍-安装-使用</strong>，遇到不会的可以查一查。</p>
+<h3 id="1-docker基础命令"><a href="#1-docker基础命令" class="headerlink" title="1.docker基础命令"></a>1.docker基础命令</h3><pre class="highlight"><span class="line">docker pull imagenames	//下载镜像</span><br><span class="line">docker rmi  -f imageID	//删除<span class="built_in">id</span>为...的镜像</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker -v	  //会出现版本号则为安装成功</span><br><span class="line">docker -ps -a //查看所有容器的状态</span><br><span class="line">docker -ps    //查看正在运行的容器</span><br><span class="line">docker images //查看本地的所有镜像</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl start docker	//启动docker</span><br><span class="line">systemctl stop docker	//停止docker：</span><br><span class="line">systemctl restart docker	//重启docker</span><br><span class="line">systemctl status docker		//查看docker状态：</span><br><span class="line">systemctl <span class="built_in">enable</span> docker		//开机启动docker</span><br><span class="line">docker info					//查看docker概要信息</span><br><span class="line">docker ‐‐<span class="built_in">help</span>				//查看docker帮助文档</span><br><span class="line"></span><br><span class="line">docker run -it centos /bin/bash 	//启动centos名容器</span><br><span class="line">ctrl+p+q							//从当前容器中退出但不停止</span><br><span class="line">docker stop 容器ID或者容器名		   //停止容器</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+
+<p>如果查看不了首先检查是不是没有取得<strong>超级管理员权限</strong></p>
+<p><img src="/../images/image-20221111152436932.png" alt="image-20221111152436932" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111152436932.png" class="lozad post-image"></p>
+<p>每个容器有一个id和image（镜像文件 也就是该容器用的什么系统）</p>
+<p>当误进行操作退出不了当前命令行或者命令模式时候，按&#x3D;&#x3D;<strong>Ctrl+C</strong>&#x3D;&#x3D;强制退出</p>
+<h3 id="2-换源下载镜像"><a href="#2-换源下载镜像" class="headerlink" title="2.换源下载镜像"></a>2.换源下载镜像</h3><pre class="highlight"><span class="line"><span class="built_in">cd</span> /etc/docker	//进入该文件夹</span><br><span class="line"> </span><br><span class="line">vim daemon.json	//使用vim打开该文件</span><br></pre>
+
+
+
+<p>添加或者更改镜像源文件，拉取镜像的时候自动按照从上到下的顺序来的</p>
+<p>由于是使用vim编辑器打开的 ，所以需要学习下vim的阴间操作…</p>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/805.html">Linux Vim基本操作（文件的打开和编辑）完全攻略（有图有真相） (biancheng.net)</a></p>
+<p><img src="/../images/image-20221111172326540.png" alt="image-20221111172326540" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111172326540.png" class="lozad post-image"></p>
+<p>使用   <strong>:q!</strong>   命令不保存退出vim</p>
+<p>最后要重启docker</p>
+<pre class="highlight"><span class="line">service docker restart</span><br></pre>
+
+
+
+<h3 id="3-vscode在docker中使用"><a href="#3-vscode在docker中使用" class="headerlink" title="3.vscode在docker中使用"></a>3.vscode在docker中使用</h3><p>官方使用文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/visualstudio/docker/tutorials/docker-tutorial">教程：开始在 Visual Studio Code 中使用 Docker 应用 | Microsoft Learn</a></p>
+<p>注意sudo</p>
+<p><img src="/../images/image-20221111174543051.png" alt="image-20221111174543051" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111174543051.png" class="lozad post-image"></p>
+<p>80：80的映射端口后左侧failed，尝试用90:90</p>
+<p><img src="/../images/image-20221111193203634.png" alt="image-20221111193203634" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111193203634.png" class="lozad post-image"></p>
+<p>问题解决，和端口号无关，是管理员权限的问题</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42688573/article/details/127159093?spm=1001.2014.3001.5506">VSCode连接docker失败 Failed to connect. Is docker running?</a></p>
+<p>（第一种方法未解决  使用第二种方法解决了）</p>
+<p><img src="/../images/image-20221111195713408.png" alt="image-20221111195713408" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111195713408.png" class="lozad post-image"></p>
+<p>后续两步有点看不懂了..</p>
+<h3 id="4-docker拉取kali"><a href="#4-docker拉取kali" class="headerlink" title="4.docker拉取kali"></a>4.docker拉取kali</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34084103">Kali Linux 是什么，你需要它吗？ - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013613428/article/details/116294103"> 在docker中拉取并运行Kali Linux_</a></p>
+<pre class="highlight"><span class="line">docker pull kalilinux/kali-rolling  //拉取kali镜像</span><br><span class="line">docker images						//查看镜像<span class="built_in">id</span></span><br><span class="line">docker run -it <span class="built_in">id</span> /bin/bash			//运行kali</span><br><span class="line"></span><br><span class="line">//进入kali后用<span class="built_in">help</span>查看命令</span><br></pre>
+
+
+
+<p><img src="/../images/image-20221111221640054.png" alt="image-20221111221640054" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221111221640054.png" class="lozad post-image"></p>
+<h2 id="4-虚拟化平台ESXI入门"><a href="#4-虚拟化平台ESXI入门" class="headerlink" title="4.虚拟化平台ESXI入门"></a>4.虚拟化平台ESXI入门</h2><p><a target="_blank" rel="noopener" href="https://wp.gxnas.com/8014.html">ESXi 入门指南 - GXNAS博客</a></p>
+<p>其实何为esxi？最大的不同：<strong>esxi是本身为操作系统的虚拟机。</strong> 大多服务器上部署的就是这个esxi。在vmware官网也能下载。</p>
+<p>以后把电脑120的esxi玩明白了再来补充（不知不觉又给自己挖了个坑</p>
+<p>——写于11月20日晚23:36，黄色台灯光像阳光一样温暖着帘子里的小世界。</p>
+<p><img src="/../images/image-20221120233812629.png" alt="image-20221120233812629" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/image-20221120233812629.png" class="lozad post-image"></p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2022/11/20/%E8%99%9A%E6%8B%9F%E5%8C%96%E5%92%8C%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E5%85%A5%E9%97%A8/">
+            https://www.wuzhiyou.top/2022/11/20/%E8%99%9A%E6%8B%9F%E5%8C%96%E5%92%8C%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E5%85%A5%E9%97%A8/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2022/12/21/%E8%A7%A3%E9%99%A4%E5%AD%A6%E4%B9%A0%E9%80%9A%E7%BD%91%E9%A1%B5%E7%A6%81%E6%AD%A2%E7%B2%98%E8%B4%B4/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">解除学习通网页禁止粘贴 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/11/19/%E8%83%BDping%E9%80%9A%E7%BD%91%E5%9D%80%E4%B8%94dns%E6%97%A0%E9%97%AE%E9%A2%98%E6%83%85%E5%86%B5%E4%B8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">能ping通网址且dns无问题情况下浏览器无法访问 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">1.安装虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linux%E5%85%A5%E9%97%A8%EF%BC%88ubuntu%E6%96%B9%E5%90%91%EF%BC%89"><span class="toc-text">2.Linux入门（ubuntu方向）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6-apt%E5%92%8Cdpkg"><span class="toc-text">1.安装软件 apt和dpkg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-apt%E5%AE%89%E8%A3%85vim%E5%92%8Cnano"><span class="toc-text">2.apt安装vim和nano</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9C%A8vscode%E4%B8%8B%E8%BD%BDdeb%E5%8C%85"><span class="toc-text">3.在vscode下载deb包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-docker%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-text">3.docker安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-docker%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-text">1.docker基础命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8D%A2%E6%BA%90%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">2.换源下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-vscode%E5%9C%A8docker%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">3.vscode在docker中使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-docker%E6%8B%89%E5%8F%96kali"><span class="toc-text">4.docker拉取kali</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%99%9A%E6%8B%9F%E5%8C%96%E5%B9%B3%E5%8F%B0ESXI%E5%85%A5%E9%97%A8"><span class="toc-text">4.虚拟化平台ESXI入门</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">1.安装虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linux%E5%85%A5%E9%97%A8%EF%BC%88ubuntu%E6%96%B9%E5%90%91%EF%BC%89"><span class="toc-text">2.Linux入门（ubuntu方向）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6-apt%E5%92%8Cdpkg"><span class="toc-text">1.安装软件 apt和dpkg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-apt%E5%AE%89%E8%A3%85vim%E5%92%8Cnano"><span class="toc-text">2.apt安装vim和nano</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9C%A8vscode%E4%B8%8B%E8%BD%BDdeb%E5%8C%85"><span class="toc-text">3.在vscode下载deb包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-docker%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-text">3.docker安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-docker%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-text">1.docker基础命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8D%A2%E6%BA%90%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">2.换源下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-vscode%E5%9C%A8docker%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">3.vscode在docker中使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-docker%E6%8B%89%E5%8F%96kali"><span class="toc-text">4.docker拉取kali</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%99%9A%E6%8B%9F%E5%8C%96%E5%B9%B3%E5%8F%B0ESXI%E5%85%A5%E9%97%A8"><span class="toc-text">4.虚拟化平台ESXI入门</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-28</div>
+        <a href="/2023/09/28/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">JAVA学习笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/2023/09/23/%E6%97%A7%E7%9A%84%E6%97%B6%E5%85%89%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/"><div class="recent-posts-item-content">旧的时光告一段落</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-22</div>
+        <a href="/2023/09/22/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><div class="recent-posts-item-content">SQL操作学习笔记</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
