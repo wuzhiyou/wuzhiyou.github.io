@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>【转】对语雀P0事故进行复盘</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="【转】对语雀P0事故进行复盘">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.top/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-10-27">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-10-27">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="科普">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>39</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>22</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%91%8A%E5%85%A8%E6%96%87"><span class="toc-text">一、公告全文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E8%AF%BB%E2%80%9C%E5%8F%AF%E7%9B%91%E6%8E%A7%EF%BC%8C%E5%8F%AF%E7%81%B0%E5%BA%A6%EF%BC%8C%E5%8F%AF%E5%9B%9E%E6%BB%9A%E2%80%9D"><span class="toc-text">二、解读“可监控，可灰度，可回滚”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">1.可监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E7%81%B0%E5%BA%A6"><span class="toc-text">2.可灰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E5%9B%9E%E6%BB%9A"><span class="toc-text">3.可回滚</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">17</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
+        title="生活相关">
+        <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%A7%91%E6%99%AE/" 
+        title="科普">
+        <div class="tags-list-item">科普</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" 
+        title="操作系统">
+        <div class="tags-list-item">操作系统</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      【转】对语雀P0事故进行复盘
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-10-27T11:35:38.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-10-27</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>599 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E7%A7%91%E6%99%AE/" 
+            class="post-meta-link">
+            科普
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：前几天语雀发生超越P0级别(<a target="_blank" rel="noopener" href="https://juejin.cn/post/7121287001873055774">科普：互联网公司事故等级划分</a>)的事故，恰巧作为语雀的新用户也经历了这波事故的全过程。从下午三四点服务掉线到晚上九点钟服务恢复，可谓是超长待机了。更离谱的是本地数据也打不开，离谱程度很难让人相信这是背靠蚂蚁金融的公司。</p>
+<blockquote>
+<p>以下内容多转自<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247551790&idx=1&sn=fefde9e556b7e9f6fcb988ad5144170c&chksm=e9c2ecd9deb565cf9e90138610869c0f698c99e271c5eb40a8e1872013181a9b6aaa8d203495&mpshare=1&scene=23&srcid=1027zzuATSofVA7AQ1V5bmh0&sharer_shareinfo=82fd628abf5368cfca6eae37e74db921&sharer_shareinfo_first=82fd628abf5368cfca6eae37e74db921#rd">程序员鱼皮公众号</a>，侵删。</p>
+</blockquote>
+<h2 id="一、公告全文"><a href="#一、公告全文" class="headerlink" title="一、公告全文"></a>一、公告全文</h2><p><img src="https://n.sinaimg.cn/sinakd20231025s/293/w622h1271/20231025/3b99-d59f1af5a4541d31ca7d3b9b9c4fb8f6.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://n.sinaimg.cn/sinakd20231025s/293/w622h1271/20231025/3b99-d59f1af5a4541d31ca7d3b9b9c4fb8f6.png" class="lozad post-image"></p>
+<h2 id="二、解读“可监控，可灰度，可回滚”"><a href="#二、解读“可监控，可灰度，可回滚”" class="headerlink" title="二、解读“可监控，可灰度，可回滚”"></a>二、解读“可监控，可灰度，可回滚”</h2><p>注：以下内容转自程序员鱼皮公众号，侵删。</p>
+<h3 id="1-可监控"><a href="#1-可监控" class="headerlink" title="1.可监控"></a>1.可监控</h3><p>可监控是指能够实时地收集和展示系统运行时的数据和指标，以便开发和运维同学可以及时发现系统问题、更快进行故障排查和性能调优。需要监控的信息可以包括系统性能指标（内存、CPU、带宽等）、业务日志、错误信息等。</p>
+<blockquote>
+<p>即对数据作可视化面板实时观测监控</p>
+</blockquote>
+<h3 id="2-可灰度"><a href="#2-可灰度" class="headerlink" title="2.可灰度"></a>2.可灰度</h3><p>指灰度发布能力（又叫金丝雀发布）。将系统的新版本全量部署给所有用户之前，先仅对一小部分用户进行试用。这样可以通过收集这部分用户的反馈和监控数据就能评估新版本的稳定性，并及时进行调整和修复，从而减少对全体用户的潜在风险。</p>
+<p>灰度发布又有很多策略。比如经典的按流量阶段性发布，先随机给 5% 的用户使用新版本，验证没问题后，再给 20%、50%、75% 的用户使用新版本逐渐放量，直到覆盖 100% 的用户。</p>
+<blockquote>
+<p>即先发布试用版本给少部分用户体验来获得反馈</p>
+</blockquote>
+<h3 id="3-可回滚"><a href="#3-可回滚" class="headerlink" title="3.可回滚"></a>3.可回滚</h3><p>就像 Git 版本控制系统回滚写错的代码一样，系统的版本也是可以回滚的。</p>
+<p>线上系统出现问题时，可以将已经部署的新版本回退到之前的稳定版本。这样做可以快速恢复系统，减少对用户的影响，并给开发同学足够的时间来排查和修复问题。而不是线上一直故障，每分钟都是损失。</p>
+<blockquote>
+<p>即版本回退，这个没什么好说的</p>
+</blockquote>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.top/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/">
+            https://www.wuzhiyou.top/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/10/26/vim%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">vim基础命令 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%91%8A%E5%85%A8%E6%96%87"><span class="toc-text">一、公告全文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E8%AF%BB%E2%80%9C%E5%8F%AF%E7%9B%91%E6%8E%A7%EF%BC%8C%E5%8F%AF%E7%81%B0%E5%BA%A6%EF%BC%8C%E5%8F%AF%E5%9B%9E%E6%BB%9A%E2%80%9D"><span class="toc-text">二、解读“可监控，可灰度，可回滚”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">1.可监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E7%81%B0%E5%BA%A6"><span class="toc-text">2.可灰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E5%9B%9E%E6%BB%9A"><span class="toc-text">3.可回滚</span></a></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%91%8A%E5%85%A8%E6%96%87"><span class="toc-text">一、公告全文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E8%AF%BB%E2%80%9C%E5%8F%AF%E7%9B%91%E6%8E%A7%EF%BC%8C%E5%8F%AF%E7%81%B0%E5%BA%A6%EF%BC%8C%E5%8F%AF%E5%9B%9E%E6%BB%9A%E2%80%9D"><span class="toc-text">二、解读“可监控，可灰度，可回滚”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">1.可监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E7%81%B0%E5%BA%A6"><span class="toc-text">2.可灰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E5%9B%9E%E6%BB%9A"><span class="toc-text">3.可回滚</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-27</div>
+        <a href="/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/"><div class="recent-posts-item-content">【转】对语雀P0事故进行复盘</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-26</div>
+        <a href="/2023/10/26/vim%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"><div class="recent-posts-item-content">vim基础命令</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-22</div>
+        <a href="/2023/10/22/mooc%E4%B8%80%E9%94%AE%E4%BA%92%E8%AF%84%E8%84%9A%E6%9C%AC/"><div class="recent-posts-item-content">mooc一键互评脚本</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-07</div>
+        <a href="/2023/10/07/%E5%A0%86%E7%A9%BA%E9%97%B4%E5%92%8C%E6%A0%88%E7%A9%BA%E9%97%B4/"><div class="recent-posts-item-content">堆空间和栈空间</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
