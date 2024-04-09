@@ -18,12 +18,12 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>【待】数据库的六大范式</title>
+  <title>数据库的六大范式</title>
   
     
       <meta 
         property="og:title" 
-        content="【待】数据库的六大范式">
+        content="数据库的六大范式">
     
     
       <meta 
@@ -45,7 +45,7 @@
         content="2023-12-02">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-03">
+        content="2024-04-09">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -293,7 +293,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>43</span>
+    <span>44</span>
     <span>文章</span>
   </a>
   <a 
@@ -332,7 +332,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1NF"><span class="toc-text">1. 第一范式1NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2NF"><span class="toc-text">2. 第二范式2NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3NF"><span class="toc-text">3. 第三范式3NF</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1NF"><span class="toc-text">1. 第一范式1NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2NF"><span class="toc-text">2. 第二范式2NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3NF"><span class="toc-text">3. 第三范式3NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-BC%E8%8C%83%E5%BC%8FBCNF"><span class="toc-text">4. BC范式BCNF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F4NF"><span class="toc-text">5. 第四范式4NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%AC%AC%E4%BA%94%E8%8C%83%E5%BC%8F5NF"><span class="toc-text">6. 第五范式5NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%80%BB%E7%BB%93"><span class="toc-text">7.总结</span></a></li></ol>
       </div>
     </article>
   
@@ -350,14 +350,7 @@
       <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
         <div class="categories-list-item">
           算法相关
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
-        <div class="categories-list-item">
-          日常随笔
-          <span class="categories-list-item-badge">17</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
@@ -365,6 +358,13 @@
         <div class="categories-list-item">
           编程相关
           <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">17</span>
         </div>
       </a>
     
@@ -417,15 +417,15 @@
       </a>
     
       <a 
-        href="/tags/%E5%89%8D%E7%AB%AF/" 
-        title="前端">
-        <div class="tags-list-item">前端</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%8D%9A%E5%AE%A2/" 
         title="博客">
         <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
       </a>
     
       <a 
@@ -435,9 +435,9 @@
       </a>
     
       <a 
-        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
-        title="电脑维修">
-        <div class="tags-list-item">电脑维修</div>
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
       </a>
     
       <a 
@@ -447,9 +447,9 @@
       </a>
     
       <a 
-        href="/tags/%E7%AE%97%E6%B3%95/" 
-        title="算法">
-        <div class="tags-list-item">算法</div>
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
       </a>
     
       <a 
@@ -477,27 +477,27 @@
       </a>
     
       <a 
-        href="/tags/JavaWeb/" 
-        title="JavaWeb">
-        <div class="tags-list-item">JavaWeb</div>
-      </a>
-    
-      <a 
         href="/tags/docker/" 
         title="docker">
         <div class="tags-list-item">docker</div>
       </a>
     
       <a 
-        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
-        title="数学建模">
-        <div class="tags-list-item">数学建模</div>
+        href="/tags/JavaWeb/" 
+        title="JavaWeb">
+        <div class="tags-list-item">JavaWeb</div>
       </a>
     
       <a 
         href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
         title="生活相关">
         <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
       </a>
     
       <a 
@@ -518,7 +518,7 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      【待】数据库的六大范式
+      数据库的六大范式
     </h1>
   </header>
   <div class="post-meta post-show-meta">
@@ -532,7 +532,7 @@
     
     
       <span class="dot"></span>
-      <span>202 字</span>
+      <span>2k 字</span>
     
   </div>
   
@@ -562,52 +562,385 @@
     <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43433032/article/details/89293663">数据库之六大范式详解_数据库范式-CSDN博客</a></p>
 <p>前言：数据库系统原理的基本内容。</p>
 <p><img src="https://pic1.zhimg.com/80/v2-69f62a215761df15eada37708795e0a4_1440w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/80/v2-69f62a215761df15eada37708795e0a4_1440w.webp" class="lozad post-image"></p>
-<h3 id="1-第一范式1NF"><a href="#1-第一范式1NF" class="headerlink" title="1. 第一范式1NF"></a>1. 第一范式1NF</h3><p>数据项不可分，强调原子性。</p>
-<p>如下图不为第一范式：<img src="https://img-blog.csdnimg.cn/201904141010122.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://img-blog.csdnimg.cn/201904141010122.png" class="lozad post-image"></p>
-<p>而下图为第一范式：<img src="https://img-blog.csdnimg.cn/20190414101325732.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://img-blog.csdnimg.cn/20190414101325732.png" class="lozad post-image"></p>
-<h3 id="2-第二范式2NF"><a href="#2-第二范式2NF" class="headerlink" title="2. 第二范式2NF"></a>2. 第二范式2NF</h3><p>若某关系R属于第一范式，且每一个非主属性完全函数依赖于任何一个候选码，则关系R属于第二范式。</p>
-<p>如下表中学号和姓名都可以唯一识别一个元组，因此学号和姓名我们都称为<strong>候选码</strong>。因此我们可选择学号为<strong>主码</strong>。</p>
+<h2 id="1-第一范式1NF"><a href="#1-第一范式1NF" class="headerlink" title="1. 第一范式1NF"></a>1. 第一范式1NF</h2><p>数据项不可分，强调原子性。</p>
+<p>如下图不为第一范式：</p>
+<p><img src="/../images/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%AD%E5%A4%A7%E8%8C%83%E5%BC%8F/201904141010122.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%AD%E5%A4%A7%E8%8C%83%E5%BC%8F/201904141010122.png" class="lozad post-image"></p>
+<p>而下图为第一范式：</p>
 <table>
 <thead>
 <tr>
-<th>学号</th>
+<th>公司名称</th>
+<th>地址</th>
+<th>商品名称</th>
+<th>商品数量</th>
+<th>电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>刘晨</td>
+<td>19</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2-第二范式2NF"><a href="#2-第二范式2NF" class="headerlink" title="2. 第二范式2NF"></a>2. 第二范式2NF</h2><p>若某关系R属于第一范式，且每一个非主属性<strong>完全依赖于</strong>任何一个候选码，则关系R属于第二范式。</p>
+<p>以下是一个符合第二范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>学生ID (主键)</th>
+<th>学生姓名</th>
+<th>课程ID (主键)</th>
+<th>课程名称</th>
+<th>成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>101</td>
+<td>数学</td>
+<td>85</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小红</td>
+<td>102</td>
+<td>英语</td>
+<td>78</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小华</td>
+<td>101</td>
+<td>数学</td>
+<td>90</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，每个非主属性（例如课程名称和成绩）都完全依赖于整个主键（学生ID和课程ID），不存在部分依赖性。</p>
+<p>接下来是一个不符合第二范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>订单号 (主键)</th>
+<th>顾客姓名</th>
+<th>产品名称</th>
+<th>产品价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>张三</td>
+<td>手机</td>
+<td>3000元</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>手机</td>
+<td>3000元</td>
+</tr>
+<tr>
+<td>3</td>
+<td>王五</td>
+<td>电视</td>
+<td>5000元</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，产品价格只依赖于产品名称，而不是整个主键（订单号和产品名称）。这样的设计存在部分依赖性，不符合第二范式。为了符合第二范式，可以将产品价格移至另一个表格，确保每个非主属性完全依赖于候选键。</p>
+<h2 id="3-第三范式3NF"><a href="#3-第三范式3NF" class="headerlink" title="3. 第三范式3NF"></a>3. 第三范式3NF</h2><p>一个表在第三范式下，任何非主属性必须完全依赖于主属性，而不能依赖于其它非主属性。</p>
+<p>下面是一个符合第三范式的表格示例：</p>
+<table>
+<thead>
+<tr>
+<th>学生ID (Primary Key)</th>
 <th>姓名</th>
 <th>年龄</th>
-<th>性别</th>
+<th>班级 (Foreign Key)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>18</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小红</td>
+<td>17</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小华</td>
+<td>18</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>在上面的示例中，每个学生的姓名和年龄直接依赖于学生ID，班级信息直接依赖于班级ID，不存在非主属性依赖于其他非主属性的情况，因此符合第三范式。</p>
+<p>现在来看一个不符合第三范式的表格示例：</p>
+<table>
+<thead>
+<tr>
+<th>订单号 (Primary Key)</th>
+<th>产品名称</th>
+<th>客户ID (Foreign Key)</th>
+<th>客户姓名</th>
+<th>客户地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>商品A</td>
+<td>101</td>
+<td>张三</td>
+<td>北京市</td>
+</tr>
+<tr>
+<td>2</td>
+<td>商品B</td>
+<td>102</td>
+<td>李四</td>
+<td>上海市</td>
+</tr>
+<tr>
+<td>3</td>
+<td>商品C</td>
+<td>101</td>
+<td>张三</td>
+<td>北京市</td>
+</tr>
+</tbody></table>
+<p>在上面的示例中，客户姓名和客户地址这两个属性依赖于客户ID，而不是直接依赖于订单号。这样就存在了非主属性（客户姓名和客户地址）依赖于其他非主属性（客户ID）的情况，因此不符合第三范式。</p>
+<h2 id="4-BC范式BCNF"><a href="#4-BC范式BCNF" class="headerlink" title="4. BC范式BCNF"></a>4. BC范式BCNF</h2><p>在BC范式中，一个表中的每个非主属性都必须完全依赖于候选键，而不是依赖于其他主属性。</p>
+<p>以下是一个符合BC范式的表格：</p>
+<table>
+<thead>
+<tr>
+<th>订单号 (主键)</th>
+<th>顾客ID (候选键)</th>
+<th>产品ID (候选键)</th>
+<th>产品名称</th>
+<th>顾客姓名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>101</td>
+<td>201</td>
+<td>手机</td>
+<td>张三</td>
+</tr>
+<tr>
+<td>2</td>
+<td>102</td>
+<td>202</td>
+<td>电视</td>
+<td>李四</td>
+</tr>
+<tr>
+<td>3</td>
+<td>103</td>
+<td>201</td>
+<td>手机</td>
+<td>王五</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，每个非主属性（例如产品名称和顾客姓名）都完全依赖于整个候选键（顾客ID和产品ID），不存在部分依赖性或传递依赖性。</p>
+<p>接下来是一个不符合BC范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>学生ID (主键)</th>
+<th>学生姓名</th>
+<th>课程ID (候选键)</th>
+<th>课程名称</th>
+<th>成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>101</td>
+<td>数学</td>
+<td>85</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小红</td>
+<td>102</td>
+<td>英语</td>
+<td>78</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小华</td>
+<td>101</td>
+<td>数学</td>
+<td>90</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，成绩是一个非主属性，它仅依赖于课程ID，而不是整个候选键（学生ID和课程ID）。这样的设计存在部分依赖性，不符合BC范式。为了符合BC范式，可以将成绩移到另一个表格中，并通过外键与原始表格关联，确保每个非主属性完全依赖于候选键。</p>
+<h2 id="5-第四范式4NF"><a href="#5-第四范式4NF" class="headerlink" title="5. 第四范式4NF"></a>5. 第四范式4NF</h2><p>在第四范式中，一个表中的多值依赖被视为不合规范的，需要进行规范化处理，以确保每个非主属性完全依赖于候选键。</p>
+<p>以下是一个符合第四范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>学生ID (主键)</th>
+<th>学生姓名</th>
+<th>课程ID (主键)</th>
+<th>课程名称</th>
+<th>成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>101</td>
+<td>数学</td>
+<td>85</td>
+</tr>
+<tr>
+<td>1</td>
+<td>小明</td>
+<td>102</td>
+<td>英语</td>
+<td>78</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小红</td>
+<td>101</td>
+<td>数学</td>
+<td>90</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小华</td>
+<td>101</td>
+<td>数学</td>
+<td>88</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，每个非主属性都完全依赖于整个主键，而且不存在多值依赖。</p>
+<p>接下来是一个不符合第四范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>订单号 (主键)</th>
+<th>顾客姓名</th>
+<th>产品名称</th>
+<th>产品颜色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>张三</td>
+<td>手机</td>
+<td>黑色, 白色</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>电视</td>
+<td>彩色</td>
+</tr>
+<tr>
+<td>3</td>
+<td>王五</td>
+<td>电脑</td>
+<td>灰色, 白色</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，产品颜色是一个多值属性，它依赖于产品名称，而不是整个主键（订单号和产品名称）。这样的设计存在多值依赖，不符合第四范式。为了符合第四范式，可以将产品颜色移至另一个表格，并通过外键与原始表格关联，确保每个非主属性完全依赖于候选键。</p>
+<h2 id="6-第五范式5NF"><a href="#6-第五范式5NF" class="headerlink" title="6. 第五范式5NF"></a>6. 第五范式5NF</h2><p>在第五范式中，一个表中的每个非主属性都必须完全依赖于候选键，而且没有任何连接依赖性或多值依赖性。</p>
+<p>以下是一个符合第五范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>顾客ID (主键)</th>
+<th>产品ID (主键)</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>101</td>
-<td>刘晨</td>
-<td>19</td>
-<td>女</td>
+<td>201</td>
 </tr>
 <tr>
 <td>102</td>
-<td>王琪</td>
-<td>21</td>
-<td>男</td>
+<td>202</td>
 </tr>
 <tr>
 <td>103</td>
-<td>张宇</td>
-<td>20</td>
-<td>男</td>
-</tr>
-<tr>
-<td>104</td>
-<td>李琛</td>
-<td>19</td>
-<td>女</td>
-</tr>
-<tr>
-<td>105</td>
-<td>欧阳慧</td>
-<td>20</td>
-<td>女</td>
+<td>201</td>
 </tr>
 </tbody></table>
-<h3 id="3-第三范式3NF"><a href="#3-第三范式3NF" class="headerlink" title="3. 第三范式3NF"></a>3. 第三范式3NF</h3>
+<p>在上面的表格中，每个非主属性（顾客ID和产品ID）都完全依赖于整个候选键（顾客ID和产品ID），不存在连接依赖性或多值依赖性。</p>
+<p>接下来是一个不符合第五范式的示例表格：</p>
+<table>
+<thead>
+<tr>
+<th>订单号 (主键)</th>
+<th>顾客姓名</th>
+<th>产品名称</th>
+<th>产品颜色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>张三</td>
+<td>手机</td>
+<td>黑色, 白色</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>电视</td>
+<td>彩色</td>
+</tr>
+<tr>
+<td>3</td>
+<td>王五</td>
+<td>电脑</td>
+<td>灰色, 白色</td>
+</tr>
+</tbody></table>
+<p>在上面的表格中，产品颜色是一个多值属性，它存在多值依赖性，不符合第五范式。为了符合第五范式，可以将产品颜色移到另一个表格中，并通过外键与原始表格关联，确保每个非主属性完全依赖于候选键，且没有任何连接依赖性或多值依赖性。</p>
+<h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><ol>
+<li><strong>第一范式 (1NF)</strong>:<ul>
+<li>目标：确保每个单元格中只包含一个值，消除重复的数据。</li>
+<li>特点：表中的每个字段都是不可再分的原子值。</li>
+</ul>
+</li>
+<li><strong>第二范式 (2NF)</strong>:<ul>
+<li>目标：消除部分函数依赖，确保表中的每个非主属性完全依赖于候选键。</li>
+<li>特点：所有非主属性都完全依赖于候选键，没有部分函数依赖。</li>
+</ul>
+</li>
+<li><strong>第三范式 (3NF)</strong>:<ul>
+<li>目标：消除传递依赖，确保表中的每个非主属性都不传递依赖于其他非主属性。</li>
+<li>特点：每个非主属性只依赖于候选键，而不是依赖于其他非主属性。</li>
+</ul>
+</li>
+<li><strong>巴斯-科德范式 (BCNF)</strong>:<ul>
+<li>目标：消除主属性对候选键的部分依赖，确保表中的每个主属性都不部分依赖于候选键。</li>
+<li>特点：表中的每个主属性都必须是超键，即候选键的超集。</li>
+</ul>
+</li>
+<li><strong>第四范式 (4NF)</strong>:<ul>
+<li>目标：消除多值依赖，确保表中的每个非主属性都不对候选键的任何一部分产生依赖。</li>
+<li>特点：表中的每个非主属性都不应该对候选键的任何一部分产生依赖。</li>
+</ul>
+</li>
+<li><strong>第五范式 (5NF)</strong>:<ul>
+<li>目标：消除连接依赖性和多值依赖性，确保表中的每个非主属性都完全依赖于候选键。</li>
+<li>特点：表中的每个非主属性都必须完全依赖于候选键，而且没有任何连接依赖性或多值依赖性。</li>
+</ul>
+</li>
+</ol>
+
   </div>
   <div>
     
@@ -677,7 +1010,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1NF"><span class="toc-text">1. 第一范式1NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2NF"><span class="toc-text">2. 第二范式2NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3NF"><span class="toc-text">3. 第三范式3NF</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1NF"><span class="toc-text">1. 第一范式1NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2NF"><span class="toc-text">2. 第二范式2NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3NF"><span class="toc-text">3. 第三范式3NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-BC%E8%8C%83%E5%BC%8FBCNF"><span class="toc-text">4. BC范式BCNF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F4NF"><span class="toc-text">5. 第四范式4NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%AC%AC%E4%BA%94%E8%8C%83%E5%BC%8F5NF"><span class="toc-text">6. 第五范式5NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%80%BB%E7%BB%93"><span class="toc-text">7.总结</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -691,7 +1024,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1NF"><span class="toc-text">1. 第一范式1NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2NF"><span class="toc-text">2. 第二范式2NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3NF"><span class="toc-text">3. 第三范式3NF</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1NF"><span class="toc-text">1. 第一范式1NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2NF"><span class="toc-text">2. 第二范式2NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3NF"><span class="toc-text">3. 第三范式3NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-BC%E8%8C%83%E5%BC%8FBCNF"><span class="toc-text">4. BC范式BCNF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F4NF"><span class="toc-text">5. 第四范式4NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%AC%AC%E4%BA%94%E8%8C%83%E5%BC%8F5NF"><span class="toc-text">6. 第五范式5NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%80%BB%E7%BB%93"><span class="toc-text">7.总结</span></a></li></ol>
     </article>
   
   
@@ -706,23 +1039,23 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-02</div>
-        <a href="/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">考研排序算法之交换排序和选择排序</div></a>
+        <div class="recent-posts-item-title">2024-04-04</div>
+        <a href="/2024/04/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E3%80%81%E5%9F%BA%E6%95%B0%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">排序算法之归并、基数、计数排序</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-02</div>
-        <a href="/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">考研排序算法之插入排序</div></a>
+        <a href="/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">排序算法之交换排序和选择排序</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-02</div>
+        <a href="/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">排序算法之插入排序</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-02</div>
         <a href="/2024/04/02/%E5%9B%BE%E4%B9%A6%E9%A6%86%E6%9C%BA%E6%88%BF%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AC%94%E8%AE%B0%E6%9C%AC/"><div class="recent-posts-item-content">图书馆机房电脑远程连接笔记本</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-12-02</div>
-        <a href="/2023/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%85%AD%E5%A4%A7%E8%8C%83%E5%BC%8F/"><div class="recent-posts-item-content">【待】数据库的六大范式</div></a>
       </div>
     
   </div>

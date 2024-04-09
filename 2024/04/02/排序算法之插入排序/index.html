@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>考研排序算法之交换排序和选择排序</title>
+  <title>排序算法之插入排序</title>
   
     
       <meta 
         property="og:title" 
-        content="考研排序算法之交换排序和选择排序">
+        content="排序算法之插入排序">
     
     
       <meta 
         property="og:url" 
-        content="https://www.wuzhiyou.github.io/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/index.html">
+        content="https://www.wuzhiyou.github.io/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
     
     
       <meta 
@@ -45,7 +45,7 @@
         content="2024-04-02">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-02">
+        content="2024-04-04">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -293,7 +293,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>43</span>
+    <span>44</span>
     <span>文章</span>
   </a>
   <a 
@@ -332,7 +332,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">一、交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1.冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2.快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">二、选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1.简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2.堆排序</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">1.直接插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">2.折半插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">3.希尔排序</span></a></li></ol>
       </div>
     </article>
   
@@ -350,14 +350,7 @@
       <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
         <div class="categories-list-item">
           算法相关
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
-        <div class="categories-list-item">
-          日常随笔
-          <span class="categories-list-item-badge">17</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
@@ -365,6 +358,13 @@
         <div class="categories-list-item">
           编程相关
           <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">17</span>
         </div>
       </a>
     
@@ -417,15 +417,15 @@
       </a>
     
       <a 
-        href="/tags/%E5%89%8D%E7%AB%AF/" 
-        title="前端">
-        <div class="tags-list-item">前端</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%8D%9A%E5%AE%A2/" 
         title="博客">
         <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
       </a>
     
       <a 
@@ -435,9 +435,9 @@
       </a>
     
       <a 
-        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
-        title="电脑维修">
-        <div class="tags-list-item">电脑维修</div>
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
       </a>
     
       <a 
@@ -447,9 +447,9 @@
       </a>
     
       <a 
-        href="/tags/%E7%AE%97%E6%B3%95/" 
-        title="算法">
-        <div class="tags-list-item">算法</div>
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
       </a>
     
       <a 
@@ -477,27 +477,27 @@
       </a>
     
       <a 
-        href="/tags/JavaWeb/" 
-        title="JavaWeb">
-        <div class="tags-list-item">JavaWeb</div>
-      </a>
-    
-      <a 
         href="/tags/docker/" 
         title="docker">
         <div class="tags-list-item">docker</div>
       </a>
     
       <a 
-        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
-        title="数学建模">
-        <div class="tags-list-item">数学建模</div>
+        href="/tags/JavaWeb/" 
+        title="JavaWeb">
+        <div class="tags-list-item">JavaWeb</div>
       </a>
     
       <a 
         href="/tags/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" 
         title="生活相关">
         <div class="tags-list-item">生活相关</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
       </a>
     
       <a 
@@ -518,11 +518,11 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      考研排序算法之交换排序和选择排序
+      排序算法之插入排序
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2024-04-02T09:19:19.000Z">
+    <time datetime="2024-04-02T09:13:32.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
@@ -541,7 +541,7 @@
     
     
       <span class="dot"></span>
-      <span>952 字</span>
+      <span>897 字</span>
     
   </div>
   
@@ -568,46 +568,40 @@
   <div 
     id="section" 
     class="post-content">
-    <p>前言：王道2025将交换排序分为<strong>冒泡排序</strong>和<strong>快速排序</strong>，选择排序分为<strong>简单选择排序</strong>和<strong>堆排序</strong>。</p>
-<h2 id="一、交换排序"><a href="#一、交换排序" class="headerlink" title="一、交换排序"></a>一、交换排序</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1.冒泡排序"></a>1.冒泡排序</h3><p><img src="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp" class="lozad post-image"></p>
-<ul>
-<li>平均时间复杂度：O(N^2)</li>
-<li>最佳时间复杂度：O(N)</li>
-<li>最差时间复杂度：O(N^2)</li>
-<li>空间复杂度：O(1)</li>
-<li>排序方式：In-place</li>
-<li>稳定性：稳定</li>
-</ul>
-<pre class="highlight"><span class="line">cppCopy Code<span class="comment">// 冒泡排序算法，将数组a中的n个元素按照升序排序</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="type">bool</span> flag = <span class="literal">true</span>; <span class="comment">// 用于标记本轮是否发生交换</span></span><br><span class="line">  <span class="keyword">while</span> (flag) &#123;</span><br><span class="line">    flag = <span class="literal">false</span>; <span class="comment">// 每轮开始前将标记置为false</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) &#123; <span class="comment">// 遍历数组中的元素</span></span><br><span class="line">      <span class="keyword">if</span> (a[i] &gt; a[i + <span class="number">1</span>]) &#123; <span class="comment">// 如果相邻两个元素逆序</span></span><br><span class="line">        flag = <span class="literal">true</span>; <span class="comment">// 标记本轮发生了交换</span></span><br><span class="line">        <span class="type">int</span> t = a[i]; <span class="comment">// 交换两个元素的位置</span></span><br><span class="line">        a[i] = a[i + <span class="number">1</span>];</span><br><span class="line">        a[i + <span class="number">1</span>] = t;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
+    <p>前言：按照王道书上来定义，插入排序又分为直接插入排序，折半插入排序和希尔排序。</p>
+<h3 id="1-直接插入排序"><a href="#1-直接插入排序" class="headerlink" title="1.直接插入排序"></a>1.直接插入排序</h3><p>将待排列元素划分为「已排序」和「未排序」两部分，每次从「未排序的」元素中选择一个插入到「已排序的」元素中的正确位置。直接插入排序是一种稳定的排序算法。</p>
+<p><img src="https://oi-wiki.org/basic/images/insertion-sort-animate.svg" alt="insertion sort animate example" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://oi-wiki.org/basic/images/insertion-sort-animate.svg" class="lozad post-image"></p>
+<p>实现代码：</p>
+<pre class="highlight"><span class="line"><span class="comment">// 插入排序算法实现</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertion_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; ++i) &#123;  <span class="comment">// 从第二个元素开始遍历数组</span></span><br><span class="line">    <span class="type">int</span> key = arr[i];  <span class="comment">// 当前要插入的元素</span></span><br><span class="line">    <span class="type">int</span> j = i - <span class="number">1</span>;  <span class="comment">// 已排序部分的最后一个元素的索引</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在已排序部分寻找合适的位置插入当前元素</span></span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) &#123;  <span class="comment">// 循环条件：索引合法且当前元素比 key 大</span></span><br><span class="line">      arr[j + <span class="number">1</span>] = arr[j];  <span class="comment">// 将比 key 大的元素后移一位</span></span><br><span class="line">      j--;  <span class="comment">// 继续向前查找合适的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    arr[j + <span class="number">1</span>] = key;  <span class="comment">// 将当前元素插入到合适的位置</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
 
-<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2.快速排序"></a>2.快速排序</h3><p>快速排序，又称划分交换排序,通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
-<blockquote>
-<p>① 从数列中挑出一个元素，称为 “基准”（pivot），<br>② 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。<br>③ 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
-</blockquote>
-<p><img src="https://pic2.zhimg.com/v2-d4e5d0a778dba725091d8317e6bac939_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic2.zhimg.com/v2-d4e5d0a778dba725091d8317e6bac939_b.webp" class="lozad post-image"></p>
-<ul>
-<li>平均时间复杂度：O(NlogN)</li>
-<li>最佳时间复杂度：O(NlogN)</li>
-<li>最差时间复杂度：O(N^2)</li>
-<li>空间复杂度：根据实现方式的不同而不同</li>
-</ul>
-<h2 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h2><h3 id="1-简单选择排序"><a href="#1-简单选择排序" class="headerlink" title="1.简单选择排序"></a>1.简单选择排序</h3><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
-<p><img src="https://pic1.zhimg.com/v2-1c7e20f306ddc02eb4e3a50fa7817ff4_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/v2-1c7e20f306ddc02eb4e3a50fa7817ff4_b.webp" class="lozad post-image"></p>
-<blockquote>
-<p>选择排序的思想其实和冒泡排序有点类似，都是在一次排序后把最小的元素放到最前面，或者将最大值放在最后面。但是过程不同，冒泡排序是通过相邻的比较和交换。而选择排序是通过对整体的选择，每一趟从前往后查找出无序区最小值，将最小值交换至无序区最前面的位置。</p>
-</blockquote>
-<p>代码实现：</p>
-<pre class="highlight"><span class="line"><span class="comment">// 选择排序算法，对传入的整型数组进行排序</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">selection_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i, j, min, temp; <span class="comment">// 定义循环变量和临时变量</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 外层循环，控制需要进行排序的次数</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        min = i; <span class="comment">// 假设当前位置为最小值的索引</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 内层循环，在未排序部分找到最小的元素</span></span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; len; j++)</span><br><span class="line">            <span class="comment">// 如果当前元素比假设的最小值还要小，则更新最小值的索引</span></span><br><span class="line">            <span class="keyword">if</span> (arr[min] &gt; arr[j])</span><br><span class="line">                min = j;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将找到的最小值与当前位置的元素进行交换</span></span><br><span class="line">        temp = arr[min]; <span class="comment">// 临时存储最小值</span></span><br><span class="line">        arr[min] = arr[i]; <span class="comment">// 将最小值放到已排序部分的末尾</span></span><br><span class="line">        arr[i] = temp; <span class="comment">// 将当前位置的元素放到未排序部分的开头</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre>
+<p>时间复杂度最优为O(n)，在数列几乎有序时效率很高。</p>
+<p>最坏时间复杂度和平均时间复杂度都O(n^2)</p>
+<h3 id="2-折半插入排序"><a href="#2-折半插入排序" class="headerlink" title="2.折半插入排序"></a>2.折半插入排序</h3><p>通过二分算法优化性能，在元素多时优化效果明显。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-7dcea85d77a2022a77b125772c23b060_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/80/v2-7dcea85d77a2022a77b125772c23b060_720w.webp" class="lozad post-image"></p>
+<p>实现代码：</p>
+<pre class="highlight"><span class="line"><span class="function"><span class="type">void</span> <span class="title">insertion_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (len &lt; <span class="number">2</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i != len; ++i) &#123;</span><br><span class="line">    <span class="type">int</span> key = arr[i];</span><br><span class="line">    <span class="keyword">auto</span> index = <span class="built_in">upper_bound</span>(arr, arr + i, key) - arr;</span><br><span class="line">    <span class="comment">// 使用 memmove 移动元素，比使用 for 循环速度更快，时间复杂度仍为 O(n)</span></span><br><span class="line">    <span class="built_in">memmove</span>(arr + index + <span class="number">1</span>, arr + index, (i - index) * <span class="built_in">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">    arr[index] = key;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
 
-<ul>
-<li>平均时间复杂度：O(N^2)</li>
-<li>最佳时间复杂度：O(N^2)</li>
-<li>最差时间复杂度：O(N^2)</li>
-<li>空间复杂度：O(1)</li>
-<li>排序方式：In-place</li>
-<li>稳定性：不稳定</li>
-</ul>
-<h3 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2.堆排序"></a>2.堆排序</h3>
+<p>折半插入排序的<code>本质依然是插入排序</code>，仅仅是对插入排序进行了部分优化。而优化的部分就是向前查找比较的部分。其实它就是将查找<code>从</code><strong>暴力枚举一一遍历</strong><code>变为</code><strong>二分查找</strong>。所以优化后的时间复杂度仍然不变。</p>
+<p>折半插入可以理解为对于每个位置的平均时间复杂度从<code>O(N)查找+O(N)交换移动</code>变成<code>O(logN)查找+Ｏ(n)交换移动</code>。所以，整个时间复杂度依然是<code>Ｏ(n2)</code></p>
+<h3 id="3-希尔排序"><a href="#3-希尔排序" class="headerlink" title="3.希尔排序"></a>3.希尔排序</h3><p>通过增量(gap)将元素两两分组，对每组使用直接插入排序算法排序；增量(gap)逐渐减少，当增量(gap)减至1时，整个数据恰被分成一组，最后进行一次插入排序，整个数组就有序了。是一种不稳定的排序算法。</p>
+<blockquote>
+<p>希尔排序过程较复杂，参考动图<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/122472667">动画:一篇文章快速学会希尔排序 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<p>第一次：</p>
+<p><img src="https://pic1.zhimg.com/v2-a307d07fa4711ef4fc0516315a320584_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/v2-a307d07fa4711ef4fc0516315a320584_b.webp" class="lozad post-image"></p>
+<p>第二次：</p>
+<p><img src="https://pic3.zhimg.com/v2-6174158b66ded55aba4d5e28828ba7ee_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic3.zhimg.com/v2-6174158b66ded55aba4d5e28828ba7ee_b.webp" class="lozad post-image"></p>
+<p>第三次：</p>
+<p><img src="https://pic4.zhimg.com/v2-cf65fbcf5fa455e106441205d1e45583_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/v2-cf65fbcf5fa455e106441205d1e45583_b.webp" class="lozad post-image"></p>
+<p>实现代码：</p>
+<p>.</p>
+<pre class="highlight"><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">shell_sort</span><span class="params">(T array[], <span class="type">int</span> length)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> h = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 Knuth 序列确定初始间隔序列</span></span><br><span class="line">  <span class="keyword">while</span> (h &lt; length / <span class="number">3</span>) &#123;</span><br><span class="line">    h = <span class="number">3</span> * h + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 不断缩小间隔 h，直至 h 为 1</span></span><br><span class="line">  <span class="keyword">while</span> (h &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 对每个间隔为 h 的子序列进行插入排序</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = h; i &lt; length; i++) &#123;</span><br><span class="line">      <span class="comment">// 插入排序，将当前元素插入到已排序序列的正确位置</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = i; j &gt;= h &amp;&amp; array[j] &lt; array[j - h]; j -= h) &#123;</span><br><span class="line">        <span class="comment">// 如果当前元素小于之前的元素，交换它们的位置</span></span><br><span class="line">        std::<span class="built_in">swap</span>(array[j], array[j - h]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 缩小间隔 h</span></span><br><span class="line">    h = h / <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>希尔排序的最优时间复杂度为O(n)。</p>
+<p>希尔排序的平均时间复杂度和最坏时间复杂度与间距序列的选取有关。</p>
+
   </div>
   <div>
     
@@ -626,8 +620,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://www.wuzhiyou.github.io/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/">
-            https://www.wuzhiyou.github.io/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/
+            href="https://www.wuzhiyou.github.io/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">
+            https://www.wuzhiyou.github.io/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
@@ -637,15 +631,29 @@
 </article>
 <div class="nav">
   
+    <div class="nav-item-prev">
+      <a 
+        href="/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">排序算法之交换排序和选择排序 </div>
+          
+        </div>
+      </a>
+    </div>
+  
   
     <div class="nav-item-next">
       <a 
-        href="/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" 
+        href="/2024/04/02/%E5%9B%BE%E4%B9%A6%E9%A6%86%E6%9C%BA%E6%88%BF%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AC%94%E8%AE%B0%E6%9C%AC/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">考研排序算法之插入排序 </div>
+            <div class="nav-title">图书馆机房电脑远程连接笔记本 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -663,7 +671,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">一、交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1.冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2.快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">二、选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1.简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2.堆排序</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">1.直接插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">2.折半插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">3.希尔排序</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -677,7 +685,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">一、交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1.冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2.快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">二、选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1.简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2.堆排序</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">1.直接插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">2.折半插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">3.希尔排序</span></a></li></ol>
     </article>
   
   
@@ -692,23 +700,23 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-02</div>
-        <a href="/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">考研排序算法之交换排序和选择排序</div></a>
+        <div class="recent-posts-item-title">2024-04-04</div>
+        <a href="/2024/04/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E3%80%81%E5%9F%BA%E6%95%B0%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">排序算法之归并、基数、计数排序</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-02</div>
-        <a href="/2024/04/02/%E8%80%83%E7%A0%94%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">考研排序算法之插入排序</div></a>
+        <a href="/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">排序算法之交换排序和选择排序</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-02</div>
+        <a href="/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"><div class="recent-posts-item-content">排序算法之插入排序</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-02</div>
         <a href="/2024/04/02/%E5%9B%BE%E4%B9%A6%E9%A6%86%E6%9C%BA%E6%88%BF%E7%94%B5%E8%84%91%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AC%94%E8%AE%B0%E6%9C%AC/"><div class="recent-posts-item-content">图书馆机房电脑远程连接笔记本</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-12-02</div>
-        <a href="/2023/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%85%AD%E5%A4%A7%E8%8C%83%E5%BC%8F/"><div class="recent-posts-item-content">【待】数据库的六大范式</div></a>
       </div>
     
   </div>

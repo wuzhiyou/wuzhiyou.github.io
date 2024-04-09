@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>【待】五种背包问题详解</title>
+  <title>排序算法之交换排序和选择排序</title>
   
     
       <meta 
         property="og:title" 
-        content="【待】五种背包问题详解">
+        content="排序算法之交换排序和选择排序">
     
     
       <meta 
         property="og:url" 
-        content="https://www.wuzhiyou.github.io/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/index.html">
+        content="https://www.wuzhiyou.github.io/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/index.html">
     
     
       <meta 
@@ -42,10 +42,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2023-06-04">
+        content="2024-04-02">
       <meta 
         property="og:article:modified_time" 
-        content="2023-07-16">
+        content="2024-04-04">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -332,7 +332,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%8101%E8%83%8C%E5%8C%85"><span class="toc-text">一、01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%84%E6%B3%95"><span class="toc-text">1、二维dp数组法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E9%80%92%E5%BD%92%E5%85%AC%E5%BC%8F"><span class="toc-text">推导递归公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96dp%E6%95%B0%E7%BB%84"><span class="toc-text">初始化dp数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-text">二、完全背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-text">三、多重背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-text">四、分组背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="toc-text">五、混合背包</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">一、交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1.冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2.快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">二、选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1.简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2.堆排序</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -518,16 +518,16 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      【待】五种背包问题详解
+      排序算法之交换排序和选择排序
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2023-06-04T09:16:46.000Z">
+    <time datetime="2024-04-02T09:19:19.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2023-06-04</span>
+      <span>2024-04-02</span>
     </time>
     
       <span class="dot"></span>
@@ -541,7 +541,7 @@
     
     
       <span class="dot"></span>
-      <span>871 字</span>
+      <span>1.3k 字</span>
     
   </div>
   
@@ -568,54 +568,75 @@
   <div 
     id="section" 
     class="post-content">
-    <p>前言：算法分析考试前12个小时，老师在群里发了背包动态规划的内容，发现还是不会，垂死病中惊坐起，补一补..    题外话，相信自己不如相信老师（逃</p>
-<hr />
-
-<p>背包问题繁琐而又多样，根据所给条件不同，可以划分成不同的问题，但最后求解的目的都是一样的：<strong>如何划分使得背包总所装物品总价值最大</strong>。其中最基础的是01背包，下图可以概括基础的五种背包问题。</p>
-<p><img src="https://pic1.zhimg.com/v2-79a530037716def50178945a56d1cbb8_r.jpg" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/v2-79a530037716def50178945a56d1cbb8_r.jpg" class="lozad post-image"></p>
-<h2 id="一、01背包"><a href="#一、01背包" class="headerlink" title="一、01背包"></a>一、01背包</h2><blockquote>
-<p><em>有N件物品和一个最多能被重量为W 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大？</em></p>
-</blockquote>
-<p>如果使用暴力回溯，每个物品只有<strong>取</strong>和<strong>不取</strong>两种状态，则时间复杂度为O(2^n)，因此必然要优化。</p>
-<p>将问题具体化，假设背包最大重量W&#x3D;4，物品0~2对应的weight和value如下</p>
-<p><img src="https://pic1.zhimg.com/80/v2-bbb1d71e880ec4774b5af056ba0be4e8_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/80/v2-bbb1d71e880ec4774b5af056ba0be4e8_720w.webp" class="lozad post-image"></p>
-<h3 id="1、二维dp数组法"><a href="#1、二维dp数组法" class="headerlink" title="1、二维dp数组法"></a>1、二维dp数组法</h3><h4 id="推导递归公式"><a href="#推导递归公式" class="headerlink" title="推导递归公式"></a>推导递归公式</h4><p>1、根据动态规划步骤，首先确定dp数组及下标含义</p>
-<p><strong><code>dp[i][j]</code>表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大值是多少</strong></p>
-<p><img src="https://pic4.zhimg.com/80/v2-ea972bd7ee43785c16cc8aeafc58cd9b_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-ea972bd7ee43785c16cc8aeafc58cd9b_720w.webp" class="lozad post-image"></p>
-<p>对于如何推出<code>dp[i][j]</code></p>
+    <p>前言：王道2025将交换排序分为<strong>冒泡排序</strong>和<strong>快速排序</strong>，选择排序分为<strong>简单选择排序</strong>和<strong>堆排序</strong>。</p>
+<h2 id="一、交换排序"><a href="#一、交换排序" class="headerlink" title="一、交换排序"></a>一、交换排序</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1.冒泡排序"></a>1.冒泡排序</h3><p><img src="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/v2-33a947c71ad62b254cab62e5364d2813_b.webp" class="lozad post-image"></p>
 <ul>
-<li>由<code>dp[i-1][j]</code>推出，即背包最大容量为j，里边不放物品i的最大价值，此时<code>dp[i][j]=dp[i-1][j]</code></li>
-<li>由<code>dp[i-1][j-weight[i]]</code>推出，<code>dp[i-1][j-weight[i]]</code>为背包容量为j-weight[i]时不放物品i的最大价值，那么<code>dp[i-1][j-weight[i]]+物品i的价值value[i]</code>就是背包放物品i时得到的最大价值</li>
+<li>平均时间复杂度：O(N^2)</li>
+<li>最佳时间复杂度：O(N)</li>
+<li>最差时间复杂度：O(N^2)</li>
+<li>空间复杂度：O(1)</li>
+<li>排序方式：In-place</li>
+<li>稳定性：稳定</li>
 </ul>
-<p>所以递归公式 <code>dp[i][j]=max( dp[i-1][j],dp[i-1][j-weight[i]]+value[i]] )</code></p>
-<h4 id="初始化dp数组"><a href="#初始化dp数组" class="headerlink" title="初始化dp数组"></a>初始化dp数组</h4><p>确定递归公式后，要将dp数组初始化（牢记：**<code>dp[i][j]</code>表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大值是多少**）</p>
-<p>观察可得<code>dp[i][0]</code>均为0</p>
-<p><img src="https://pic4.zhimg.com/80/v2-efd8d5d5e15f4dfc35d92442118c7be3_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-efd8d5d5e15f4dfc35d92442118c7be3_720w.webp" class="lozad post-image"></p>
-<p>则求出<code>dp[0][j]</code></p>
-<pre class="highlight"><span class="line">//正序遍历</span><br><span class="line"><span class="keyword">for</span>(int j=weight[0];j&lt;bagWeight;j++)&#123;</span><br><span class="line">	dp[0][j]=value[0];</span><br><span class="line">&#125;</span><br></pre>
+<pre class="highlight"><span class="line">cppCopy Code<span class="comment">// 冒泡排序算法，将数组a中的n个元素按照升序排序</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="type">bool</span> flag = <span class="literal">true</span>; <span class="comment">// 用于标记本轮是否发生交换</span></span><br><span class="line">  <span class="keyword">while</span> (flag) &#123;</span><br><span class="line">    flag = <span class="literal">false</span>; <span class="comment">// 每轮开始前将标记置为false</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) &#123; <span class="comment">// 遍历数组中的元素</span></span><br><span class="line">      <span class="keyword">if</span> (a[i] &gt; a[i + <span class="number">1</span>]) &#123; <span class="comment">// 如果相邻两个元素逆序</span></span><br><span class="line">        flag = <span class="literal">true</span>; <span class="comment">// 标记本轮发生了交换</span></span><br><span class="line">        <span class="type">int</span> t = a[i]; <span class="comment">// 交换两个元素的位置</span></span><br><span class="line">        a[i] = a[i + <span class="number">1</span>];</span><br><span class="line">        a[i + <span class="number">1</span>] = t;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
 
-<p>此时</p>
-<p><img src="https://pic1.zhimg.com/80/v2-e8f29cf5b522b7780681a0a26ee5432c_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/80/v2-e8f29cf5b522b7780681a0a26ee5432c_720w.webp" class="lozad post-image"></p>
-<p><code>dp[0][j]</code>和<code>dp[i][0]</code>已经确定，则将其他位置初始化为0即可</p>
-<p><img src="https://pic4.zhimg.com/80/v2-49956d916a2fa062c0749eef351666f3_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-49956d916a2fa062c0749eef351666f3_720w.webp" class="lozad post-image"></p>
-<p>可以选择先遍历物品也可以先遍历背包重量，即谁在内循环谁在外循环均可，<strong>但先遍历物品更好解</strong>。</p>
-<pre class="highlight"><span class="line">//weight数组的大小 就是物品的个数</span><br><span class="line"><span class="keyword">for</span>(int i=1;i&lt;weight.size();i++)&#123;		//遍历物品</span><br><span class="line">	<span class="keyword">for</span>(int j=0;j&lt;bagWeight;j++)&#123;		//遍历背包容量</span><br><span class="line">		<span class="keyword">if</span>(j&lt;weight[i])</span><br><span class="line">			dp[i][j]=dp[i-1][j];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			dp[i][j]=max( dp[i-1][j],dp[i-1][j-weight[i]]+value[i]] );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre>
+<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2.快速排序"></a>2.快速排序</h3><p>快速排序，又称划分交换排序,通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<blockquote>
+<p>① 从数列中挑出一个元素，称为 “基准”（pivot），<br>② 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。<br>③ 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
+</blockquote>
+<p><img src="https://pic2.zhimg.com/v2-d4e5d0a778dba725091d8317e6bac939_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic2.zhimg.com/v2-d4e5d0a778dba725091d8317e6bac939_b.webp" class="lozad post-image"></p>
+<ul>
+<li>平均时间复杂度：O(NlogN)</li>
+<li>最佳时间复杂度：O(NlogN)</li>
+<li>最差时间复杂度：O(N^2)</li>
+<li>空间复杂度：根据实现方式的不同而不同</li>
+</ul>
+<h2 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h2><h3 id="1-简单选择排序"><a href="#1-简单选择排序" class="headerlink" title="1.简单选择排序"></a>1.简单选择排序</h3><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<p><img src="https://pic1.zhimg.com/v2-1c7e20f306ddc02eb4e3a50fa7817ff4_b.webp" alt="动图" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/v2-1c7e20f306ddc02eb4e3a50fa7817ff4_b.webp" class="lozad post-image"></p>
+<blockquote>
+<p>选择排序的思想其实和冒泡排序有点类似，都是在一次排序后把最小的元素放到最前面，或者将最大值放在最后面。但是过程不同，冒泡排序是通过相邻的比较和交换。而选择排序是通过对整体的选择，每一趟从前往后查找出无序区最小值，将最小值交换至无序区最前面的位置。</p>
+</blockquote>
+<p>代码实现：</p>
+<pre class="highlight"><span class="line"><span class="comment">// 选择排序算法，对传入的整型数组进行排序</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">selection_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i, j, min, temp; <span class="comment">// 定义循环变量和临时变量</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 外层循环，控制需要进行排序的次数</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        min = i; <span class="comment">// 假设当前位置为最小值的索引</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 内层循环，在未排序部分找到最小的元素</span></span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; len; j++)</span><br><span class="line">            <span class="comment">// 如果当前元素比假设的最小值还要小，则更新最小值的索引</span></span><br><span class="line">            <span class="keyword">if</span> (arr[min] &gt; arr[j])</span><br><span class="line">                min = j;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将找到的最小值与当前位置的元素进行交换</span></span><br><span class="line">        temp = arr[min]; <span class="comment">// 临时存储最小值</span></span><br><span class="line">        arr[min] = arr[i]; <span class="comment">// 将最小值放到已排序部分的末尾</span></span><br><span class="line">        arr[i] = temp; <span class="comment">// 将当前位置的元素放到未排序部分的开头</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre>
 
+<ul>
+<li>平均时间复杂度：O(N^2)</li>
+<li>最佳时间复杂度：O(N^2)</li>
+<li>最差时间复杂度：O(N^2)</li>
+<li>空间复杂度：O(1)</li>
+<li>排序方式：In-place</li>
+<li>稳定性：不稳定</li>
+</ul>
+<h3 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2.堆排序"></a>2.堆排序</h3><p><strong>2.1 引入</strong></p>
+<p>何为堆？</p>
+<p>如下图，是一颗完全二叉树且每个节点都大于等于（或小于等于）其子节点的值，为最大堆（最小堆）。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-a78e7c4a1cc919a322adc87b33006dab_1440w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-a78e7c4a1cc919a322adc87b33006dab_1440w.webp" class="lozad post-image"></p>
+<p><strong>2.2 构建初始堆</strong></p>
+<p>①给定无序序列46859，先写成完全二叉树。</p>
+<p><img src="https://pic.imgdb.cn/item/660eb00f68eb935713c39b17.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb00f68eb935713c39b17.png" class="lozad post-image"></p>
+<p>②从最后一个非叶节点开始，按照由左到右，由上到下进行调整成大的在上，小的在下。</p>
+<p><img src="https://pic.imgdb.cn/item/660eb03768eb935713c3fd7b.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb03768eb935713c3fd7b.png" class="lozad post-image"></p>
+<p>③找到第二个非叶节点4，4 9 8中9最大，将4和9交换</p>
+<p><img src="https://pic.imgdb.cn/item/660eb05568eb935713c445c9.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb05568eb935713c445c9.png" class="lozad post-image"></p>
+<p>④交换后会导致子根改变，观察4的左子树，再次交换</p>
+<p><img src="https://pic.imgdb.cn/item/660eb05568eb935713c445c9.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb05568eb935713c445c9.png" class="lozad post-image"></p>
+<p>⑤此时已经将无序序列构建成了最大堆。</p>
+<p><strong>2.3 交换堆顶与末尾元素，使得末尾元素最大。固定末尾元素后重复此步骤，得到第二大元素，如此反复交换，重建，交换。</strong></p>
+<p>①交换堆顶与末尾</p>
+<p><img src="https://pic.imgdb.cn/item/660eb07568eb935713c4b030.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb07568eb935713c4b030.png" class="lozad post-image"></p>
+<p>②调整4 8 位置使满足大的在上，小的在下。</p>
+<p><img src="https://pic.imgdb.cn/item/660eb07f68eb935713c4d337.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb07f68eb935713c4d337.png" class="lozad post-image"></p>
+<p>③将堆顶元素与堆尾元素交换（已固定的元素除外），得到第二大元素8</p>
+<p><img src="https://pic.imgdb.cn/item/660eb08f68eb935713c507fc.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb08f68eb935713c507fc.png" class="lozad post-image"></p>
+<p>④后续重复进行调整，交换，固定，得到有序序列。</p>
+<p><img src="https://pic.imgdb.cn/item/660eb09b68eb935713c52d38.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic.imgdb.cn/item/660eb09b68eb935713c52d38.png" class="lozad post-image"></p>
+<blockquote>
+<p>总结堆排序的思路：</p>
+<p>a.将无需序列构建成一个堆，根据升序降序需求选择大顶堆或小顶堆;</p>
+<p>b.将堆顶元素与末尾元素交换，将最大元素”沉”到数组末端;</p>
+<p>c.重新调整结构，使其满足堆定义，然后继续交换堆顶元素与当前末尾元素，反复执行调整+交换步骤，直到整个序列有序</p>
+</blockquote>
 
-
-<p>如果遍历背包，则</p>
-<pre class="highlight"><span class="line">// weight数组的大小 就是物品个数</span><br><span class="line"><span class="keyword">for</span>(int j = 0; j &lt;= bagWeight; j++) &#123; // 遍历背包容量</span><br><span class="line">    <span class="keyword">for</span>(int i = 1; i &lt; weight.size(); i++) &#123; // 遍历物品</span><br><span class="line">        <span class="keyword">if</span> (j &lt; weight[i])</span><br><span class="line">        	dp[i][j] = dp[i - 1][j];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        	dp[i][j] = max (dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br></pre>
-
-
-
-<p>虽然两种遍历顺序有不同的地方（？），但最终都得到了相同的dp数组</p>
-<p>最终得到dp数组</p>
-<p><img src="https://pic2.zhimg.com/v2-23f313c38ec462f4404159964c7b938d_r.jpg" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic2.zhimg.com/v2-23f313c38ec462f4404159964c7b938d_r.jpg" class="lozad post-image"></p>
-<p>完整代码</p>
-<pre class="highlight"><span class="line"></span><br></pre>
-
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/345364527">咱就把0-1背包问题讲个通透！ - 知乎 (zhihu.com)</a></p>
-<h2 id="二、完全背包"><a href="#二、完全背包" class="headerlink" title="二、完全背包"></a>二、完全背包</h2><h2 id="三、多重背包"><a href="#三、多重背包" class="headerlink" title="三、多重背包"></a>三、多重背包</h2><h2 id="四、分组背包"><a href="#四、分组背包" class="headerlink" title="四、分组背包"></a>四、分组背包</h2><h2 id="五、混合背包"><a href="#五、混合背包" class="headerlink" title="五、混合背包"></a>五、混合背包</h2>
   </div>
   <div>
     
@@ -634,8 +655,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://www.wuzhiyou.github.io/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">
-            https://www.wuzhiyou.github.io/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/
+            href="https://www.wuzhiyou.github.io/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/">
+            https://www.wuzhiyou.github.io/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
@@ -647,13 +668,13 @@
   
     <div class="nav-item-prev">
       <a 
-        href="/2023/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" 
+        href="/2024/04/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E3%80%81%E5%9F%BA%E6%95%B0%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/" 
         class="nav-link">
         <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
           <div class="nav-label">上一篇</div>
           
-            <div class="nav-title">正则表达式 </div>
+            <div class="nav-title">排序算法之归并、基数、计数排序 </div>
           
         </div>
       </a>
@@ -662,12 +683,12 @@
   
     <div class="nav-item-next">
       <a 
-        href="/2023/05/30/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" 
+        href="/2024/04/02/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">TCP三次握手四次挥手 </div>
+            <div class="nav-title">排序算法之插入排序 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -685,7 +706,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%8101%E8%83%8C%E5%8C%85"><span class="toc-text">一、01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%84%E6%B3%95"><span class="toc-text">1、二维dp数组法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E9%80%92%E5%BD%92%E5%85%AC%E5%BC%8F"><span class="toc-text">推导递归公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96dp%E6%95%B0%E7%BB%84"><span class="toc-text">初始化dp数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-text">二、完全背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-text">三、多重背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-text">四、分组背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="toc-text">五、混合背包</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">一、交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1.冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2.快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">二、选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1.简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2.堆排序</span></a></li></ol></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -699,7 +720,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%8101%E8%83%8C%E5%8C%85"><span class="toc-text">一、01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%84%E6%B3%95"><span class="toc-text">1、二维dp数组法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E9%80%92%E5%BD%92%E5%85%AC%E5%BC%8F"><span class="toc-text">推导递归公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96dp%E6%95%B0%E7%BB%84"><span class="toc-text">初始化dp数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-text">二、完全背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-text">三、多重背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-text">四、分组背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="toc-text">五、混合背包</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">一、交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1.冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2.快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">二、选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1.简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2.堆排序</span></a></li></ol></li></ol>
     </article>
   
   
