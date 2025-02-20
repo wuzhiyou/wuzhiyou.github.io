@@ -354,6 +354,13 @@
         </div>
       </a>
     
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">18</span>
+        </div>
+      </a>
+    
       <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
         <div class="categories-list-item">
           生活相关
@@ -365,13 +372,6 @@
         <div class="categories-list-item">
           编程相关
           <span class="categories-list-item-badge">4</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
-        <div class="categories-list-item">
-          日常随笔
-          <span class="categories-list-item-badge">18</span>
         </div>
       </a>
     
@@ -447,15 +447,15 @@
       </a>
     
       <a 
-        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
-        title="电脑维修">
-        <div class="tags-list-item">电脑维修</div>
-      </a>
-    
-      <a 
         href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
         title="服务器">
         <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
       </a>
     
       <a 
@@ -532,7 +532,7 @@
     
     
       <span class="dot"></span>
-      <span>356 字</span>
+      <span>241 字</span>
     
   </div>
   
@@ -565,16 +565,11 @@
 <p><code>sudo systemctl enable crond</code> &#x2F;&#x2F;开机自启</p>
 <h1 id="二、编辑配置"><a href="#二、编辑配置" class="headerlink" title="二、编辑配置"></a>二、编辑配置</h1><p><code>git clone 仓库地址 .</code>	 &#x2F;&#x2F;先clone下仓库地址 注意必须保证此文件夹为空 </p>
 <p><code>crontab -e</code>       &#x2F;&#x2F;进入编辑 是vim编辑器</p>
-<p><code>*/2 * * * * cd /www/wwwroot/www.wuzhiyou.top &amp;&amp; git fetch origin master &amp;&amp; git diff --quiet origin/master &amp;&amp; [ $? -eq 0 ] || (find . -mindepth 1 -maxdepth 1 ! -name &#39;.git&#39; -exec rm -rf &#123;&#125; + &amp;&amp; git pull origin master)</code>   </p>
+<p><code>*/2 * * * * cd /www/wwwroot/www.wuzhiyou.top &amp;&amp; git pull origin master &amp;&amp; find . -mindepth 1 -maxdepth 1 ! -name &#39;.git&#39; -exec rm -rf &#123;&#125; +</code>   </p>
 <blockquote>
-<ol>
-<li><code>cd /www/wwwroot/www.wuzhiyou.top</code>: 切换到目标目录。</li>
-<li><code>git fetch origin master</code>: 获取远程仓库的更新，但不做合并。</li>
-<li><code>git diff --quiet origin/master</code>: 检查本地和远程仓库的差异。如果没有差异，<code>git diff</code> 的返回值为 0。</li>
-<li><code>&amp;&amp; [ $? -eq 0 ]</code>: 如果没有差异（即没有更新），则跳过后续删除和拉取操作。</li>
-<li><code>|| (find . -mindepth 1 -maxdepth 1 ! -name &#39;.git&#39; -exec rm -rf &#123;&#125; + &amp;&amp; git pull origin master)</code>: 如果有更新（即本地和远程仓库有差异），则先删除文件，再拉取最新更新。</li>
-</ol>
-<p>这样，你就可以避免在没有更新时删除文件，并且保证仓库内容始终保持最新。</p>
+<p>1、<code>cd /www/wwwroot/www.wuzhiyou.top</code>: 切换到目标目录。</p>
+<p>2、<code>git pull origin master</code>: 拉取仓库的最新更新，确保本地内容与远程仓库同步。</p>
+<p>3、<code>find . -mindepth 1 -maxdepth 1 ! -name &#39;.git&#39; -exec rm -rf &#123;&#125; +</code>: 删除 <code>.git</code> 目录之外的文件和文件夹。</p>
 </blockquote>
 <p><code>crontab -l</code>    &#x2F;&#x2F;查看配置好的cron命令</p>
 <h1 id="三、验证"><a href="#三、验证" class="headerlink" title="三、验证"></a>三、验证</h1><p>大功告成</p>
