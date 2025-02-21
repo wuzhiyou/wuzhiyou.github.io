@@ -361,17 +361,17 @@
         </div>
       </a>
     
-      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
-        <div class="categories-list-item">
-          编程相关
-          <span class="categories-list-item-badge">4</span>
-        </div>
-      </a>
-    
       <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
         <div class="categories-list-item">
           日常随笔
           <span class="categories-list-item-badge">18</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
@@ -423,6 +423,12 @@
       </a>
     
       <a 
+        href="/tags/git/" 
+        title="git">
+        <div class="tags-list-item">git</div>
+      </a>
+    
+      <a 
         href="/tags/%E5%89%8D%E7%AB%AF/" 
         title="前端">
         <div class="tags-list-item">前端</div>
@@ -432,12 +438,6 @@
         href="/tags/%E5%8D%9A%E5%AE%A2/" 
         title="博客">
         <div class="tags-list-item">博客</div>
-      </a>
-    
-      <a 
-        href="/tags/git/" 
-        title="git">
-        <div class="tags-list-item">git</div>
       </a>
     
       <a 
@@ -532,7 +532,7 @@
     
     
       <span class="dot"></span>
-      <span>239 字</span>
+      <span>282 字</span>
     
   </div>
   
@@ -560,19 +560,20 @@
     id="section" 
     class="post-content">
     <p>前言：由于此博客是hexo本地版，并且是在github page上再手动同步到阿里云的，今天下午没事捣鼓一下自动化</p>
-<h1 id="一、安装cron定时服务"><a href="#一、安装cron定时服务" class="headerlink" title="一、安装cron定时服务"></a>一、安装cron定时服务</h1><p><code>sudo yum install cronie</code>   &#x2F;&#x2F;安装</p>
-<p><code>sudo systemctl start crond</code> &#x2F;&#x2F;启用</p>
-<p><code>sudo systemctl enable crond</code> &#x2F;&#x2F;开机自启</p>
-<h1 id="二、编辑配置"><a href="#二、编辑配置" class="headerlink" title="二、编辑配置"></a>二、编辑配置</h1><p><code>git clone 仓库地址 .</code>	 &#x2F;&#x2F;先clone下仓库地址 注意必须保证此文件夹为空 </p>
-<p><code>crontab -e</code>       &#x2F;&#x2F;进入编辑 是vim编辑器</p>
+<h1 id="一、安装cron定时服务"><a href="#一、安装cron定时服务" class="headerlink" title="一、安装cron定时服务"></a>一、安装cron定时服务</h1><p>sudo yum install cronie   &#x2F;&#x2F;安装</p>
+<p>sudo systemctl start crond &#x2F;&#x2F;启用</p>
+<p>sudo systemctl enable crond &#x2F;&#x2F;开机自启</p>
+<h1 id="二、编辑配置"><a href="#二、编辑配置" class="headerlink" title="二、编辑配置"></a>二、编辑配置</h1><p>git clone 仓库地址 .	 &#x2F;&#x2F;先clone下仓库地址 注意必须保证此文件夹为空 </p>
+<p>crontab -e      &#x2F;&#x2F;进入编辑 是vim编辑器</p>
 <p><code>*/2 * * * * cd /www/wwwroot/www.wuzhiyou.top &amp;&amp; git pull origin master &amp;&amp; find . -mindepth 1 -maxdepth 1 ! -name &#39;.git&#39; -exec rm -rf &#123;&#125; +</code>   </p>
 <blockquote>
-<p>1、<code>cd /www/wwwroot/www.wuzhiyou.top</code>: 切换到目标目录。</p>
-<p>2、<code>git pull origin master</code>: 拉取仓库的最新更新，确保本地内容与远程仓库同步。</p>
-<p>3、<code>find . -mindepth 1 -maxdepth 1 ! -name &#39;.git&#39; -exec rm -rf &#123;&#125; +</code>: 删除 <code>.git</code> 目录之外的文件和文件夹。</p>
+<p>1、cd &#x2F;www&#x2F;wwwroot&#x2F;<a target="_blank" rel="noopener" href="http://www.wuzhiyou.top/">www.wuzhiyou.top</a>: 切换到目标目录。</p>
+<p>2、git pull origin master: 拉取仓库的最新更新，确保本地内容与远程仓库同步。</p>
+<p>3、find . -mindepth 1 -maxdepth 1 ! -name ‘.git’ -exec rm -rf {} +&#96;: 删除 .git 目录之外的文件和文件夹。</p>
 </blockquote>
-<p><code>crontab -l</code>    &#x2F;&#x2F;查看配置好的cron命令</p>
+<p>crontab -l    &#x2F;&#x2F;查看配置好的cron命令</p>
 <h1 id="三、验证"><a href="#三、验证" class="headerlink" title="三、验证"></a>三、验证</h1><p>大功告成</p>
+<p><strong>更正：太蠢了我简直，pull完再删除逻辑上就不对，删除完再pull更是没法pull到不更改的仓库。其实直接pull就好了QAQ..</strong></p>
 
   </div>
   <div>
