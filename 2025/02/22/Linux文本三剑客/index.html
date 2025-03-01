@@ -45,7 +45,7 @@
         content="2025-02-22">
       <meta 
         property="og:article:modified_time" 
-        content="2025-02-23">
+        content="2025-03-02">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -293,7 +293,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>53</span>
+    <span>54</span>
     <span>文章</span>
   </a>
   <a 
@@ -364,7 +364,7 @@
       <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
         <div class="categories-list-item">
           日常随笔
-          <span class="categories-list-item-badge">18</span>
+          <span class="categories-list-item-badge">29</span>
         </div>
       </a>
     
@@ -378,7 +378,7 @@
       <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
         <div class="categories-list-item">
           网络相关
-          <span class="categories-list-item-badge">8</span>
+          <span class="categories-list-item-badge">9</span>
         </div>
       </a>
     
@@ -423,15 +423,15 @@
       </a>
     
       <a 
-        href="/tags/%E5%89%8D%E7%AB%AF/" 
-        title="前端">
-        <div class="tags-list-item">前端</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%8D%9A%E5%AE%A2/" 
         title="博客">
         <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
       </a>
     
       <a 
@@ -447,15 +447,21 @@
       </a>
     
       <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
         href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
         title="服务器">
         <div class="tags-list-item">服务器</div>
       </a>
     
       <a 
-        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
-        title="电脑维修">
-        <div class="tags-list-item">电脑维修</div>
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
       </a>
     
       <a 
@@ -471,21 +477,15 @@
       </a>
     
       <a 
-        href="/tags/%E9%9A%8F%E7%AC%94/" 
-        title="随笔">
-        <div class="tags-list-item">随笔</div>
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
       </a>
     
       <a 
         href="/tags/Linux/" 
         title="Linux">
         <div class="tags-list-item">Linux</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
-        title="数据库">
-        <div class="tags-list-item">数据库</div>
       </a>
     
       <a 
@@ -530,9 +530,18 @@
       <span>2025-02-22</span>
     </time>
     
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
+          class="post-meta-link">
+          日常随笔
+        </a>
+      
+    
     
       <span class="dot"></span>
-      <span>1.6k 字</span>
+      <span>1.7k 字</span>
     
   </div>
   
@@ -561,10 +570,10 @@
     class="post-content">
     <p>前言：文本三剑客一般指grep sed  awk三款文本处理命令，虽都是处理文本命令但侧重点各不相同</p>
 <h2 id="一、grep—查找文本行"><a href="#一、grep—查找文本行" class="headerlink" title="一、grep—查找文本行"></a>一、grep—查找文本行</h2><p><code>grep “搜索内容” 文件名</code>  #查找文件中包含“搜索内容”的所有行</p>
-<p><code>grep -i &quot;搜索内容&quot; 文件名</code> #忽略大小写查找 </p>
-<p><code>grep -n &quot;搜索内容&quot; 文件名</code> #显示匹配行的行号</p>
-<p><code>grep -r &quot;搜索内容&quot; 目录路径</code> #递归搜索目录及其子目录中的文件</p>
-<p><code>grep -v &quot;排除内容&quot; 文件名</code> #排除掉包含“排除内容”的行</p>
+<p><code>grep -i &quot;搜索内容&quot; 文件名</code> #ignore 忽略大小写查找 </p>
+<p><code>grep -n &quot;搜索内容&quot; 文件名</code> #number 显示匹配行的行号</p>
+<p><code>grep -r &quot;搜索内容&quot; 目录路径</code> #recursive 递归搜索目录及其子目录中的文件</p>
+<p><code>grep -v &quot;排除内容&quot; 文件名</code> #invert 排除掉包含“排除内容”的行</p>
 <p>grep也支持<a target="_blank" rel="noopener" href="https://www.wuzhiyou.top/2023/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>搜索，因此可以复杂匹配：</p>
 <p><code>grep &quot;^开始&quot; 文件名</code>   # 匹配以“开始”开头的行</p>
 <p><code>grep &quot;结束$&quot; 文件名 </code>  # 匹配以“结束”结尾的行</p>
@@ -572,7 +581,11 @@
 <p><code>sed &#39;s/旧文本/新文本/g&#39; 文件名</code> #替换所有出现的旧文本</p>
 <p><code>sed &#39;2d&#39; 文件名</code>  #删除文件中第二行</p>
 <p><code>sed -i &#39;s/旧文本/新文本/g&#39; </code>  #直接在文件中修改但不输出</p>
-<p><code>sed -n &#39;/匹配内容/p&#39; 文件名</code> #?</p>
+<p><code>sed -n &#39;/匹配内容/p&#39; 文件名</code> #查找包含匹配内容的行，并且只输出这些匹配的行，其他不匹配的行不显示</p>
+<pre class="highlight"><span class="line">这是一行文本。</span><br><span class="line">我喜欢吃苹果。</span><br><span class="line">这个文件用于演示 sed 命令。</span><br><span class="line">苹果派很好吃。</span><br><span class="line">学习 Linux 非常有趣。</span><br><span class="line"></span><br><span class="line">sed -n <span class="string">&#x27;/苹果/p&#x27;</span> file.txt</span><br><span class="line"><span class="comment">#输出结果为：</span></span><br><span class="line">我喜欢吃苹果。</span><br><span class="line">苹果派很好吃。</span><br><span class="line"></span><br><span class="line">grep <span class="string">&quot;苹果&quot;</span> file.txt</span><br><span class="line"><span class="comment">#输出结果为：</span></span><br><span class="line">我喜欢吃苹果。</span><br><span class="line">苹果派很好吃。</span><br></pre>
+
+
+
 <h2 id="三、awk—处理格式化数据"><a href="#三、awk—处理格式化数据" class="headerlink" title="三、awk—处理格式化数据"></a>三、awk—处理格式化数据</h2><p><code>awk &#39;&#123;prin $1,$2&#125;&#39; 文件名</code> #打印文件中第一列和第二列</p>
 <p><code>awk &#39;$2 &gt; 50 &#123;print $1, $2&#125;&#39; 文件名</code> #打印第二列值大于50的行</p>
 <p><code>awk &#39;&#123;sum += $3&#125; END &#123;print sum&#125;&#39; 文件名</code> #计算文件第三列的总和</p>
@@ -749,6 +762,11 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2025-03-02</div>
+        <a href="/2025/03/02/STAR%E9%9D%A2%E8%AF%95%E6%B3%95%E5%88%99/"><div class="recent-posts-item-content">STAR面试法则</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2025-02-23</div>
         <a href="/2025/02/23/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E5%A4%87%E4%BB%BD/"><div class="recent-posts-item-content">shell脚本自动化备份</div></a>
       </div>
@@ -761,11 +779,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2025-02-21</div>
         <a href="/2025/02/21/%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2docker/"><div class="recent-posts-item-content">快速部署docker</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2025-02-20</div>
-        <a href="/2025/02/20/%E9%80%9A%E8%BF%87cron%E8%AE%BE%E7%BD%AEshell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E5%90%8C%E6%AD%A5%E5%8D%9A%E6%96%87/"><div class="recent-posts-item-content">通过cron设置shell脚本自动化同步图文</div></a>
       </div>
     
   </div>
