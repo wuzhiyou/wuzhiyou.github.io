@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>对语雀P0事故进行复盘</title>
+  <title>nginx反向代理配置</title>
   
     
       <meta 
         property="og:title" 
-        content="对语雀P0事故进行复盘">
+        content="nginx反向代理配置">
     
     
       <meta 
         property="og:url" 
-        content="https://www.wuzhiyou.github.io/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/index.html">
+        content="https://www.wuzhiyou.github.io/2025/03/04/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/index.html">
     
     
       <meta 
@@ -42,10 +42,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2023-10-27">
+        content="2025-03-04">
       <meta 
         property="og:article:modified_time" 
-        content="2025-03-02">
+        content="2025-03-04">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -53,7 +53,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="科普">
+            content="linux">
         
       
     
@@ -332,7 +332,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%91%8A%E5%85%A8%E6%96%87"><span class="toc-text">一、公告全文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E8%AF%BB%E2%80%9C%E5%8F%AF%E7%9B%91%E6%8E%A7%EF%BC%8C%E5%8F%AF%E7%81%B0%E5%BA%A6%EF%BC%8C%E5%8F%AF%E5%9B%9E%E6%BB%9A%E2%80%9D"><span class="toc-text">二、解读“可监控，可灰度，可回滚”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">1.可监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E7%81%B0%E5%BA%A6"><span class="toc-text">2.可灰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E5%9B%9E%E6%BB%9A"><span class="toc-text">3.可回滚</span></a></li></ol></li></ol>
+
       </div>
     </article>
   
@@ -518,30 +518,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      对语雀P0事故进行复盘
+      nginx反向代理配置
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2023-10-27T11:35:38.000Z">
+    <time datetime="2025-03-04T03:04:29.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2023-10-27</span>
+      <span>2025-03-04</span>
     </time>
     
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
-          class="post-meta-link">
-          日常随笔
-        </a>
-      
-    
     
       <span class="dot"></span>
-      <span>582 字</span>
+      <span>704 字</span>
     
   </div>
   
@@ -556,9 +547,9 @@
         
           
           <a 
-            href="/tags/%E7%A7%91%E6%99%AE/" 
+            href="/tags/linux/" 
             class="post-meta-link">
-            科普
+            linux
           </a>
         
       </div>
@@ -568,25 +559,44 @@
   <div 
     id="section" 
     class="post-content">
-    <p>前言：前几天语雀发生超越P0级别(<a target="_blank" rel="noopener" href="https://juejin.cn/post/7121287001873055774">科普：互联网公司事故等级划分</a>)的事故，恰巧作为语雀的新用户也经历了这波事故的全过程。从下午三四点服务掉线到晚上九点钟服务恢复，可谓是超长待机了。更离谱的是本地数据也打不开，离谱程度很难让人相信这是背靠蚂蚁金融的公司。</p>
-<blockquote>
-<p>以下内容多转自<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247551790&idx=1&sn=fefde9e556b7e9f6fcb988ad5144170c&chksm=e9c2ecd9deb565cf9e90138610869c0f698c99e271c5eb40a8e1872013181a9b6aaa8d203495&mpshare=1&scene=23&srcid=1027zzuATSofVA7AQ1V5bmh0&sharer_shareinfo=82fd628abf5368cfca6eae37e74db921&sharer_shareinfo_first=82fd628abf5368cfca6eae37e74db921#rd">程序员鱼皮公众号</a>，侵删。</p>
-</blockquote>
-<h2 id="一、公告全文"><a href="#一、公告全文" class="headerlink" title="一、公告全文"></a>一、公告全文</h2><p><img src="https://n.sinaimg.cn/sinakd20231025s/293/w622h1271/20231025/3b99-d59f1af5a4541d31ca7d3b9b9c4fb8f6.png" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://n.sinaimg.cn/sinakd20231025s/293/w622h1271/20231025/3b99-d59f1af5a4541d31ca7d3b9b9c4fb8f6.png" class="lozad post-image"></p>
-<h2 id="二、解读“可监控，可灰度，可回滚”"><a href="#二、解读“可监控，可灰度，可回滚”" class="headerlink" title="二、解读“可监控，可灰度，可回滚”"></a>二、解读“可监控，可灰度，可回滚”</h2><h3 id="1-可监控"><a href="#1-可监控" class="headerlink" title="1.可监控"></a>1.可监控</h3><p>可监控是指能够实时地收集和展示系统运行时的数据和指标，以便开发和运维同学可以及时发现系统问题、更快进行故障排查和性能调优。需要监控的信息可以包括系统性能指标（内存、CPU、带宽等）、业务日志、错误信息等。</p>
-<blockquote>
-<p>即对数据作可视化面板实时观测监控</p>
-</blockquote>
-<h3 id="2-可灰度"><a href="#2-可灰度" class="headerlink" title="2.可灰度"></a>2.可灰度</h3><p>指灰度发布能力（又叫金丝雀发布）。将系统的新版本全量部署给所有用户之前，先仅对一小部分用户进行试用。这样可以通过收集这部分用户的反馈和监控数据就能评估新版本的稳定性，并及时进行调整和修复，从而减少对全体用户的潜在风险。</p>
-<p>灰度发布又有很多策略。比如经典的按流量阶段性发布，先随机给 5% 的用户使用新版本，验证没问题后，再给 20%、50%、75% 的用户使用新版本逐渐放量，直到覆盖 100% 的用户。</p>
-<blockquote>
-<p>即先发布试用版本给少部分用户体验来获得反馈</p>
-</blockquote>
-<h3 id="3-可回滚"><a href="#3-可回滚" class="headerlink" title="3.可回滚"></a>3.可回滚</h3><p>就像 Git 版本控制系统回滚写错的代码一样，系统的版本也是可以回滚的。</p>
-<p>线上系统出现问题时，可以将已经部署的新版本回退到之前的稳定版本。这样做可以快速恢复系统，减少对用户的影响，并给开发同学足够的时间来排查和修复问题。而不是线上一直故障，每分钟都是损失。</p>
-<blockquote>
-<p>即版本回退，这个没什么好说的</p>
-</blockquote>
+    <p>前言：要逐渐摆脱面板化操作，实际应用场景下好多不能部署面板</p>
+<hr />
+
+<p><strong>1.打开配置文件</strong></p>
+<pre class="highlight"><span class="line">sudo vim /etc/nginx/sites-available/default</span><br></pre>
+
+<p><strong>2.配置上游服务器接受example.com的请求</strong></p>
+<p>假设后端服务器 A 的地址是 <code>192.168.1.100:8080</code>，服务器 B 的地址是 <code>192.168.1.101:8080</code>。我们给服务器 A 设置权重为 3，服务器 B 设置权重为 1，意味着服务器 A 接收的请求大约是服务器 B 的 3 倍。</p>
+<pre class="highlight"><span class="line"><span class="comment"># 定义一个名为 backend 的上游服务器组，使用加权轮询策略</span></span><br><span class="line"><span class="section">upstream</span> backend &#123;</span><br><span class="line">    <span class="comment"># 服务器 A，权重为 3</span></span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.1.100:8080</span> weight=<span class="number">3</span>;</span><br><span class="line">    <span class="comment"># 服务器 B，权重为 1</span></span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.1.101:8080</span> weight=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个监听 80 端口的虚拟主机</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="comment"># 这里填写你的域名或服务器 IP，如果是测试可使用 IP 地址</span></span><br><span class="line">    <span class="attribute">server_name</span> example.com; </span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="comment"># 将请求代理到名为 backend 的上游服务器组</span></span><br><span class="line">        <span class="attribute">proxy_pass</span> http://backend;</span><br><span class="line">        <span class="comment"># 设置请求头中的 Host 字段为客户端请求的主机名</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="comment"># 设置请求头中的 X-Real-IP 字段为客户端的真实 IP 地址</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="comment"># 设置请求头中的 X-Forwarded-For 字段为客户端的 IP 地址和经过的代理服务器 IP 列表</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+<p>其中<code>listen</code> 指定监听的端口，<code>server_name</code> 指定域名，<code>proxy_pass</code> 指定后端服务器的地址和端口，同时设置了一些请求头信息以便后端服务器获取客户端的真实 IP 等信息。</p>
+<p><strong>3.检查配置并重启</strong></p>
+<pre class="highlight"><span class="line">sudo nginx -t  <span class="comment">#检查配置</span></span><br><span class="line"></span><br><span class="line">sudo systemctl restart nginx <span class="comment">#重启服务</span></span><br></pre>
+
+<p><strong>4.对比正向与反向代理</strong></p>
+<p>正向代理 “代理” 客户端去访问服务器，为客户端提供服务；而反向代理 “代理” 服务器接收客户端的请求，为服务器提供服务，二者的方向是相反的，所以这种为服务器提供代理服务的方式就被称为 “反向代理”。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>适用场景</th>
+<th>主要作用</th>
+<th>关键特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正向代理</td>
+<td>个人突破网络封锁（如访问受限外网）、企业内部网络管理（限制上网行为）、匿名访问</td>
+<td>突破限制访问外部资源、缓存资源提高速度、隐藏客户端 IP</td>
+<td>客户端明确配置使用代理，服务器只知代理 IP</td>
+</tr>
+<tr>
+<td>反向代理</td>
+<td>高并发网站或应用（如大型电商平台）、需保障安全的服务器（如金融服务后台）</td>
+<td>负载均衡（分配请求到多服务器）、隐藏后端架构、安全防护、内容缓存加速、SSL 卸载</td>
+<td>客户端无感知，直接访问代理，服务器处理代理转发请求</td>
+</tr>
+</tbody></table>
 
   </div>
   <div>
@@ -606,8 +616,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://www.wuzhiyou.github.io/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/">
-            https://www.wuzhiyou.github.io/2023/10/27/%E5%AF%B9%E8%AF%AD%E9%9B%80P0%E4%BA%8B%E6%95%85%E8%BF%9B%E8%A1%8C%E5%A4%8D%E7%9B%98/
+            href="https://www.wuzhiyou.github.io/2025/03/04/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/">
+            https://www.wuzhiyou.github.io/2025/03/04/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
@@ -617,29 +627,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2023/12/01/%E8%A7%A3%E5%86%B3tomact%E5%BC%80%E5%90%AF%E5%90%8E%E5%87%BA%E7%8E%B0404%E5%92%8C500%E9%94%99%E8%AF%AF/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">解决tomact开启后出现404和500错误 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2023/10/26/vim%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" 
+        href="/2025/03/02/STAR%E9%9D%A2%E8%AF%95%E6%B3%95%E5%88%99/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">vim基础命令 </div>
+            <div class="nav-title">STAR面试法则 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -657,7 +653,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%91%8A%E5%85%A8%E6%96%87"><span class="toc-text">一、公告全文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E8%AF%BB%E2%80%9C%E5%8F%AF%E7%9B%91%E6%8E%A7%EF%BC%8C%E5%8F%AF%E7%81%B0%E5%BA%A6%EF%BC%8C%E5%8F%AF%E5%9B%9E%E6%BB%9A%E2%80%9D"><span class="toc-text">二、解读“可监控，可灰度，可回滚”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">1.可监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E7%81%B0%E5%BA%A6"><span class="toc-text">2.可灰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E5%9B%9E%E6%BB%9A"><span class="toc-text">3.可回滚</span></a></li></ol></li></ol>
+
 </div>
             </main>
             <aside class="right-column">
@@ -671,7 +667,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%91%8A%E5%85%A8%E6%96%87"><span class="toc-text">一、公告全文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E8%AF%BB%E2%80%9C%E5%8F%AF%E7%9B%91%E6%8E%A7%EF%BC%8C%E5%8F%AF%E7%81%B0%E5%BA%A6%EF%BC%8C%E5%8F%AF%E5%9B%9E%E6%BB%9A%E2%80%9D"><span class="toc-text">二、解读“可监控，可灰度，可回滚”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">1.可监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%AF%E7%81%B0%E5%BA%A6"><span class="toc-text">2.可灰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E5%9B%9E%E6%BB%9A"><span class="toc-text">3.可回滚</span></a></li></ol></li></ol>
+
     </article>
   
   
