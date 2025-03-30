@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>正则表达式</title>
+  <title>解决win10/11系统无法使用ie浏览器</title>
   
     
       <meta 
         property="og:title" 
-        content="正则表达式">
+        content="解决win10/11系统无法使用ie浏览器">
     
     
       <meta 
         property="og:url" 
-        content="https://www.wuzhiyou.github.io/2023/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+        content="https://www.wuzhiyou.github.io/2025/03/30/%E8%A7%A3%E5%86%B3win10-11%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
     
     
       <meta 
@@ -42,10 +42,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2023-06-12">
+        content="2025-03-30">
       <meta 
         property="og:article:modified_time" 
-        content="2025-02-23">
+        content="2025-03-30">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -53,7 +53,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="随笔">
+            content="杂七杂八">
         
       
     
@@ -332,7 +332,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">1. 基础元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%87%8F%E8%AF%8D"><span class="toc-text">2. 量词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A2%84%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-text">3. 预定义字符类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E7%BB%84%E5%92%8C%E6%8D%95%E8%8E%B7"><span class="toc-text">4. 分组和捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">5. 常用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%90%9C%E7%B4%A2"><span class="toc-text">6. 替换和搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E5%92%8C%E6%A1%88%E4%BE%8B"><span class="toc-text">7.练习网站和案例</span></a></li></ol>
+
       </div>
     </article>
   
@@ -518,30 +518,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      正则表达式
+      解决win10/11系统无法使用ie浏览器
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2023-06-12T00:54:28.000Z">
+    <time datetime="2025-03-30T05:57:05.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2023-06-12</span>
+      <span>2025-03-30</span>
     </time>
     
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/" 
-          class="post-meta-link">
-          日常随笔
-        </a>
-      
-    
     
       <span class="dot"></span>
-      <span>1.2k 字</span>
+      <span>154 字</span>
     
   </div>
   
@@ -556,9 +547,9 @@
         
           
           <a 
-            href="/tags/%E9%9A%8F%E7%AC%94/" 
+            href="/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" 
             class="post-meta-link">
-            随笔
+            杂七杂八
           </a>
         
       </div>
@@ -568,105 +559,16 @@
   <div 
     id="section" 
     class="post-content">
-    <p>前言：在写管理页面前端的的时候看到了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/pattern">HTML 属性：pattern - HTML（超文本标记语言） | MDN (mozilla.org)</a>，补充一下正则匹配的相关知识。正则表达式可以在文本中查找、替换、提取和验证特定的模式。</p>
-<blockquote>
-<p>2025年2月23日14:14:50已更新 ai还是比菜鸟教程好用啊</p>
-</blockquote>
-<h2 id="1-基础元字符"><a href="#1-基础元字符" class="headerlink" title="1. 基础元字符"></a>1. <strong>基础元字符</strong></h2><ul>
-<li><code>.</code> : 匹配任何单个字符（除了换行符）。</li>
-<li><code>^</code> : 匹配输入的开始。</li>
-</ul>
-<p><img src="/../images/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230612090046166.png" alt="image-20250223135439371" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230612090046166.png" class="lozad post-image"></p>
-<ul>
-<li><code>$</code> : 匹配输入的结束。</li>
-</ul>
-<p><img src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20250223135408782.png" alt="image-20250223135408782" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20250223135408782.png" class="lozad post-image"></p>
-<ul>
-<li><code>[]</code> : 字符集，用于匹配方括号中的任一字符。例如，<code>[a-z]</code>表示匹配任何小写字母。</li>
-</ul>
-<p><img src="/../images/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20250223135619825.png" alt="image-20250223135619825" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20250223135619825.png" class="lozad post-image"></p>
-<ul>
-<li><code>|</code> : 或操作符，匹配其左边或右边的表达式。</li>
-</ul>
-<p>示例：</p>
-<ul>
-<li><code>^abc</code> 匹配以“abc”开头的字符串。</li>
-<li><code>abc$</code> 匹配以“abc”结尾的字符串。</li>
-<li><code>a|b</code> 匹配“a”或“b”。</li>
-</ul>
-<h2 id="2-量词"><a href="#2-量词" class="headerlink" title="2. 量词"></a>2. <strong>量词</strong></h2><ul>
-<li><code>*</code> : 匹配前一个字符零次或多次。</li>
-</ul>
-<p>如a*表示匹配的字符串有””, “a”, “aa”, “aaa”，”aaaa” 等等</p>
-<ul>
-<li><code>+</code> : 匹配前一个字符一次或多次。</li>
-</ul>
-<p>如a+表示匹配的字符串有”a”, “aa”, “aaa”等等</p>
-<ul>
-<li><code>?</code> : 匹配前一个字符零次或一次。</li>
-</ul>
-<p>如a？表示匹配的字符串只””或 “a”</p>
-<ul>
-<li><code>&#123;n&#125;</code> : 精确匹配前一个字符n次。</li>
-</ul>
-<p>如a{3}表示匹配的字符串只有”aaa”</p>
-<ul>
-<li><code>&#123;n,&#125;</code> : 匹配前一个字符至少n次</li>
-</ul>
-<p>如a{2,}表示匹配的的字符串有“aa” “aaa” “aaaa”等等</p>
-<ul>
-<li><code>&#123;n,m&#125;</code> : 匹配前一个字符n到m次。</li>
-</ul>
-<p>如a{2,4}表示匹配到的字符串只有“aa” “aaa” “aaaa”</p>
-<p>对于字符串“aaaabbbbbcccc”进行正则规则<code>a&#123;2,&#125;b&#123;4&#125;c&#123;2,4&#125;</code>会匹配到“aaaabbbbbcccc”（要求a至少2次b刚好4次c两次到四次间）</p>
-<h2 id="3-预定义字符类"><a href="#3-预定义字符类" class="headerlink" title="3. 预定义字符类"></a>3. <strong>预定义字符类</strong></h2><ul>
-<li><code>\d</code> : 匹配一个数字，等价于<code>[0-9]</code>。</li>
-</ul>
-<p>如\d可以匹配到任意0-9之间的单个数字，\d{3}可以匹配到3个连续数字</p>
-<ul>
-<li><code>\D</code> : 匹配一个非数字字符，等价于<code>[^0-9]</code>。</li>
-</ul>
-<p>如\D可以匹配到任意一个非数字字符，\D{2}可以匹配到2个连续非数字</p>
-<ul>
-<li><code>\w</code> : 匹配一个字母、数字或下划线，等价于<code>[a-zA-Z0-9_]</code>。</li>
-</ul>
-<p>如\w{3,10}可以匹配到由3到10个字母、数字或下划线组成的字符串如”user123” “user_name”</p>
-<ul>
-<li><code>\W</code> : 匹配一个非字母、非数字、非下划线字符，等价于<code>[^a-zA-Z0-9_]</code>。</li>
-</ul>
-<p>如\W+可以匹配到一个或多个非字母数字下划线字符，如”!”, “@”, “#”等</p>
-<ul>
-<li><code>\s</code> : 匹配任何空白字符（包括空格、制表符、换页符等）</li>
-</ul>
-<p>如\s可以匹配的字符串：” “, “\t”, “\n”，\s+可以匹配一个或多个空白符如”     “、”\t”等</p>
-<ul>
-<li><code>\S</code> : 匹配任何非空白字符。</li>
-</ul>
-<p>如\S+可以匹配一个或多个非空白字符，如”abc”, “123”等</p>
-<h2 id="4-分组和捕获"><a href="#4-分组和捕获" class="headerlink" title="4. 分组和捕获"></a>4. <strong>分组和捕获</strong></h2><ul>
-<li><code>()</code> : 用来分组，表示一组字符或表达式。</li>
-<li><code>\1</code>, <code>\2</code>, … : 引用先前捕获的组。</li>
-</ul>
-<p>示例：</p>
-<ul>
-<li><code>(abc)</code> 捕获字符串“abc”。</li>
-<li><code>(abc|def)</code> 匹配“abc”或“def”。</li>
-</ul>
-<h2 id="5-常用示例"><a href="#5-常用示例" class="headerlink" title="5. 常用示例"></a>5. <strong>常用示例</strong></h2><ul>
-<li><code>\d&#123;3&#125;-\d&#123;2&#125;-\d&#123;4&#125;</code> : 匹配SSN（社会安全号）格式，如“123-45-6789”。</li>
-<li><code>^[a-zA-Z0-9_-]&#123;3,16&#125;$</code> : 匹配一个长度在3到16之间的用户名，只包含字母、数字、下划线和短横线。</li>
-</ul>
-<h2 id="6-替换和搜索"><a href="#6-替换和搜索" class="headerlink" title="6. 替换和搜索"></a>6. <strong>替换和搜索</strong></h2><p>在 JavaScript 或 Python 等编程语言中，正则表达式常用于字符串的替换和搜索。</p>
-<p>示例：</p>
-<ul>
-<li>JavaScript：<code>str.replace(/\d+/g, &#39;number&#39;)</code> 将所有数字替换为“number”。</li>
-<li>Python：<code>re.sub(r&#39;\d+&#39;, &#39;number&#39;, text)</code> 替换所有数字。</li>
-</ul>
-<h2 id="7-练习网站和案例"><a href="#7-练习网站和案例" class="headerlink" title="7.练习网站和案例"></a>7.练习网站和案例</h2><p><a target="_blank" rel="noopener" href="https://www.jyshare.com/front-end/854/?optionGlobl=global">正则表达式在线测试 | 菜鸟工具</a></p>
-<pre class="highlight"><span class="line">2025年2月23日，今天是一个特别的日子。温度大约在16°C到20°C之间。我们团队的会议定于下午3:00在会议室A举行，届时将讨论项目进展与未来的计划。</span><br><span class="line">联系方式：支持邮箱contact@company.com，客服电话：400-123-4567。</span><br><span class="line">参会人员包括：张伟，李娜，王磊，刘俊；项目负责人是张伟。今天的任务主要包括：</span><br><span class="line">1. 数据库架构设计；</span><br><span class="line">2. 用户需求分析；</span><br><span class="line">3. 编写系统开发文档。</span><br><span class="line">我们的项目代号是“Alpha2025”，进展顺利，预计按时完成。请记得查看我们的GitHub页面：[https://github.com/alpha2025](https://github.com/alpha2025)。</span><br><span class="line">除了这项工作，团队成员也需要关注公司的内部活动安排，如：4月5日的员工聚会和6月12日的技术培训。</span><br><span class="line">- 张伟，工程师，邮箱：zhangwei@company.com，工号：00123</span><br><span class="line">- 李娜，产品经理，邮箱：lina@company.com，工号：00124</span><br><span class="line">让我们继续保持高效的工作进度，推动项目成功实施</span><br></pre>
+    <p>前言：微软的吃相真恶心，连正常的uninstall按钮都不提供。</p>
+<p>1、下载老版本setup替换到Edge\Application\134.0.3124.93\Installer中，<a target="_blank" rel="noopener" href="https://wwqm.lanzoui.com/ie2Ff0to4nxe">文件提取码：4web</a></p>
+<p>2、在Installer文件夹里使用强制卸载命令<code>.\setup.exe --uninstall --system-level --verbose-logging --force-uninstall</code></p>
+<p>3、重启电脑</p>
+<p>4、官网下载最新edge安装</p>
+<p>5、新建txt改为reg后缀添加注册表 内容如下</p>
+<pre class="highlight"><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]</span><br><span class="line"><span class="string">&quot;C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe&quot;</span>=<span class="string">&quot;~ RUNASADMIN&quot;</span></span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]</span><br><span class="line"><span class="string">&quot;C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe&quot;</span>=<span class="string">&quot;~ RUNASADMIN&quot;</span></span><br></pre>
 
-
-
+<p>最终解决</p>
+<p><img src="/../images/%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/image-20250330140321609.png" alt="image-20250330140321609" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/image-20250330140321609.png" class="lozad post-image"></p>
 
   </div>
   <div>
@@ -686,8 +588,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://www.wuzhiyou.github.io/2023/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-            https://www.wuzhiyou.github.io/2023/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/
+            href="https://www.wuzhiyou.github.io/2025/03/30/%E8%A7%A3%E5%86%B3win10-11%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/">
+            https://www.wuzhiyou.github.io/2025/03/30/%E8%A7%A3%E5%86%B3win10-11%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
@@ -697,29 +599,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2023/06/21/%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">信道复用技术简单分类 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" 
+        href="/2025/03/13/vue%E4%B8%AD%E4%BD%BF%E7%94%A8AES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">【待】五种背包问题详解 </div>
+            <div class="nav-title">vue中使用AES加密算法 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -737,7 +625,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">1. 基础元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%87%8F%E8%AF%8D"><span class="toc-text">2. 量词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A2%84%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-text">3. 预定义字符类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E7%BB%84%E5%92%8C%E6%8D%95%E8%8E%B7"><span class="toc-text">4. 分组和捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">5. 常用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%90%9C%E7%B4%A2"><span class="toc-text">6. 替换和搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E5%92%8C%E6%A1%88%E4%BE%8B"><span class="toc-text">7.练习网站和案例</span></a></li></ol>
+
 </div>
             </main>
             <aside class="right-column">
@@ -751,7 +639,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">1. 基础元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%87%8F%E8%AF%8D"><span class="toc-text">2. 量词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A2%84%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-text">3. 预定义字符类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E7%BB%84%E5%92%8C%E6%8D%95%E8%8E%B7"><span class="toc-text">4. 分组和捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">5. 常用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%90%9C%E7%B4%A2"><span class="toc-text">6. 替换和搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E5%92%8C%E6%A1%88%E4%BE%8B"><span class="toc-text">7.练习网站和案例</span></a></li></ol>
+
     </article>
   
   
