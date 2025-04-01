@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="无知呦的博客 - wuzhiyou&#39;s blog">
+  <link 
+    rel="icon" 
+    href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
+  <title>电子招标流程讲解</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="电子招标流程讲解">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://www.wuzhiyou.github.io/2025/04/01/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2025-04-01">
+      <meta 
+        property="og:article:modified_time" 
+        content="2025-04-01">
+      <meta 
+        property="og:article:author" 
+        content="无知呦">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="奇奇怪怪">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="https://s1.ax1x.com/2022/11/14/zAQwge.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">无知呦的博客 - wuzhiyou's blog</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="https://pic.imgdb.cn/item/6371fcfd16f2c2beb17d3bcb.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">无知呦</p>
+<p class="author-description">承认无知，怀揣敬畏</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>59</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>7</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>26</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/334452066">
+          <i class="iconfont https://img.sj33.cn/uploads/202010/7-201001161Q21C.jpg society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%94%BF%E5%BA%9C%E9%87%87%E8%B4%AD"><span class="toc-text">一、政府采购</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%9F%E5%9C%B0%E4%BA%A4%E6%98%93"><span class="toc-text">二、土地交易</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">三、系统流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%99%BB%E9%99%86%E4%BB%A3%E7%90%86%E8%B4%A6%E5%8F%B7"><span class="toc-text">2、登陆代理账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%AE%80%E6%98%93%E7%89%88"><span class="toc-text">3、简易版</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          算法相关
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          生活相关
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">
+        <div class="categories-list-item">
+          日常随笔
+          <span class="categories-list-item-badge">29</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          网络相关
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%94%B5%E8%84%91%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          电脑相关
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          数学相关
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%BB%9C/" 
+        title="网络">
+        <div class="tags-list-item">网络</div>
+      </a>
+    
+      <a 
+        href="/tags/linux/" 
+        title="linux">
+        <div class="tags-list-item">linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" 
+        title="服务器">
+        <div class="tags-list-item">服务器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%94%B5%E8%84%91%E7%BB%B4%E4%BF%AE/" 
+        title="电脑维修">
+        <div class="tags-list-item">电脑维修</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BD%91%E7%AB%99/" 
+        title="网站">
+        <div class="tags-list-item">网站</div>
+      </a>
+    
+      <a 
+        href="/tags/docker/" 
+        title="docker">
+        <div class="tags-list-item">docker</div>
+      </a>
+    
+      <a 
+        href="/tags/Linux/" 
+        title="Linux">
+        <div class="tags-list-item">Linux</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
+        title="数学建模">
+        <div class="tags-list-item">数学建模</div>
+      </a>
+    
+      <a 
+        href="/tags/sql/" 
+        title="sql">
+        <div class="tags-list-item">sql</div>
+      </a>
+    
+      <a 
+        href="/tags/git/" 
+        title="git">
+        <div class="tags-list-item">git</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      电子招标流程讲解
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2025-04-01T09:03:33.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2025-04-01</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>3.6k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+            class="post-meta-link">
+            奇奇怪怪
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>前言：还是怪麻烦的</p>
+<h1 id="一、政府采购"><a href="#一、政府采购" class="headerlink" title="一、政府采购"></a>一、政府采购</h1><p>1.包含招标和投标过程。投标分为<strong>工程</strong>招投标，<strong>货物</strong>招投标，<strong>服务</strong>招投标。</p>
+<p>2.狭义上定义为各级<strong>国家机关 事业单位和团体组织</strong>适用财政性资金依法采购指定的<strong>集中采购目录以</strong>内或者<strong>采购限额标准</strong>以上的<strong>货物，工程和服务</strong>的行为。</p>
+<p>3.采购代理机构是指<strong>集中采购机构</strong>和<strong>集中采购机构以外的采购代理机构</strong>。</p>
+<p>4.集中采购机构是代理集中采购项目的<strong>执行机构</strong></p>
+<p>5.集中采购机构意外的采购代理机构是从事采购代理业务的<strong>社会中介机构</strong></p>
+<p>6.供应商是向采购人提供货物工程或者服务的<strong>法人</strong>，其他组织或者<strong>自然人</strong></p>
+<p>7.招标方式分为<strong>公开招标</strong>和<strong>邀请招标</strong></p>
+<blockquote>
+<p><strong>公开招标</strong>是政府采购主要采购方式;指招标人在公开媒介上以招标公告的方式邀请不特定的法人或其他组织参与投标，并向符合条件的投标人中择优选择中标人的一种招标方式。</p>
+<p><strong>邀请招标</strong>也称为选择性招标，由采购人根据供应商或承包商的资信和业绩，选择一定数目的法人或其他组织(不能少于<strong>三</strong>家)，向其发出招标邀请书，邀请他们参加投标竞争，从中选定中标的供应商。</p>
+</blockquote>
+<p>8.非招标方式是除了公开和邀请以外的采购方式，包括<strong>竞争性谈判，竞争性磋商，询价，单一来源采购，国务院政府认定的其他采购方式</strong></p>
+<blockquote>
+<p><strong>竞争性谈判</strong>采购人或代理机构通过与多家供应商(不少于<strong>三</strong>家)，进行谈判，最后从中确定中标供应商。</p>
+<p><strong>单一来源采购</strong>也称为直接采购，是指达到了限额标准和公开招标数额标准，但所购商品的来源渠道单一，不能从其他供应商处采购等情况。该采购方式的最主要特点是没有竞争性。</p>
+<p><strong>询价</strong>也叫做询比采购，是指采购人向有关供应商发出询价单让其报价，在报价基础上进行比较并确定最优供应商的一种采购方式。只允许供应商提供一个报价，而且不许改变其报价。</p>
+<p><strong>政府采购协议供货制</strong>是指集中采购目录内货物及其耗材、配件，集中采购目录外部分服务。</p>
+</blockquote>
+<p><strong>直接发包</strong>是指在工程建设项目中，根据特定条件和规定，可以不通过公开招标程序而直接将工程发包给承包商的行为。这一做法来源于《工程建设项目施工招标投标办法》第十二条的规定。</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331135925782.png" alt="image-20250331135925782" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331135925782.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331135232396.png" alt="image-20250331135232396" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331135232396.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331100157549.png" alt="image-20250331100157549" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331100157549.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331100219757.png" alt="image-20250331100219757" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331100219757.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331100244032.png" alt="image-20250331100244032" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331100244032.png" class="lozad post-image"></p>
+<h1 id="二、土地交易"><a href="#二、土地交易" class="headerlink" title="二、土地交易"></a>二、土地交易</h1><p><strong>土地出让</strong>是土地使用权取得者取得用地的一种方式，同时也是土地资产处置的一种方式。出让的土地<strong>使用权</strong>是土地使用者向国家购买的一种<strong>财产权</strong>，土地使用者不仅可以占有、使用和取得土地收益，还可以独立支配和处置土地使用权。</p>
+<p>**招标:**指市、县人民政府土地行政主管部门(以下简称出让人)发布招标公告，邀请特定或者不特定的公民、法人和其它组织参加国有土地使用权投标，根据投标结果确定土地使用者的行为。</p>
+<p>**拍卖:**指出让人发布拍卖公告，由竟买人在指定时间、地点进行公开竞价，根据出价结果确定土地使用者的行为。</p>
+<p>**挂牌:**“挂牌出让”是一种 公开透明的国有土地使用权出让方式，与“招标”“拍卖”并列，适用于商业、住宅、工业等经营性用地。其核心是通过 <strong>公开挂牌公示</strong> 吸引竞买人参与，最终以“价高者得”或综合条件最优者成</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331140318682.png" alt="image-20250331140318682" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331140318682.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331140453061.png" alt="image-20250331140453061" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331140453061.png" class="lozad post-image"></p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250329110107706.png" alt="image-20250329110107706" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250329110107706.png" class="lozad post-image"></p>
+<p><strong>荷兰拍卖</strong>是指，拍卖人先将价格设定在足以阻止所有竞拍者的水平，然后由高价往低价喊，第一个应价的竞拍者获胜，并支付当时所喊到的价格</p>
+<p><strong>招标形式</strong>分为自行招标和委托招标。<strong>自行招标</strong>是招标人自行组织招标活动，无需委托第三方机，适合资源充足、经验丰富的招标人。<strong>委托招标</strong>是委托具有资质的招标代理机构组织招标活动，适合复杂项目或缺乏经验的招标人，但需选择可靠代理机构。</p>
+<p><strong>资格预审</strong>是在发售招标文件之前，由招标人或资格审查委员会负责；<strong>资格后审</strong>是在开标之后的评标阶段，由评标委员会负责。</p>
+<p>计划开工时间和竣工时间 计划发包时间（<strong>计划发包时间</strong>是指指定项 目计划发布招标文件的时间）</p>
+<p><strong>招标文件</strong>发售时间</p>
+<blockquote>
+<p>● 根据《中华人民共和国政府采购法》 第三十五条 <strong>货物和服务</strong>项目实行招标方式采购的，自招标文件开始发出之日起至投标人提交投标文件截止之日止，不得少于<strong>二十</strong>日。<br>● 根据《中华人民共和国招标投标法实施条例》 第十六条　招标人应当按照资格预审公告、招标公告或者投标邀请书规定的时间、地点发售资格预审文件或者招标文件。<strong>资格预审文件或者招标文件</strong>的发售期不得少于<strong>5日</strong>。<br>● 根据《机电产品国际招标投标实施办法（试行）》 第二十六条 招标人应当确定投标人编制投标文件所需的合理时间。依法必须进行招标的项目，自招标文件开始发售之日起至投标截止之日止，不得少于<strong>20日</strong>。招标文件的发售期不得少于<strong>5个</strong>工作日。  </p>
+</blockquote>
+<p>场地预约的时间问题	</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250329232051723.png" alt="image-20250329232051723" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250329232051723.png" class="lozad post-image"></p>
+<p><strong>综合评标法</strong>：（ 俗称“打分法” ）：把涉及到的招标人各种资格资质、技术、商务以及服务的条款，都折算成一定的分数值，总分为100分。评标时，对投标人的每一项指标进行符合性审查、核对并给出分数值，最后，汇总比较，取分数值最高者为中标人。</p>
+<p><strong>合理低价法</strong>：顾名思义就是“价低者得</p>
+<p>明标和暗标区别  ：<strong>明标</strong>是指在招标文件中明确列出的要求和标准，包括技术规格、质量要求、交付时间、价格等。<strong>暗标</strong>是指在投标文件中以某种方式隐藏的信息或条件，这些信息或条件可能影响投标结果，通常只有在合同签订之后才会揭示这些暗标。</p>
+<p>开标场地和评标场地</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250330143854609.png" alt="image-20250330143854609" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250330143854609.png" class="lozad post-image"></p>
+<p><strong>形式评审 资格评审 响应性评审</strong></p>
+<blockquote>
+<p>1.<br>2. <a target="_blank" rel="noopener" href="https://easylearn.baidu.com/edu-page/tiangong/questiondetail?id=1722731577070088897">形式评审：对投标文件的外在形式、格式和签署进行评审。</a><br>3. <a target="_blank" rel="noopener" href="https://easylearn.baidu.com/edu-page/tiangong/questiondetail?id=1722731577070088897">资格评审：适用于未进行资格预审的情况，评审投标资格。</a><br>4. <a target="_blank" rel="noopener" href="https://easylearn.baidu.com/edu-page/tiangong/questiondetail?id=1722731577070088897">响应性评审：评审投标文件是否响应招标文件实质性要求，包括投标内容范围、工期、工程质量、投标有效期、投标保证金等。</a></p>
+</blockquote>
+<p>直接打分 等级打分 等级直接打分</p>
+<p>1h30min 把考官当成客户 </p>
+<p><strong>唱标</strong>就是公布投标人关于投标等专业信息。<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8B%9B%E6%A0%87%E6%96%87%E4%BB%B6/8706265?fromModule=lemma_inlink">招标文件</a>一般通过公告的形式告知，由投标人领取，不会公开散发。开标时，公开宣读投标人关于投标人报价、工期、质量、工程项目经理等投标人有实质要求的内容。</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331132120430.png" alt="image-20250331132120430" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331132120430.png" class="lozad post-image"></p>
+<p>介绍<strong>清标</strong>：对投标人的计价工程量清单进行复核清算，包括报价算术性错误、缺漏项的核查， 不平衡报价 的分析， 综合单价 、 取费标准 及报价的合理性分析和全面性分析等。</p>
+<p>标书雷同性分析 机器码</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331132310457.png" alt="image-20250331132310457" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331132310457.png" class="lozad post-image"></p>
+<p><strong>文件制作机器码</strong>是指生成投标文件的那台电脑的：<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=411038679&content_type=Answer&match_order=1&q=MAC%E5%9C%B0%E5%9D%80&zhida_source=entity">MAC地址</a>、<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=411038679&content_type=Answer&match_order=1&q=CPU%E5%BA%8F%E5%88%97%E5%8F%B7&zhida_source=entity">CPU序列号</a>、硬盘序列号、<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=411038679&content_type=Answer&match_order=1&q=%E4%B8%BB%E6%9D%BF%E5%BA%8F%E5%88%97%E5%8F%B7&zhida_source=entity">主板序列号</a>、IP地址等所有与此电脑相关的硬件标识号码。</p>
+<p><strong>文件创建识别码</strong>是指生成投标文件的那个软件的：版本号、ID号、软件操作者的登录信息、软件驱动锁号等所有与此软件相关的信息代码。</p>
+<p>技术标分为明标和暗标</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331132932512.png" alt="image-20250331132932512" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331132932512.png" class="lozad post-image"></p>
+<p> <strong>书面报告备案</strong>需要哪些东西：报告需包含项目背景、实施计划、风险评估等要素，结构需逻辑清晰；格式应符合行业标准（如封面、目录、附件分类）</p>
+<p>产权和土地名词解释，政府采购两个方式</p>
+<p>3个账号注册，招标 投标 开标 评标 定标</p>
+<p><strong>A、产权交易：</strong>是指资产所有者将其资产所有权和经营权全部或者部分有偿转让的一种经济活动；这种经济活动是以实物形态为基本特征的出卖财产收益的行为；是多层资本市场的重要组成部分；</p>
+<p><strong>B、产权类别：</strong>兼并、承包、租赁、拍卖、股权转让、资产转让等。</p>
+<p>如：某大厦6层房屋租赁权、国有土地招租权、火车站两侧广告租赁、某单位旧车拍卖、某公司国有股权转让等。</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331230221653.png" alt="image-20250331230221653" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331230221653.png" class="lozad post-image"></p>
+<h1 id="三、系统流程"><a href="#三、系统流程" class="headerlink" title="三、系统流程"></a>三、系统流程</h1><h2 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h2><p>1、注册仨账号 完善个人信息</p>
+<p>2、招标代理账号：完善基本信息 扫描件管理 资格证书 职业人员信息完善</p>
+<p>投标代理账号：单位信息 职业人员信息</p>
+<p>3、ie兼容性设置 Internet选项信任站点 自定义级别设置activex启用 弹出窗口阻止 禁用</p>
+<h2 id="2、登陆代理账号"><a href="#2、登陆代理账号" class="headerlink" title="2、登陆代理账号"></a>2、登陆代理账号</h2><p>开标</p>
+<p>委托合同代理状态不变</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331143956302.png" alt="image-20250331143956302" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331143956302.png" class="lozad post-image"></p>
+<p>邀请招标不用</p>
+<p>投标信息只有投标了之后才有信息</p>
+<p>预约开标场地时间的限制  不得早于投标截止之前 开、评标活动一般在工作日进行，开标（投标截止）时间宜预约在<strong>9时、13时和15时</strong>。 </p>
+<p>发标文件制作：评标办法设置</p>
+<p>工程清单导入 工程量清单 13 jz</p>
+<p> 投标文件组成 去掉2个勾勾</p>
+<p>图纸领取登记</p>
+<p>提问回复-特殊情况异议回复-投诉</p>
+<p>组建评标委员会  选择相填写似专业人数 不少于5个</p>
+<p> 管理端综合管理 抽取专家</p>
+<p>登录tb账号</p>
+<p>找到对应项目 点击我要投标</p>
+<p>生成招标文件 打开</p>
+<p>投标文件制作新建文件 投标文件格式 已标价的工程量清单 新增工程量清单 生成工程量清单</p>
+<p>截图金额 对应到投标函 </p>
+<p>开评定标</p>
+<p>登录开评 </p>
+<p>新增项目</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160151205.png" alt="image-20250331160151205" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160151205.png" class="lozad post-image"></p>
+<p>新增单位<img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160237322.png" alt="image-20250331160237322" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160237322.png" class="lozad post-image"></p>
+<p>非加密上传的注意事项：<img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160325912.png" alt="image-20250331160325912" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160325912.png" class="lozad post-image"></p>
+<p>唱标 开标结束</p>
+<p>评标准备模块里</p>
+<p>招标文件导入</p>
+<p>评标办法里的详细评审 经济标 直接打分</p>
+<p>权重设置</p>
+<p>确定评委 新增专家</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160634606.png" alt="image-20250331160634606" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331160634606.png" class="lozad post-image"></p>
+<p>新开标页面登录 </p>
+<p>进入项目 评标系统</p>
+<p><strong>清标作用：</strong>找出投标文件中可能存在疑义或者显著异常的数据，为初步评审以及详细评审中的质疑工作提供基础</p>
+<p><strong>标书机器码 ：</strong>生成投标文件的电脑的硬件标识号码标书机器码是指生成投标文件的电脑的硬件标识号码，包括MAC地址、CPU序列号、硬盘序列号、主板序列号、IP地址等。每台电脑的硬盘、CPU等都有无法修改、唯一的序列号或识别码，即机器码。当投标公司使用电脑制作、上传资格预审文件时，文件上会自动标记出该台电脑的机器码。机器码一致，说明两家公司的文件是在同一电脑上制作、提交上传的。</p>
+<blockquote>
+<p>文件制作机器码是指生成投标文件的那台电脑的：<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=411038679&content_type=Answer&match_order=1&q=MAC%E5%9C%B0%E5%9D%80&zhida_source=entity">MAC地址</a>、<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=411038679&content_type=Answer&match_order=1&q=CPU%E5%BA%8F%E5%88%97%E5%8F%B7&zhida_source=entity">CPU序列号</a>、硬盘序列号、<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=411038679&content_type=Answer&match_order=1&q=%E4%B8%BB%E6%9D%BF%E5%BA%8F%E5%88%97%E5%8F%B7&zhida_source=entity">主板序列号</a>、IP地址等所有与此电脑相关的硬件标识号码。</p>
+<p>文件创建识别码是指生成投标文件的那个软件的：版本号、ID号、软件操作者的登录信息、软件驱动锁号等所有与此软件相关的信息代码。</p>
+</blockquote>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331161107375.png" alt="image-20250331161107375" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331161107375.png" class="lozad post-image"></p>
+<p><img src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20250331220552789.png" alt="image-20250331220552789" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="C:/Users/lenovo/AppData/Roaming/Typora/typora-user-images/image-20250331220552789.png" class="lozad post-image"></p>
+<p><strong>技术性评审</strong>：主要对施工方 案的可行性和关键工序评审；劳务、材 料、机械设备、质量控制措施评估及对 施工现场周围环境污染的保护措施的评估</p>
+<p><strong>商务性评审</strong>：主要对投标报价进行审 核，审查报价计算的准确性、构成的合 理性，并与标底价格进行对比。</p>
+<p>评审结果 最终排名 汇总排名 评标结束</p>
+<p>会员端 登陆代理商账号  定标的4个东西</p>
+<p><img src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331221401831.png" alt="image-20250331221401831" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/image-20250331221401831.png" class="lozad post-image"></p>
+<p><strong>书面报告备案：</strong>是指根据法律法规要求，将特定事项的书面报告提交至主管机关存档备查的程序，其核心目的是实现信息透明、合规监管或后续审查。</p>
+<p>可分为2类：</p>
+<p><strong>审查型备案：</strong>主管机关对报告内容进行实质性审查（如招标文件合规性审核）；</p>
+<p><strong>告知型备案：</strong>仅要求信息存档，不涉及内容审批（如森林采伐限额备案）</p>
+<h2 id="3、简易版"><a href="#3、简易版" class="headerlink" title="3、简易版"></a>3、简易版</h2><p>账号注册 个人信息完善</p>
+<p>1、<strong>会员端-代理商账号 一直到发布招标文件并组建委员会</strong></p>
+<p>2、<strong>管理端-综合管理-抽取专家</strong></p>
+<p>2、<strong>会员端-投标账号 选择投标 桌面软件制作投标文件导出（但失败）</strong></p>
+<p>3、<strong>开标段-admin账号-一直到新增评委</strong></p>
+<p>4、<strong>开标端-评委账号-完成评标流程</strong></p>
+<p>5、<strong>会员端-代理商账号-定标四步骤</strong></p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-primary copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            无知呦
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://www.wuzhiyou.github.io/2025/04/01/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/">
+            https://www.wuzhiyou.github.io/2025/04/01/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2025/03/30/%E8%A7%A3%E5%86%B3win10-11%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">解决win10/11系统无法使用ie浏览器 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%94%BF%E5%BA%9C%E9%87%87%E8%B4%AD"><span class="toc-text">一、政府采购</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%9F%E5%9C%B0%E4%BA%A4%E6%98%93"><span class="toc-text">二、土地交易</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">三、系统流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%99%BB%E9%99%86%E4%BB%A3%E7%90%86%E8%B4%A6%E5%8F%B7"><span class="toc-text">2、登陆代理账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%AE%80%E6%98%93%E7%89%88"><span class="toc-text">3、简易版</span></a></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%94%BF%E5%BA%9C%E9%87%87%E8%B4%AD"><span class="toc-text">一、政府采购</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%9F%E5%9C%B0%E4%BA%A4%E6%98%93"><span class="toc-text">二、土地交易</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">三、系统流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%99%BB%E9%99%86%E4%BB%A3%E7%90%86%E8%B4%A6%E5%8F%B7"><span class="toc-text">2、登陆代理账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%AE%80%E6%98%93%E7%89%88"><span class="toc-text">3、简易版</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2025-04-01</div>
+        <a href="/2025/04/01/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/"><div class="recent-posts-item-content">电子招标流程讲解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2025-03-30</div>
+        <a href="/2025/03/30/%E8%A7%A3%E5%86%B3win10-11%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8/"><div class="recent-posts-item-content">解决win10/11系统无法使用ie浏览器</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2025-03-13</div>
+        <a href="/2025/03/13/vue%E4%B8%AD%E4%BD%BF%E7%94%A8AES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/"><div class="recent-posts-item-content">vue中使用AES加密算法</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2025-03-05</div>
+        <a href="/2025/03/05/linux%E4%B8%8B%E6%9D%83%E9%99%90%E4%B8%8E%E6%95%B0%E5%AD%97%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/"><div class="recent-posts-item-content">linux下权限与数字的对应关系</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+                - 
+                2025
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          无知呦的博客 - wuzhiyou's blog
+        </a>
+      </div>
+    </div>
+
+    
+    
+    
+      <div class="BbeiAn-info">
+        <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">豫ICP备2023002724号 </a>
+      </div>
+      
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
