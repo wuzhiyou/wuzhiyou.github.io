@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://s1.ax1x.com/2022/11/14/zAQwge.png">
-  <title>【待】五种背包问题详解</title>
+  <title>【四月五月】唯有记录可抵漫长岁月</title>
   
     
       <meta 
         property="og:title" 
-        content="【待】五种背包问题详解">
+        content="【四月五月】唯有记录可抵漫长岁月">
     
     
       <meta 
         property="og:url" 
-        content="https://www.wuzhiyou.github.io/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/index.html">
+        content="https://www.wuzhiyou.github.io/2025/07/02/%E5%94%AF%E6%9C%89%E8%AE%B0%E5%BD%95%E5%8F%AF%E6%8A%B5%E6%BC%AB%E9%95%BF%E5%B2%81%E6%9C%88/index.html">
     
     
       <meta 
@@ -42,10 +42,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2023-06-04">
+        content="2025-07-02">
       <meta 
         property="og:article:modified_time" 
-        content="2023-07-16">
+        content="2025-07-02">
       <meta 
         property="og:article:author" 
         content="无知呦">
@@ -53,7 +53,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="算法">
+            content="随笔">
         
       
     
@@ -332,7 +332,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%8101%E8%83%8C%E5%8C%85"><span class="toc-text">一、01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%84%E6%B3%95"><span class="toc-text">1、二维dp数组法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E9%80%92%E5%BD%92%E5%85%AC%E5%BC%8F"><span class="toc-text">推导递归公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96dp%E6%95%B0%E7%BB%84"><span class="toc-text">初始化dp数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-text">二、完全背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-text">三、多重背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-text">四、分组背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="toc-text">五、混合背包</span></a></li></ol>
+
       </div>
     </article>
   
@@ -347,13 +347,6 @@
   </div>
   <div class="categories-list">
     
-      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
-        <div class="categories-list-item">
-          算法相关
-          <span class="categories-list-item-badge">4</span>
-        </div>
-      </a>
-    
       <a href="/categories/%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
         <div class="categories-list-item">
           生活相关
@@ -365,6 +358,13 @@
         <div class="categories-list-item">
           日常随笔
           <span class="categories-list-item-badge">29</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+        <div class="categories-list-item">
+          编程相关
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
@@ -382,10 +382,10 @@
         </div>
       </a>
     
-      <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/">
+      <a href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">
         <div class="categories-list-item">
-          编程相关
-          <span class="categories-list-item-badge">4</span>
+          算法相关
+          <span class="categories-list-item-badge">3</span>
         </div>
       </a>
     
@@ -411,6 +411,54 @@
   <div class="tags-list">
     
       <a 
+        href="/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" 
+        title="生活随笔">
+        <div class="tags-list-item">生活随笔</div>
+      </a>
+    
+      <a 
+        href="/tags/git/" 
+        title="git">
+        <div class="tags-list-item">git</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8D%9A%E5%AE%A2/" 
+        title="博客">
+        <div class="tags-list-item">博客</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%89%8D%E7%AB%AF/" 
+        title="前端">
+        <div class="tags-list-item">前端</div>
+      </a>
+    
+      <a 
+        href="/tags/Linux/" 
+        title="Linux">
+        <div class="tags-list-item">Linux</div>
+      </a>
+    
+      <a 
+        href="/tags/sql/" 
+        title="sql">
+        <div class="tags-list-item">sql</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
+        title="数据库">
+        <div class="tags-list-item">数据库</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9A%8F%E7%AC%94/" 
+        title="随笔">
+        <div class="tags-list-item">随笔</div>
+      </a>
+    
+      <a 
         href="/tags/%E7%BD%91%E7%BB%9C/" 
         title="网络">
         <div class="tags-list-item">网络</div>
@@ -423,27 +471,9 @@
       </a>
     
       <a 
-        href="/tags/%E5%89%8D%E7%AB%AF/" 
-        title="前端">
-        <div class="tags-list-item">前端</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
-        title="奇奇怪怪">
-        <div class="tags-list-item">奇奇怪怪</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%8D%9A%E5%AE%A2/" 
-        title="博客">
-        <div class="tags-list-item">博客</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%AE%97%E6%B3%95/" 
-        title="算法">
-        <div class="tags-list-item">算法</div>
+        href="/tags/vim/" 
+        title="vim">
+        <div class="tags-list-item">vim</div>
       </a>
     
       <a 
@@ -459,51 +489,21 @@
       </a>
     
       <a 
-        href="/tags/%E9%9A%8F%E7%AC%94/" 
-        title="随笔">
-        <div class="tags-list-item">随笔</div>
+        href="/tags/web/" 
+        title="web">
+        <div class="tags-list-item">web</div>
       </a>
     
       <a 
-        href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" 
-        title="数据库">
-        <div class="tags-list-item">数据库</div>
+        href="/tags/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" 
+        title="奇奇怪怪">
+        <div class="tags-list-item">奇奇怪怪</div>
       </a>
     
       <a 
-        href="/tags/%E7%BD%91%E7%AB%99/" 
-        title="网站">
-        <div class="tags-list-item">网站</div>
-      </a>
-    
-      <a 
-        href="/tags/docker/" 
-        title="docker">
-        <div class="tags-list-item">docker</div>
-      </a>
-    
-      <a 
-        href="/tags/Linux/" 
-        title="Linux">
-        <div class="tags-list-item">Linux</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" 
-        title="数学建模">
-        <div class="tags-list-item">数学建模</div>
-      </a>
-    
-      <a 
-        href="/tags/sql/" 
-        title="sql">
-        <div class="tags-list-item">sql</div>
-      </a>
-    
-      <a 
-        href="/tags/git/" 
-        title="git">
-        <div class="tags-list-item">git</div>
+        href="/tags/%E5%86%85%E5%AD%98/" 
+        title="内存">
+        <div class="tags-list-item">内存</div>
       </a>
     
   </div>
@@ -518,30 +518,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      【待】五种背包问题详解
+      【四月五月】唯有记录可抵漫长岁月
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2023-06-04T09:16:46.000Z">
+    <time datetime="2025-07-02T06:51:50.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2023-06-04</span>
+      <span>2025-07-02</span>
     </time>
     
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" 
-          class="post-meta-link">
-          算法相关
-        </a>
-      
-    
     
       <span class="dot"></span>
-      <span>871 字</span>
+      <span>809 字</span>
     
   </div>
   
@@ -556,9 +547,9 @@
         
           
           <a 
-            href="/tags/%E7%AE%97%E6%B3%95/" 
+            href="/tags/%E9%9A%8F%E7%AC%94/" 
             class="post-meta-link">
-            算法
+            随笔
           </a>
         
       </div>
@@ -568,54 +559,22 @@
   <div 
     id="section" 
     class="post-content">
-    <p>前言：算法分析考试前12个小时，老师在群里发了背包动态规划的内容，发现还是不会，垂死病中惊坐起，补一补..    题外话，相信自己不如相信老师（逃</p>
+    <p>前言：大家好呀，这里wuzhiyou。工作入职已经有2个多月了，发现从找到工作后就慢慢停止了记录的习惯，中午刷微信看到一个很喜欢的博主why技术更新了博文，看的好有感触，有温度的文字是能够给予人共鸣的哇。遂想提笔再记录些什么东西~</p>
 <hr />
 
-<p>背包问题繁琐而又多样，根据所给条件不同，可以划分成不同的问题，但最后求解的目的都是一样的：<strong>如何划分使得背包总所装物品总价值最大</strong>。其中最基础的是01背包，下图可以概括基础的五种背包问题。</p>
-<p><img src="https://pic1.zhimg.com/v2-79a530037716def50178945a56d1cbb8_r.jpg" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/v2-79a530037716def50178945a56d1cbb8_r.jpg" class="lozad post-image"></p>
-<h2 id="一、01背包"><a href="#一、01背包" class="headerlink" title="一、01背包"></a>一、01背包</h2><blockquote>
-<p><em>有N件物品和一个最多能被重量为W 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大？</em></p>
-</blockquote>
-<p>如果使用暴力回溯，每个物品只有<strong>取</strong>和<strong>不取</strong>两种状态，则时间复杂度为O(2^n)，因此必然要优化。</p>
-<p>将问题具体化，假设背包最大重量W&#x3D;4，物品0~2对应的weight和value如下</p>
-<p><img src="https://pic1.zhimg.com/80/v2-bbb1d71e880ec4774b5af056ba0be4e8_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/80/v2-bbb1d71e880ec4774b5af056ba0be4e8_720w.webp" class="lozad post-image"></p>
-<h3 id="1、二维dp数组法"><a href="#1、二维dp数组法" class="headerlink" title="1、二维dp数组法"></a>1、二维dp数组法</h3><h4 id="推导递归公式"><a href="#推导递归公式" class="headerlink" title="推导递归公式"></a>推导递归公式</h4><p>1、根据动态规划步骤，首先确定dp数组及下标含义</p>
-<p><strong><code>dp[i][j]</code>表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大值是多少</strong></p>
-<p><img src="https://pic4.zhimg.com/80/v2-ea972bd7ee43785c16cc8aeafc58cd9b_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-ea972bd7ee43785c16cc8aeafc58cd9b_720w.webp" class="lozad post-image"></p>
-<p>对于如何推出<code>dp[i][j]</code></p>
-<ul>
-<li>由<code>dp[i-1][j]</code>推出，即背包最大容量为j，里边不放物品i的最大价值，此时<code>dp[i][j]=dp[i-1][j]</code></li>
-<li>由<code>dp[i-1][j-weight[i]]</code>推出，<code>dp[i-1][j-weight[i]]</code>为背包容量为j-weight[i]时不放物品i的最大价值，那么<code>dp[i-1][j-weight[i]]+物品i的价值value[i]</code>就是背包放物品i时得到的最大价值</li>
-</ul>
-<p>所以递归公式 <code>dp[i][j]=max( dp[i-1][j],dp[i-1][j-weight[i]]+value[i]] )</code></p>
-<h4 id="初始化dp数组"><a href="#初始化dp数组" class="headerlink" title="初始化dp数组"></a>初始化dp数组</h4><p>确定递归公式后，要将dp数组初始化（牢记：**<code>dp[i][j]</code>表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大值是多少**）</p>
-<p>观察可得<code>dp[i][0]</code>均为0</p>
-<p><img src="https://pic4.zhimg.com/80/v2-efd8d5d5e15f4dfc35d92442118c7be3_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-efd8d5d5e15f4dfc35d92442118c7be3_720w.webp" class="lozad post-image"></p>
-<p>则求出<code>dp[0][j]</code></p>
-<pre class="highlight"><span class="line">//正序遍历</span><br><span class="line"><span class="keyword">for</span>(int j=weight[0];j&lt;bagWeight;j++)&#123;</span><br><span class="line">	dp[0][j]=value[0];</span><br><span class="line">&#125;</span><br></pre>
+<p>既然不知道从何写起，就先记录下刚刚过去的五月吧~毕业前的最后一个完整月份，也是毕业论文搞完之后相对事情没有那么多的一个月份。</p>
+<p>今年五月初经历了5天的劳动节，月中请了3天假，月末又赶上端午节，实际上班时间只有16天，按理来说，应该是开心的一个月。但到前两天月底算工资的时候发现只有2开头，瞬间感觉情绪好低落呀。果然没有对比就没有伤害（苦笑），一旦比上个月发的少就不开心了。<img src="/../images/%E5%94%AF%E6%9C%89%E7%83%AD%E7%88%B1%E5%8F%AF%E6%8A%B5/image-20250603131428919.png" alt="image-20250603131428919" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E5%94%AF%E6%9C%89%E7%83%AD%E7%88%B1%E5%8F%AF%E6%8A%B5/image-20250603131428919.png" class="lozad post-image"></p>
+<p>但是还好端午节的时候回去好好放松了一下，跟xf再次去了开封，打卡了万岁山和王婆说媒，很充实的一天~</p>
+<p>好像自从上班之后自己的生活幸福感知力就变顿了，这可不是什么好事情。细细想一下这个月有什么比较值得记录的事情？其实还是很多的，最难忘的就是中旬的时候感染了新冠（或是诺如）病毒，第一天窜稀13+，第二天8次，第三天2次，到第四天的时候才完全恢复。可以给这个病毒起个别名叫“噗噗噗”病毒了，太难受了！还有就是这个月开始有意识的控制饮食了，晚上一般没什么事就吃个玉米鸡蛋，似乎也没有那么饿诶。前两天称了一下体重，确实有效果嘿嘿，离希望的体重就查了2kg了，还可以利用好目前的办公环境，减脂增肌同步并行~</p>
+<p>3月底</p>
+<p>4月初清明节回家，带着奶奶出了躺远门，还挺感慨的，人都会有这一天吧。见了琪浩跟韩sir，有点震惊他现在眼光这么高。</p>
+<p>4月中旬 天气清爽的一天跟xf从学校骑车骑到了月季公园 又累又开心 最难忘的是路上见了一个刚从湖底下打捞上来的哈罗单车hhh</p>
+<p>4月中下旬 去了徐州考试顺便旅游 徐州的小电车很舒服 地锅鸡薄薄的饼很好吃哦</p>
+<p>5月初 开始忙毕业论文跟答辩 顺便把电动车卖掉了 虽然后来出现了不是很愉快的事情，但最后大地上还是解决了哦~</p>
+<p>6月份 毕业论文提交完之后也没什么大事情了 结果等来了面试通知 火速请假了一周之后结果意外考上 思考之后于6月底辞职啦~</p>
+<p>恍恍惚惚，感觉一切顺利的都是那么不真实。记于2025年7月2日14:48:47体检完回家车途中。</p>
+<p><img src="/../images/%E5%94%AF%E6%9C%89%E7%83%AD%E7%88%B1%E5%8F%AF%E6%8A%B5/image-20250702145029793.png" alt="image-20250702145029793" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="/../images/%E5%94%AF%E6%9C%89%E7%83%AD%E7%88%B1%E5%8F%AF%E6%8A%B5/image-20250702145029793.png" class="lozad post-image"></p>
 
-<p>此时</p>
-<p><img src="https://pic1.zhimg.com/80/v2-e8f29cf5b522b7780681a0a26ee5432c_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic1.zhimg.com/80/v2-e8f29cf5b522b7780681a0a26ee5432c_720w.webp" class="lozad post-image"></p>
-<p><code>dp[0][j]</code>和<code>dp[i][0]</code>已经确定，则将其他位置初始化为0即可</p>
-<p><img src="https://pic4.zhimg.com/80/v2-49956d916a2fa062c0749eef351666f3_720w.webp" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic4.zhimg.com/80/v2-49956d916a2fa062c0749eef351666f3_720w.webp" class="lozad post-image"></p>
-<p>可以选择先遍历物品也可以先遍历背包重量，即谁在内循环谁在外循环均可，<strong>但先遍历物品更好解</strong>。</p>
-<pre class="highlight"><span class="line">//weight数组的大小 就是物品的个数</span><br><span class="line"><span class="keyword">for</span>(int i=1;i&lt;weight.size();i++)&#123;		//遍历物品</span><br><span class="line">	<span class="keyword">for</span>(int j=0;j&lt;bagWeight;j++)&#123;		//遍历背包容量</span><br><span class="line">		<span class="keyword">if</span>(j&lt;weight[i])</span><br><span class="line">			dp[i][j]=dp[i-1][j];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			dp[i][j]=max( dp[i-1][j],dp[i-1][j-weight[i]]+value[i]] );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre>
-
-
-
-<p>如果遍历背包，则</p>
-<pre class="highlight"><span class="line">// weight数组的大小 就是物品个数</span><br><span class="line"><span class="keyword">for</span>(int j = 0; j &lt;= bagWeight; j++) &#123; // 遍历背包容量</span><br><span class="line">    <span class="keyword">for</span>(int i = 1; i &lt; weight.size(); i++) &#123; // 遍历物品</span><br><span class="line">        <span class="keyword">if</span> (j &lt; weight[i])</span><br><span class="line">        	dp[i][j] = dp[i - 1][j];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        	dp[i][j] = max (dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br></pre>
-
-
-
-<p>虽然两种遍历顺序有不同的地方（？），但最终都得到了相同的dp数组</p>
-<p>最终得到dp数组</p>
-<p><img src="https://pic2.zhimg.com/v2-23f313c38ec462f4404159964c7b938d_r.jpg" alt="img" srcset="https://ts1.cn.mm.bing.net/th/id/R-C.465f55188a4c0f479cfbad002c8b58c3?rik=%2b6oUY9dmNx%2f3MA&riu=http%3a%2f%2fwww.myconfinedspace.com%2fwp-content%2fuploads%2f2016%2f04%2floading.gif&ehk=eBx78teHktEluHPuziMxPL0%2bFUScGEVxF66gYm0qV8Y%3d&risl=&pid=ImgRaw&r=0" data-src="https://pic2.zhimg.com/v2-23f313c38ec462f4404159964c7b938d_r.jpg" class="lozad post-image"></p>
-<p>完整代码</p>
-<pre class="highlight"><span class="line"></span><br></pre>
-
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/345364527">咱就把0-1背包问题讲个通透！ - 知乎 (zhihu.com)</a></p>
-<h2 id="二、完全背包"><a href="#二、完全背包" class="headerlink" title="二、完全背包"></a>二、完全背包</h2><h2 id="三、多重背包"><a href="#三、多重背包" class="headerlink" title="三、多重背包"></a>三、多重背包</h2><h2 id="四、分组背包"><a href="#四、分组背包" class="headerlink" title="四、分组背包"></a>四、分组背包</h2><h2 id="五、混合背包"><a href="#五、混合背包" class="headerlink" title="五、混合背包"></a>五、混合背包</h2>
   </div>
   <div>
     
@@ -634,8 +593,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://www.wuzhiyou.github.io/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">
-            https://www.wuzhiyou.github.io/2023/06/04/01%E8%83%8C%E5%8C%85%E5%92%8C%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/
+            href="https://www.wuzhiyou.github.io/2025/07/02/%E5%94%AF%E6%9C%89%E8%AE%B0%E5%BD%95%E5%8F%AF%E6%8A%B5%E6%BC%AB%E9%95%BF%E5%B2%81%E6%9C%88/">
+            https://www.wuzhiyou.github.io/2025/07/02/%E5%94%AF%E6%9C%89%E8%AE%B0%E5%BD%95%E5%8F%AF%E6%8A%B5%E6%BC%AB%E9%95%BF%E5%B2%81%E6%9C%88/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客仅供个人学习交流，转载请注明出处！</p>
@@ -645,29 +604,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2023/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">正则表达式 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2023/05/30/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" 
+        href="/2025/04/01/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">TCP三次握手四次挥手 </div>
+            <div class="nav-title">电子招标流程讲解 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -685,7 +630,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%8101%E8%83%8C%E5%8C%85"><span class="toc-text">一、01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%84%E6%B3%95"><span class="toc-text">1、二维dp数组法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E9%80%92%E5%BD%92%E5%85%AC%E5%BC%8F"><span class="toc-text">推导递归公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96dp%E6%95%B0%E7%BB%84"><span class="toc-text">初始化dp数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-text">二、完全背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-text">三、多重背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-text">四、分组背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="toc-text">五、混合背包</span></a></li></ol>
+
 </div>
             </main>
             <aside class="right-column">
@@ -699,7 +644,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%8101%E8%83%8C%E5%8C%85"><span class="toc-text">一、01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E7%BB%B4dp%E6%95%B0%E7%BB%84%E6%B3%95"><span class="toc-text">1、二维dp数组法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E9%80%92%E5%BD%92%E5%85%AC%E5%BC%8F"><span class="toc-text">推导递归公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96dp%E6%95%B0%E7%BB%84"><span class="toc-text">初始化dp数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-text">二、完全背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="toc-text">三、多重背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85"><span class="toc-text">四、分组背包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B7%E5%90%88%E8%83%8C%E5%8C%85"><span class="toc-text">五、混合背包</span></a></li></ol>
+
     </article>
   
   
@@ -714,6 +659,11 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2025-07-02</div>
+        <a href="/2025/07/02/%E5%94%AF%E6%9C%89%E8%AE%B0%E5%BD%95%E5%8F%AF%E6%8A%B5%E6%BC%AB%E9%95%BF%E5%B2%81%E6%9C%88/"><div class="recent-posts-item-content">【四月五月】唯有记录可抵漫长岁月</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2025-04-01</div>
         <a href="/2025/04/01/%E7%94%B5%E5%AD%90%E6%8B%9B%E6%A0%87%E6%B5%81%E7%A8%8B%E8%AE%B2%E8%A7%A3/"><div class="recent-posts-item-content">电子招标流程讲解</div></a>
       </div>
@@ -726,11 +676,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2025-03-13</div>
         <a href="/2025/03/13/vue%E4%B8%AD%E4%BD%BF%E7%94%A8AES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/"><div class="recent-posts-item-content">vue中使用AES加密算法</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2025-03-05</div>
-        <a href="/2025/03/05/linux%E4%B8%8B%E6%9D%83%E9%99%90%E4%B8%8E%E6%95%B0%E5%AD%97%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/"><div class="recent-posts-item-content">linux下权限与数字的对应关系</div></a>
       </div>
     
   </div>
